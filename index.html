@@ -7,9 +7,9 @@
 <meta name="description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.">
 <meta name="author" content="Pedro Cauã">
 <meta name="color-scheme" content="light dark">
-<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m)}catch(e){}</script>
+<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m);var pl=localStorage.getItem("palette");if(pl)document.documentElement.setAttribute("data-palette",pl)}catch(e){}</script>
 <meta name="theme-color" content="#1E3FE0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#8CA4FF" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#131820" media="(prefers-color-scheme: dark)">
 <!-- [PENDENTE: URL final] troque em canonical, og:url, og:image, twitter:image e no JSON-LD pela URL publicada (ex.: https://pedrocaua10.github.io/) -->
 <link rel="canonical" href="https://[PENDENTE: URL final]/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%231E3FE0%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20font-family%3D%22Arial%20Narrow%2CArial%2Csans-serif%22%20font-weight%3D%22800%22%20font-size%3D%2234%22%20text-anchor%3D%22middle%22%20fill%3D%22%23fff%22%3EPC%3C%2Ftext%3E%3C%2Fsvg%3E">
@@ -89,18 +89,67 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --on-signal:#0A1325; --ok:#5BD99C; --hero-c:#0A1325; --shadow:rgba(0,0,0,.55);
-    --ta-bg:#8CA4FF; --ta-fg:#0A1325; --ta-mu:#1B2A52; --ta-ln:rgba(10,19,37,.42); --ta-sf:#0A1325; --ta-sfg:#E7EDF8; --ta-smu:#9AA9C4; --ta-ink:#0A1325; --ta-bt:#0A1325; --ta-btf:#E7EDF8;
-    --td-bg:#060C1A; --td-fg:#E7EDF8; --td-mu:#9AA9C4; --td-ln:#1F2F55; --td-sf:#101B36; --td-sfg:#E7EDF8; --td-smu:#9AA9C4; --td-ink:#8CA4FF; --td-bt:#E7EDF8; --td-btf:#060C1A;
-    --tp-bg:#0F1C3A; --tp-fg:#E7EDF8; --tp-mu:#9AA9C4; --tp-ln:#24365C; --tp-sf:#16264A; --tp-sfg:#E7EDF8; --tp-smu:#9AA9C4; --tp-ink:#8CA4FF; --tp-bt:#E7EDF8; --tp-btf:#0F1C3A;
+    --accent:#8FB3E8; --on-accent:#12161C; --signal:#E3B24A; --on-signal:#17140C; --ok:#6CCB9C; --hero-c:#2D4A82; --shadow:rgba(0,0,0,.55);
+    --ta-bg:#2D4A82; --ta-fg:#F2F4F8; --ta-mu:#D3DBEC; --ta-ln:rgba(255,255,255,.30); --ta-sf:#121722; --ta-sfg:#E3E7EE; --ta-smu:#A3ACBA; --ta-ink:#F2F4F8; --ta-bt:#F2F4F8; --ta-btf:#1B2A4D;
+    --td-bg:#131820; --td-fg:#E3E7EE; --td-mu:#A3ACBA; --td-ln:#2A3341; --td-sf:#1C232D; --td-sfg:#E3E7EE; --td-smu:#A3ACBA; --td-ink:#8FB3E8; --td-bt:#E3E7EE; --td-btf:#131820;
+    --tp-bg:#1A212B; --tp-fg:#E3E7EE; --tp-mu:#A3ACBA; --tp-ln:#313B4B; --tp-sf:#242D3A; --tp-sfg:#E3E7EE; --tp-smu:#A3ACBA; --tp-ink:#8FB3E8; --tp-bt:#E3E7EE; --tp-btf:#1A212B;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --on-signal:#0A1325; --ok:#5BD99C; --hero-c:#0A1325; --shadow:rgba(0,0,0,.55);
-  --ta-bg:#8CA4FF; --ta-fg:#0A1325; --ta-mu:#1B2A52; --ta-ln:rgba(10,19,37,.42); --ta-sf:#0A1325; --ta-sfg:#E7EDF8; --ta-smu:#9AA9C4; --ta-ink:#0A1325; --ta-bt:#0A1325; --ta-btf:#E7EDF8;
-  --td-bg:#060C1A; --td-fg:#E7EDF8; --td-mu:#9AA9C4; --td-ln:#1F2F55; --td-sf:#101B36; --td-sfg:#E7EDF8; --td-smu:#9AA9C4; --td-ink:#8CA4FF; --td-bt:#E7EDF8; --td-btf:#060C1A;
-  --tp-bg:#0F1C3A; --tp-fg:#E7EDF8; --tp-mu:#9AA9C4; --tp-ln:#24365C; --tp-sf:#16264A; --tp-sfg:#E7EDF8; --tp-smu:#9AA9C4; --tp-ink:#8CA4FF; --tp-bt:#E7EDF8; --tp-btf:#0F1C3A;
+  --accent:#8FB3E8; --on-accent:#12161C; --signal:#E3B24A; --on-signal:#17140C; --ok:#6CCB9C; --hero-c:#2D4A82; --shadow:rgba(0,0,0,.55);
+  --ta-bg:#2D4A82; --ta-fg:#F2F4F8; --ta-mu:#D3DBEC; --ta-ln:rgba(255,255,255,.30); --ta-sf:#121722; --ta-sfg:#E3E7EE; --ta-smu:#A3ACBA; --ta-ink:#F2F4F8; --ta-bt:#F2F4F8; --ta-btf:#1B2A4D;
+  --td-bg:#131820; --td-fg:#E3E7EE; --td-mu:#A3ACBA; --td-ln:#2A3341; --td-sf:#1C232D; --td-sfg:#E3E7EE; --td-smu:#A3ACBA; --td-ink:#8FB3E8; --td-bt:#E3E7EE; --td-btf:#131820;
+  --tp-bg:#1A212B; --tp-fg:#E3E7EE; --tp-mu:#A3ACBA; --tp-ln:#313B4B; --tp-sf:#242D3A; --tp-sfg:#E3E7EE; --tp-smu:#A3ACBA; --tp-ink:#8FB3E8; --tp-bt:#E3E7EE; --tp-btf:#1A212B;
+  color-scheme:dark;
+}
+/* paletas alternativas do tema escuro (pré-visualização com ?paletas) */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"])[data-palette="petroleo"]{
+    --accent:#86D3CB; --on-accent:#0F1D20; --signal:#E6B659; --on-signal:#17140C; --ok:#76D3A4; --hero-c:#1B5559; --shadow:rgba(0,0,0,.55);
+    --ta-bg:#1B5559; --ta-fg:#F1F7F6; --ta-mu:#CFE3E1; --ta-ln:rgba(255,255,255,.30); --ta-sf:#0E1B1D; --ta-sfg:#E2EBEA; --ta-smu:#9FB3B1; --ta-ink:#F1F7F6; --ta-bt:#F1F7F6; --ta-btf:#12383B;
+    --td-bg:#0F1D20; --td-fg:#E2EBEA; --td-mu:#9FB3B1; --td-ln:#24393C; --td-sf:#16282B; --td-sfg:#E2EBEA; --td-smu:#9FB3B1; --td-ink:#86D3CB; --td-bt:#E2EBEA; --td-btf:#0F1D20;
+    --tp-bg:#142529; --tp-fg:#E2EBEA; --tp-mu:#9FB3B1; --tp-ln:#2B4347; --tp-sf:#1D3237; --tp-sfg:#E2EBEA; --tp-smu:#9FB3B1; --tp-ink:#86D3CB; --tp-bt:#E2EBEA; --tp-btf:#142529;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"][data-palette="petroleo"]{
+  --accent:#86D3CB; --on-accent:#0F1D20; --signal:#E6B659; --on-signal:#17140C; --ok:#76D3A4; --hero-c:#1B5559; --shadow:rgba(0,0,0,.55);
+  --ta-bg:#1B5559; --ta-fg:#F1F7F6; --ta-mu:#CFE3E1; --ta-ln:rgba(255,255,255,.30); --ta-sf:#0E1B1D; --ta-sfg:#E2EBEA; --ta-smu:#9FB3B1; --ta-ink:#F1F7F6; --ta-bt:#F1F7F6; --ta-btf:#12383B;
+  --td-bg:#0F1D20; --td-fg:#E2EBEA; --td-mu:#9FB3B1; --td-ln:#24393C; --td-sf:#16282B; --td-sfg:#E2EBEA; --td-smu:#9FB3B1; --td-ink:#86D3CB; --td-bt:#E2EBEA; --td-btf:#0F1D20;
+  --tp-bg:#142529; --tp-fg:#E2EBEA; --tp-mu:#9FB3B1; --tp-ln:#2B4347; --tp-sf:#1D3237; --tp-sfg:#E2EBEA; --tp-smu:#9FB3B1; --tp-ink:#86D3CB; --tp-bt:#E2EBEA; --tp-btf:#142529;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"])[data-palette="terracota"]{
+    --accent:#E8B58A; --on-accent:#1B1612; --signal:#E6B659; --on-signal:#1A140C; --ok:#7FCF9E; --hero-c:#7E4228; --shadow:rgba(0,0,0,.55);
+    --ta-bg:#7E4228; --ta-fg:#FBF4EE; --ta-mu:#F0DCCB; --ta-ln:rgba(255,255,255,.30); --ta-sf:#1A1210; --ta-sfg:#EDE6DF; --ta-smu:#B3A89D; --ta-ink:#FBF4EE; --ta-bt:#FBF4EE; --ta-btf:#4A2514;
+    --td-bg:#1A1613; --td-fg:#EDE6DF; --td-mu:#B3A89D; --td-ln:#3A312A; --td-sf:#241E19; --td-sfg:#EDE6DF; --td-smu:#B3A89D; --td-ink:#E8B58A; --td-bt:#EDE6DF; --td-btf:#1A1613;
+    --tp-bg:#221C17; --tp-fg:#EDE6DF; --tp-mu:#B3A89D; --tp-ln:#41372F; --tp-sf:#2D2620; --tp-sfg:#EDE6DF; --tp-smu:#B3A89D; --tp-ink:#E8B58A; --tp-bt:#EDE6DF; --tp-btf:#221C17;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"][data-palette="terracota"]{
+  --accent:#E8B58A; --on-accent:#1B1612; --signal:#E6B659; --on-signal:#1A140C; --ok:#7FCF9E; --hero-c:#7E4228; --shadow:rgba(0,0,0,.55);
+  --ta-bg:#7E4228; --ta-fg:#FBF4EE; --ta-mu:#F0DCCB; --ta-ln:rgba(255,255,255,.30); --ta-sf:#1A1210; --ta-sfg:#EDE6DF; --ta-smu:#B3A89D; --ta-ink:#FBF4EE; --ta-bt:#FBF4EE; --ta-btf:#4A2514;
+  --td-bg:#1A1613; --td-fg:#EDE6DF; --td-mu:#B3A89D; --td-ln:#3A312A; --td-sf:#241E19; --td-sfg:#EDE6DF; --td-smu:#B3A89D; --td-ink:#E8B58A; --td-bt:#EDE6DF; --td-btf:#1A1613;
+  --tp-bg:#221C17; --tp-fg:#EDE6DF; --tp-mu:#B3A89D; --tp-ln:#41372F; --tp-sf:#2D2620; --tp-sfg:#EDE6DF; --tp-smu:#B3A89D; --tp-ink:#E8B58A; --tp-bt:#EDE6DF; --tp-btf:#221C17;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"])[data-palette="ameixa"]{
+    --accent:#C0A8F0; --on-accent:#17121F; --signal:#E3B24A; --on-signal:#17120C; --ok:#7FCF9E; --hero-c:#54418A; --shadow:rgba(0,0,0,.55);
+    --ta-bg:#54418A; --ta-fg:#F6F3FB; --ta-mu:#DDD4F0; --ta-ln:rgba(255,255,255,.30); --ta-sf:#130F1A; --ta-sfg:#E8E4F0; --ta-smu:#AEA6BF; --ta-ink:#F6F3FB; --ta-bt:#F6F3FB; --ta-btf:#2B2050;
+    --td-bg:#18141F; --td-fg:#E8E4F0; --td-mu:#AEA6BF; --td-ln:#322B40; --td-sf:#211B2B; --td-sfg:#E8E4F0; --td-smu:#AEA6BF; --td-ink:#C0A8F0; --td-bt:#E8E4F0; --td-btf:#18141F;
+    --tp-bg:#201A2B; --tp-fg:#E8E4F0; --tp-mu:#AEA6BF; --tp-ln:#3A324A; --tp-sf:#2A2338; --tp-sfg:#E8E4F0; --tp-smu:#AEA6BF; --tp-ink:#C0A8F0; --tp-bt:#E8E4F0; --tp-btf:#201A2B;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"][data-palette="ameixa"]{
+  --accent:#C0A8F0; --on-accent:#17121F; --signal:#E3B24A; --on-signal:#17120C; --ok:#7FCF9E; --hero-c:#54418A; --shadow:rgba(0,0,0,.55);
+  --ta-bg:#54418A; --ta-fg:#F6F3FB; --ta-mu:#DDD4F0; --ta-ln:rgba(255,255,255,.30); --ta-sf:#130F1A; --ta-sfg:#E8E4F0; --ta-smu:#AEA6BF; --ta-ink:#F6F3FB; --ta-bt:#F6F3FB; --ta-btf:#2B2050;
+  --td-bg:#18141F; --td-fg:#E8E4F0; --td-mu:#AEA6BF; --td-ln:#322B40; --td-sf:#211B2B; --td-sfg:#E8E4F0; --td-smu:#AEA6BF; --td-ink:#C0A8F0; --td-bt:#E8E4F0; --td-btf:#18141F;
+  --tp-bg:#201A2B; --tp-fg:#E8E4F0; --tp-mu:#AEA6BF; --tp-ln:#3A324A; --tp-sf:#2A2338; --tp-sfg:#E8E4F0; --tp-smu:#AEA6BF; --tp-ink:#C0A8F0; --tp-bt:#E8E4F0; --tp-btf:#201A2B;
   color-scheme:dark;
 }
 /* cada elemento com data-tone herda as cores do seu bloco */
@@ -117,6 +166,7 @@ h1,h2,h3,p,ol,ul,figure,dl,dd{margin:0}
 ol,ul{padding:0;list-style:none}
 a{color:inherit}
 img,svg{display:block;max-width:100%}
+main{overflow-x:clip}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--t-ink,currentColor);outline-offset:3px}
 .skip{position:absolute;left:16px;top:-80px;z-index:100;padding:10px 16px;background:var(--td-fg);color:var(--td-bg);border-radius:6px;text-decoration:none;font-weight:600}
@@ -240,7 +290,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .hint{transition:opacity var(--dur-base) var(--ease-out)}
 /* modo "pin": o JS liga esta classe só em telas largas e com movimento permitido; sem ela, o trilho rola na horizontal com snap */
 #projetos.is-track{overflow-x:clip}
-.is-track .projetos-wrap{height:100vh;padding:var(--hdr) 0 0}
+.is-track .projetos-wrap{height:100vh;height:100svh;padding:var(--hdr) 0 0}
 .is-track .trilho{position:relative;overflow:visible;scroll-snap-type:none;padding-block:8px;will-change:transform}
 .is-track .card{scroll-snap-align:none}
 .is-track .hint{padding-top:14px}
@@ -272,6 +322,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .ph-rec{fill:var(--signal)}
 .ph-t{font:600 15px var(--font-body);fill:#E7EDF8}
 .ph-s{font:500 11px var(--font-mono);letter-spacing:.06em;fill:#9AA9C4;text-transform:uppercase}
+.ph-s--sm{font-size:9.5px;letter-spacing:.03em}
 .ph-bar{fill:#2A3D66}.ph-fill{fill:var(--signal)}
 .ph-ctl{fill:#E7EDF8}
 
@@ -303,7 +354,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 
 /* modo "pin" das cenas: o JS liga .is-pinned só em telas largas e com movimento permitido */
 .scene.is-pinned{scroll-margin-top:calc(var(--hdr) * -1)}
-.scene.is-pinned .stage{height:100vh;padding:var(--hdr) 0 0;display:flex;align-items:center}
+.scene.is-pinned .stage{height:100vh;height:100svh;padding:var(--hdr) 0 0;display:flex;align-items:center}
 .scene.is-pinned .stage-grid{width:100%}
 .gesto,.privacy{transition:background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .privacy.is-hot{background:var(--t-fg);color:var(--t-bg)}
@@ -315,6 +366,42 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .scene-agentes .step p{font-size:.9rem;line-height:1.45}
 .scene-agentes .steps{gap:14px}
 .trace li .st{transition:color var(--dur-fast)}
+
+/* ===== modo pin no celular (até 900px): layouts próprios para caber na altura da tela ===== */
+@media (max-width:900px){
+  .scene.is-pinned .stage{padding:calc(var(--hdr) + 10px) 0 10px}
+  .scene.is-pinned .stage-grid{height:100%;display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .scene.is-pinned .stage-copy{gap:8px;flex:none}
+  .scene.is-pinned .stage-copy .lede{display:none}
+  .scene.is-pinned .h-big{font-size:clamp(30px,9vw,44px)}
+  .scene-nodify.is-pinned .stage-grid{justify-content:flex-start}
+  .scene-nodify.is-pinned .gestos{gap:6px}
+  .scene-nodify.is-pinned .gesto{padding:6px 10px;grid-template-columns:28px minmax(0,1fr);gap:0 10px;align-items:center}
+  .scene-nodify.is-pinned .gesto .n{width:28px;height:28px;grid-row:auto}
+  .scene-nodify.is-pinned .gesto h3{font-size:.95rem}
+  .scene-nodify.is-pinned .gesto p{display:none}
+  .scene-nodify.is-pinned .gesto.is-on p{display:block;grid-column:2;font-size:.85rem}
+  .scene-nodify.is-pinned .privacy{font-size:.78rem;padding:5px 12px}
+  .scene-nodify.is-pinned .phone{flex:1 1 0;min-height:0;max-width:none;width:100%;display:flex;flex-direction:column;align-items:center}
+  .scene-nodify.is-pinned .phone svg{flex:1 1 0;min-height:0;height:100%;width:auto;max-width:100%;max-height:none}
+  .scene-nodify.is-pinned .phone figcaption{flex:none;margin-top:2px}
+  .scene-agentes.is-pinned .h-big{font-size:clamp(24px,7vw,34px)}
+  .scene-agentes.is-pinned .steps{gap:8px;padding-left:44px}
+  .scene-agentes.is-pinned .steps::before,.scene-agentes.is-pinned .steps::after{left:13px}
+  .scene-agentes.is-pinned .step .node{left:-44px;width:28px;height:28px;font-size:.8rem}
+  .scene-agentes.is-pinned .step p{display:none}
+  .scene-agentes.is-pinned .step h3{font-size:.95rem}
+  .scene-agentes.is-pinned .trace-bar,.scene-agentes.is-pinned .trace-foot{padding:8px 12px}
+  .scene-agentes.is-pinned .trace li{grid-template-columns:20px minmax(0,1fr);padding:8px 12px}
+  .scene-agentes.is-pinned .trace .what{display:none}
+  .is-track .projetos-wrap{padding-top:calc(var(--hdr) + 8px)}
+  .is-track .trilho{gap:16px}
+  .is-track .card{flex-basis:min(78vw,320px);padding:18px;gap:10px}
+  .is-track .card--lead{flex-basis:min(86vw,360px)}
+  .is-track .card p{font-size:.9rem}
+  .is-track .frame{height:clamp(100px,19svh,200px)}
+}
+@media (max-width:900px) and (max-height:700px){.is-track .frame{display:none}.scene-nodify.is-pinned .privacy{display:none}}
 
 /* ===== habilidades ===== */
 .skills-head{display:grid;gap:16px;margin-bottom:16px}
@@ -384,6 +471,8 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 @media (max-width:560px){.contacts{flex-direction:column;align-items:stretch;width:100%}.contacts li{flex-wrap:wrap;justify-content:space-between;border-radius:22px;padding:12px 12px 12px 18px}.contacts .lab{flex:0 0 100%;text-align:left}.contacts a.val{flex:1;min-width:0;text-align:left;font-size:.85rem}}
 footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px dashed var(--t-ln);color:var(--t-mu);font-size:.85rem}
 
+.pal-btn{position:fixed;left:16px;bottom:16px;z-index:95;padding:10px 16px;border:1.5px solid #fff;border-radius:999px;background:#111;color:#fff;font:600 .85rem/1.2 var(--font-body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.pal-btn[hidden]{display:none}
 .theme-swap *,.theme-swap *::before,.theme-swap *::after{transition:none!important}
 
 /* ===== movimento reduzido ===== */
@@ -597,7 +686,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
             <rect class="ph-body" x="14" y="8" width="272" height="584" rx="38"/>
             <rect class="ph-screen" x="30" y="24" width="240" height="552" rx="28"/>
             <circle class="ph-cam" cx="150" cy="46" r="6"/>
-            <g id="camOn"><circle class="ph-rec" cx="254" cy="46" r="4"/><text class="ph-s" x="244" y="50" text-anchor="end">câmera ativa</text></g>
+            <g id="camOn"><circle class="ph-rec" cx="256" cy="46" r="4"/><text class="ph-s ph-s--sm" x="246" y="49.5" text-anchor="end">câmera ativa</text></g>
             <rect x="44" y="70" width="212" height="262" rx="16" fill="#16264A"/>
             <g id="head">
               <circle class="ph-head" cx="150" cy="200" r="66"/>
@@ -739,6 +828,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
 
 </main>
 
+<button class="pal-btn" id="palBtn" type="button" hidden>Paleta</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -783,6 +873,23 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     });
   });
   themeLabel();
+
+  /* ----- pré-visualização das paletas do tema escuro (só com ?paletas na URL) ----- */
+  (function(){
+    var btn = $("#palBtn");
+    if(!btn || location.search.indexOf("paletas") < 0) return;
+    var PAL = [["ardosia", "Ardósia"], ["petroleo", "Verde-petróleo"], ["terracota", "Terracota"], ["ameixa", "Ameixa"]];
+    function atual(){ var p = root.getAttribute("data-palette") || "ardosia"; for(var i = 0; i < PAL.length; i++) if(PAL[i][0] === p) return i; return 0; }
+    function pinta(){ btn.textContent = "Paleta escura: " + PAL[atual()][1] + " (clique para trocar)"; }
+    btn.hidden = false; pinta();
+    btn.addEventListener("click", function(){
+      if(!isDark()){ root.setAttribute("data-theme", "dark"); themeLabel(); pinta(); return; }
+      var n = PAL[(atual() + 1) % PAL.length][0];
+      root.setAttribute("data-palette", n);
+      try{ localStorage.setItem("palette", n); }catch(e){}
+      pinta();
+    });
+  })();
 
   /* ----- menu móvel: fecha por link, clique fora e Esc, e devolve o foco ----- */
   var burger = $("#burger"), drawer = $("#menu"), scrim = $("#scrim");
@@ -1025,12 +1132,14 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   /* ----- GSAP: registro e recálculo depois de fontes e carga ----- */
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true }); /* a barra do navegador do celular aparece e some sem recalcular tudo */
     var mm = gsap.matchMedia();
-    var MOTION = "(min-width: 901px)";
+    /* pins no desktop (altura mínima 600) e no celular (altura mínima 520); em paisagem muito baixa, rolagem normal */
+    var MQ = { desk: "(min-width: 901px) and (min-height: 600px)", mob: "(max-width: 900px) and (min-height: 520px)" };
 
     /* projetos na horizontal: o scroll vertical empurra o trilho para o lado */
-    mm.add(MOTION, function(){
-      if(reduced()) return;
+    mm.add(MQ, function(ctx){
+      if(reduced() || !(ctx.conditions.desk || ctx.conditions.mob)) return;
       var sec = $("#projetos"), wrap = $("#projetosWrap"), trilho = $("#trilho"), dica = $("#trilhoHint");
       sec.classList.add("is-track");
       trilho.removeAttribute("tabindex");
@@ -1062,8 +1171,8 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     });
 
     /* Nodify em ação: 4 etapas ligadas ao scroll, com a cabeça girando de forma contínua */
-    mm.add(MOTION, function(){
-      if(reduced()) return;
+    mm.add(MQ, function(ctx){
+      if(reduced() || !(ctx.conditions.desk || ctx.conditions.mob)) return;
       var sec = $("#nodify"), stage = $("#nodifyStage");
       var head = $("#head"), feat = $("#feat"), frame = $("#frame"), fill = $("#bar"), trk = $("#trk"), stt = $("#stt"), vol = $("#vol");
       var items = $$("#gestos .gesto"), priv = $("#privacy");
@@ -1105,8 +1214,8 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     });
 
     /* agentes no trabalho: os passos acendem com o scroll e o painel marca ✓ por etapa (sem setTimeout) */
-    mm.add(MOTION, function(){
-      if(reduced()) return;
+    mm.add(MQ, function(ctx){
+      if(reduced() || !(ctx.conditions.desk || ctx.conditions.mob)) return;
       var sec = $("#agentes"), stage = $("#agentesStage"), stepsEl = $("#steps");
       var steps = $$(".step", stepsEl), lines = $$("#traceList li"), foot = $("#traceFoot");
       var done = -1, footOk = null;

@@ -7,6 +7,7 @@
 <meta name="description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.">
 <meta name="author" content="Pedro Cauã">
 <meta name="color-scheme" content="light dark">
+<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m)}catch(e){}</script>
 <meta name="theme-color" content="#1E3FE0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#8CA4FF" media="(prefers-color-scheme: dark)">
 <!-- [PENDENTE: URL final] troque em canonical, og:url, og:image, twitter:image e no JSON-LD pela URL publicada (ex.: https://pedrocaua10.github.io/) -->
@@ -159,6 +160,10 @@ main>section[data-tone]:not(#inicio){border-top:2px dotted var(--t-ln)}
 .round svg{width:16px;height:16px}
 a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var(--t-bg);transform:translateY(-2px)}
 .round:disabled{opacity:.55;cursor:not-allowed}
+.round[data-motion-toggle] .slash{display:none}
+.round[data-motion-toggle][aria-pressed="false"] .slash{display:block}
+.round[data-motion-toggle][aria-pressed="true"]{background:var(--t-fg);color:var(--t-bg)}
+.round[hidden],.btn[hidden]{display:none}
 .burger{display:none;width:40px;height:40px;position:relative;border:1.5px solid currentColor;border-radius:50%;background:transparent;color:var(--t-fg);cursor:pointer}
 .burger span{position:absolute;left:10px;right:10px;height:2px;border-radius:2px;background:currentColor;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base)}
 .burger span:nth-child(1){top:13px}.burger span:nth-child(2){top:18px}.burger span:nth-child(3){top:23px}
@@ -378,10 +383,13 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
 .theme-swap *,.theme-swap *::before,.theme-swap *::after{transition:none!important}
 
 /* ===== movimento reduzido ===== */
+:root.motion-off{scroll-behavior:auto}
+:root.motion-off *,:root.motion-off *::before,:root.motion-off *::after{animation:none!important;transition:none!important}
+:root.motion-off .nome.is-split .ch{opacity:1!important;transform:none!important}
 @media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .nome.is-split .ch{opacity:1!important;transform:none!important}
+  :root:not(.motion-on){scroll-behavior:auto}
+  :root:not(.motion-on) *,:root:not(.motion-on) *::before,:root:not(.motion-on) *::after{animation:none!important;transition:none!important}
+  :root:not(.motion-on) .nome.is-split .ch{opacity:1!important;transform:none!important}
 }
 </style>
 <noscript><style>@media (max-width:900px){.burger{display:none}.nav{display:flex;flex:1;margin-inline:0;overflow-x:auto}}</style></noscript>
@@ -408,6 +416,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         <li><a class="round" href="https://www.linkedin.com/in/pedro-rodrigues-202956323/" aria-label="LinkedIn de Pedro Cauã" rel="noopener">in</a></li>
         <li><a class="round" href="mailto:pedro.cauadf@gmail.com" aria-label="Enviar e-mail para Pedro Cauã"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
       </ul>
+      <button class="round" type="button" data-motion-toggle hidden aria-pressed="true" aria-label="Animações: ligadas" title="Animações: ligadas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12c2.5-6 4.5-6 6.5 0s4 6 6.5 0 3-4 5-2"/><path class="slash" d="M4 20 20 4"/></svg></button>
       <button class="btn btn--sm" type="button" data-theme-toggle>Tema escuro</button>
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </div>
@@ -427,6 +436,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <li><a class="round" href="mailto:pedro.cauadf@gmail.com" aria-label="Enviar e-mail para Pedro Cauã"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
     </ul>
     <button class="btn btn--sm" type="button" data-theme-toggle style="align-self:flex-start">Tema escuro</button>
+    <button class="btn btn--sm" type="button" data-motion-toggle hidden aria-pressed="true" style="align-self:flex-start">Animações: ligadas</button>
   </nav>
 </header>
 
@@ -491,6 +501,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-09-01">1 set 2024</time></p><h3>Nivelamento em Introdução às Finanças Corporativas</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
       <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Fundamentos do SCRUM</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
       <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Desenvolvimento colaborativo em GitHub</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">Fev 2025 · 4 meses · Estágio</p><h3>Estagiário de infraestrutura de TI</h3></div><p>Novacap. Atuação na área de infraestrutura de TI.</p></li>
       <li class="item" data-g="cert" data-h="30.5"><div><p class="mono k">Udemy · <time datetime="2025-02-19">19 fev 2025</time></p><h3>Algoritmos e Lógica de Programação: o curso completo</h3></div><div class="foot mono"><span>30,5 h</span><span class="chip">Udemy</span></div></li>
       <li class="item" data-g="cert" data-h="3"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Introduction to Python for Developers</h3></div><div class="foot mono"><span>3 h</span><span class="chip">Python e APIs</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Object-Oriented Programming in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
@@ -500,7 +511,6 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Supervised Learning with scikit-learn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Unsupervised Learning in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Intermediate Data Visualization with Seaborn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
-      <li class="item" data-g="trabalho"><div><p class="mono k">2025 · 4 meses · Estágio</p><h3>Estagiário de infraestrutura de TI</h3></div><p>Novacap. Atuação na área de infraestrutura de TI.</p></li>
       <li class="item" data-g="trabalho"><div><p class="mono k">Ago 2025 – ago 2027 · Estágio</p><h3>Estagiário full stack</h3></div><p>Tribunal Superior Eleitoral · SEUE. Atuo em dois sistemas com Angular e JavaScript: funcionalidades, ajustes de interface e testes unitários. Em algumas demandas, atuo como QA. Desenvolvo agentes e skills de IA para o fluxo de trabalho.</p></li>
       <li class="item" data-g="cert" data-h="15.5"><div><p class="mono k">Udemy · <time datetime="2025-10-24">24 out 2025</time></p><h3>Figma Design de Interfaces, do zero ao profissional</h3></div><div class="foot mono"><span>15,5 h</span><span class="chip">Udemy</span></div></li>
       <li class="item" data-g="cert" data-h="5.5"><div><p class="mono k">Udemy · <time datetime="2025-12-05">5 dez 2025</time></p><h3>Testes Unitários do Zero com Angular, Jasmine e Karma</h3></div><div class="foot mono"><span>5,5 h</span><span class="chip">Udemy</span></div></li>
@@ -727,9 +737,28 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
 (function(){
   "use strict";
   var root = document.documentElement;
-  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
   function $(s, r){ return (r || document).querySelector(s); }
   function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  /* movimento: a escolha da pessoa (botão) vale mais que o sistema; sem escolha, vale o sistema */
+  function reduced(){
+    if(root.classList.contains("motion-off")) return true;
+    if(root.classList.contains("motion-on")) return false;
+    return reduceMQ.matches;
+  }
+  $$("[data-motion-toggle]").forEach(function(b){
+    b.hidden = false;
+    var on = !reduced();
+    b.setAttribute("aria-pressed", on ? "true" : "false");
+    var rotulo = "Animações: " + (on ? "ligadas" : "desligadas");
+    b.setAttribute("aria-label", rotulo); b.title = rotulo;
+    if(b.classList.contains("btn")) b.textContent = rotulo;
+    b.addEventListener("click", function(){
+      try{ localStorage.setItem("motion", on ? "off" : "on"); }catch(e){}
+      location.reload();
+    });
+  });
+  reduceMQ.addEventListener("change", function(){ location.reload(); });
 
   /* ----- tema ----- */
   function isDark(){
@@ -767,7 +796,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   /* ----- nome do início: uma letra por <span>; sem JS ou com movimento reduzido o nome aparece inteiro ----- */
   (function(){
     var h1 = $("#nome");
-    if(!h1 || reduceMQ.matches) return;
+    if(!h1 || reduced()) return;
     $$(".line", h1).forEach(function(line, li){
       var word = $(".word", line), text = word.textContent;
       word.textContent = "";
@@ -829,7 +858,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     function tween(el, to, dec){
       var from = el._v != null ? el._v : (parseFloat(String(el.textContent).replace(",", ".")) || 0);
       el._v = to;
-      if(reduceMQ.matches || from === to){ show(el, to, dec); return; }
+      if(reduced() || from === to){ show(el, to, dec); return; }
       var t0 = null;
       (function f(ts){
         if(t0 === null) t0 = ts;
@@ -852,7 +881,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     function onScroll(){ if(!tickingC){ tickingC = true; requestAnimationFrame(sync); } }
     car.addEventListener("scroll", onScroll, {passive:true});
     window.addEventListener("resize", onScroll);
-    function go(dir){ car.scrollBy({ left: dir * step(), behavior: reduceMQ.matches ? "auto" : "smooth" }); }
+    function go(dir){ car.scrollBy({ left: dir * step(), behavior: reduced() ? "auto" : "smooth" }); }
     prev.hidden = next.hidden = false;
     prev.addEventListener("click", function(){ go(-1); });
     next.addEventListener("click", function(){ go(1); });
@@ -924,10 +953,11 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
     var mm = gsap.matchMedia();
-    var MOTION = "(min-width: 901px) and (prefers-reduced-motion: no-preference)";
+    var MOTION = "(min-width: 901px)";
 
     /* projetos na horizontal: o scroll vertical empurra o trilho para o lado */
     mm.add(MOTION, function(){
+      if(reduced()) return;
       var sec = $("#projetos"), wrap = $("#projetosWrap"), trilho = $("#trilho"), dica = $("#trilhoHint");
       sec.classList.add("is-track");
       trilho.removeAttribute("tabindex");
@@ -960,6 +990,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
 
     /* Nodify em ação: 4 etapas ligadas ao scroll, com a cabeça girando de forma contínua */
     mm.add(MOTION, function(){
+      if(reduced()) return;
       var sec = $("#nodify"), stage = $("#nodifyStage");
       var head = $("#head"), feat = $("#feat"), frame = $("#frame"), fill = $("#bar"), trk = $("#trk"), stt = $("#stt");
       var items = $$("#gestos .gesto"), priv = $("#privacy");
@@ -1001,6 +1032,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
 
     /* agentes no trabalho: os passos acendem com o scroll e o painel marca ✓ por etapa (sem setTimeout) */
     mm.add(MOTION, function(){
+      if(reduced()) return;
       var sec = $("#agentes"), stage = $("#agentesStage"), stepsEl = $("#steps");
       var steps = $$(".step", stepsEl), lines = $$("#traceList li"), foot = $("#traceFoot");
       var done = -1, footOk = null;
@@ -1039,7 +1071,8 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     });
 
     /* Quem sou eu?: título e parágrafo 1 entram palavra por palavra (0,35 para 1, de top 90% a top 50%); sem JS ou com movimento reduzido tudo fica pleno */
-    mm.add("(prefers-reduced-motion: no-preference)", function(){
+    mm.add("all", function(){
+      if(reduced()) return;
       var originais = [];
       $$("#sobre [data-reveal]").forEach(function(el){
         var texto = el.textContent.trim(), palavras = texto.split(/\s+/);

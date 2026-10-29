@@ -7,3 +7,6 @@ apm_modules/
 .apm-local/
 apm.lock.yaml
 index (1).html
+
+.vercel
+.env*

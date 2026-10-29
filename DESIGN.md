@@ -49,7 +49,7 @@ Tamanhos (tokens `--fs-*`): corpo 19px com entrelinha 1,65; lede 21px; parágraf
 
 ## Início
 
-O círculo âmbar ao lado dos quadrados P e C é um selo com ícone de TI/IA. Três variantes em teste (chip, nó de agente em forma de grafo, código `</>`): abrir `?icones` na URL para trocar; a escolhida fica em `localStorage` até ser fixada no código. Abaixo do texto: a linha "Busco oportunidades..." (do currículo) e os botões Ver projetos e Baixar currículo. No celular a ilustração vem depois do texto, para os botões ficarem na primeira tela.
+O círculo âmbar ao lado dos quadrados P e C é um selo com o ícone de código `</>` (escolhido entre chip, nó de agente e código). Abaixo do texto: a linha "Busco oportunidades..." (do currículo) e os botões Ver projetos e Baixar currículo. No celular a ilustração vem depois do texto, para os botões ficarem na primeira tela.
 
 ## Números
 
@@ -57,7 +57,7 @@ Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas 
 
 ## Foto
 
-Encaixe pronto no cartão do Sobre (`.mono-tile`, 96px), com o quadrado PC como reserva. Arquivos esperados: `assets/foto-pedro-288.webp` e `foto-pedro-576.webp`, quadrados, centrados no rosto, menos de 150 KB. Gerar com o script de recorte (Chrome headless) a partir da foto original.
+No cartão do Sobre (`.mono-tile`, 96px, 80px no celular), com o quadrado PC como reserva. Arquivos: `assets/foto-pedro-288.webp` (9 KB) e `foto-pedro-576.webp` (23 KB), quadrados, recortados do close (enquadramento: cabelo, rosto e queixo, `cx 0.5, cy 0.535, zoom 1`). Carregamento `lazy`, `width/height` declarados. A foto original não vai para o repositório.
 
 ## Idioma
 

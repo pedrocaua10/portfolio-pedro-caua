@@ -1,0 +1,9 @@
+
+# APM dependencies
+apm_modules/
+
+# Ferramentas locais e cópia antiga (não fazem parte do site)
+.claude/
+.apm-local/
+apm.lock.yaml
+index (1).html

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-pedro-caua.vercel.app/sitemap.xml

@@ -338,7 +338,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px var(--edge) 20px;scroll-padding-inline:var(--edge);scrollbar-width:thin;scrollbar-color:var(--t-mu) transparent}
 .item{flex:0 0 clamp(264px,28vw,340px);scroll-snap-align:start;display:grid;gap:10px;align-content:space-between;padding:20px;border:1px solid var(--t-ln);border-radius:12px;background:var(--t-sf);color:var(--t-sfg)}
 .item[hidden]{display:none}
-.item .k{color:var(--t-smu)}
+.item .k{color:var(--t-smu);font-size:.68rem;letter-spacing:.05em}
 .item h3{font:800 1.6rem/1 var(--font-display);text-transform:uppercase;letter-spacing:.01em}
 .item p{font-size:.95rem;color:var(--t-smu)}
 .item .foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;color:var(--t-smu)}
@@ -394,11 +394,11 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   <div class="hdr-in">
     <a class="brand" href="#inicio" aria-label="Pedro Cauã, início">PC</a>
     <nav class="nav" aria-label="Seções">
+      <a href="#trajetoria">Trajetória</a>
       <a href="#projetos">Projetos</a>
       <a href="#nodify">Nodify</a>
       <a href="#agentes">Agentes</a>
       <a href="#habilidades">Habilidades</a>
-      <a href="#trajetoria">Trajetória</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -414,11 +414,11 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   </div>
   <div class="scrim" id="scrim"></div>
   <nav class="drawer" id="menu" data-tone="dark" aria-label="Menu">
+    <a class="dl" href="#trajetoria">Trajetória</a>
     <a class="dl" href="#projetos">Projetos</a>
     <a class="dl" href="#nodify">Nodify</a>
     <a class="dl" href="#agentes">Agentes</a>
     <a class="dl" href="#habilidades">Habilidades</a>
-    <a class="dl" href="#trajetoria">Trajetória</a>
     <a class="dl" href="#sobre">Sobre</a>
     <a class="dl" href="#contato">Contato</a>
     <ul class="socials" aria-label="Redes">
@@ -469,7 +469,53 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </div>
 
-  <!-- 3. Projetos -->
+  <!-- 3. Trajetória (logo depois da faixa) -->
+  <section id="trajetoria" class="sec" data-tone="paper" aria-labelledby="t-traj">
+    <div class="wrap">
+      <div class="skills-head">
+        <p class="mono eyebrow">Trajetória · do mais antigo ao mais recente</p>
+        <h2 id="t-traj" class="h-giant">Trajetória</h2>
+      </div>
+      <div class="traj-bar">
+        <p class="stat"><span id="cCount">19</span><small id="cLabel">itens</small><span id="cHours" hidden>0</span><small id="hLabel" hidden>horas</small></p>
+        <div class="filters" role="group" aria-label="Filtrar a trajetória">
+          <button type="button" data-f="all" aria-pressed="true">Tudo</button>
+          <button type="button" data-f="trabalho" aria-pressed="false">Trabalho</button>
+          <button type="button" data-f="cert" aria-pressed="false">Certificados</button>
+        </div>
+      </div>
+    </div>
+    <ul class="car" id="car" tabindex="0" aria-label="Trajetória, role para o lado">
+      <li class="item" data-g="formacao"><div><p class="mono k">Ago 2023 – ago 2027 · Formação</p><h3>Ciência da Computação, 7º semestre</h3></div><p>Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p></li>
+      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-08-20">20 ago 2024</time></p><h3>Nivelamento em Matemática Elementar</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
+      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-09-01">1 set 2024</time></p><h3>Nivelamento em Introdução às Finanças Corporativas</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
+      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Fundamentos do SCRUM</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
+      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Desenvolvimento colaborativo em GitHub</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
+      <li class="item" data-g="cert" data-h="30.5"><div><p class="mono k">Udemy · <time datetime="2025-02-19">19 fev 2025</time></p><h3>Algoritmos e Lógica de Programação: o curso completo</h3></div><div class="foot mono"><span>30,5 h</span><span class="chip">Udemy</span></div></li>
+      <li class="item" data-g="cert" data-h="3"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Introduction to Python for Developers</h3></div><div class="foot mono"><span>3 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Object-Oriented Programming in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="2"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Intermediate Python for Developers</h3></div><div class="foot mono"><span>2 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Python Toolbox</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Introduction to FastAPI</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Supervised Learning with scikit-learn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Unsupervised Learning in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Intermediate Data Visualization with Seaborn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">2025 · 4 meses · Estágio</p><h3>Estagiário de infraestrutura de TI</h3></div><p>Novacap. Atuação na área de infraestrutura de TI.</p></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">Ago 2025 – ago 2027 · Estágio</p><h3>Estagiário full stack</h3></div><p>Tribunal Superior Eleitoral · SEUE. Atuo em dois sistemas com Angular e JavaScript: funcionalidades, ajustes de interface e testes unitários. Em algumas demandas, atuo como QA. Desenvolvo agentes e skills de IA para o fluxo de trabalho.</p></li>
+      <li class="item" data-g="cert" data-h="15.5"><div><p class="mono k">Udemy · <time datetime="2025-10-24">24 out 2025</time></p><h3>Figma Design de Interfaces, do zero ao profissional</h3></div><div class="foot mono"><span>15,5 h</span><span class="chip">Udemy</span></div></li>
+      <li class="item" data-g="cert" data-h="5.5"><div><p class="mono k">Udemy · <time datetime="2025-12-05">5 dez 2025</time></p><h3>Testes Unitários do Zero com Angular, Jasmine e Karma</h3></div><div class="foot mono"><span>5,5 h</span><span class="chip">Udemy</span></div></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">2026 · 6 meses · Em paralelo ao TSE</p><h3>Gestor de tráfego e desenvolvedor</h3></div><p>Muvve Tech. Campanhas de tráfego pago no Google Ads e no Meta Ads para clientes, redes sociais, propostas comerciais e contratos em layout padronizado.</p></li>
+    </ul>
+    <div class="wrap">
+      <div class="car-ctl">
+        <button class="round" type="button" id="carPrev" aria-label="Anterior" hidden>←</button>
+        <button class="round" type="button" id="carNext" aria-label="Próximo" hidden>→</button>
+        <span class="count" id="carCount" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Projetos -->
   <section id="projetos" class="projetos" data-tone="dark" aria-labelledby="t-projetos">
     <div class="wrap projetos-head">
       <h2 id="t-projetos" class="h-giant">Projetos</h2>
@@ -515,7 +561,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </section>
 
-  <!-- 4. Nodify em ação -->
+  <!-- 5. Nodify em ação -->
   <section id="nodify" class="scene scene-nodify" data-tone="paper" aria-labelledby="t-nodify">
     <div class="stage" id="nodifyStage">
       <div class="wrap stage-grid">
@@ -556,7 +602,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </section>
 
-  <!-- 5. Agentes no trabalho -->
+  <!-- 6. Agentes no trabalho -->
   <section id="agentes" class="scene scene-agentes" data-tone="accent" aria-labelledby="t-agentes">
     <div class="stage" id="agentesStage">
       <div class="wrap stage-grid">
@@ -591,7 +637,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </section>
 
-  <!-- 6. Habilidades -->
+  <!-- 7. Habilidades -->
   <section id="habilidades" class="sec" data-tone="paper" aria-labelledby="t-hab">
     <div class="wrap">
       <div class="skills-head">
@@ -629,54 +675,8 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </section>
 
-  <!-- 7. Trajetória -->
-  <section id="trajetoria" class="sec" data-tone="dark" aria-labelledby="t-traj">
-    <div class="wrap">
-      <div class="skills-head">
-        <p class="mono eyebrow">Trajetória · trabalho, formação e certificados</p>
-        <h2 id="t-traj" class="h-giant">Trajetória</h2>
-      </div>
-      <div class="traj-bar">
-        <p class="stat"><span id="cCount">19</span><small id="cLabel">itens</small><span id="cHours" hidden>0</span><small id="hLabel" hidden>horas</small></p>
-        <div class="filters" role="group" aria-label="Filtrar a trajetória">
-          <button type="button" data-f="all" aria-pressed="true">Tudo</button>
-          <button type="button" data-f="trabalho" aria-pressed="false">Trabalho</button>
-          <button type="button" data-f="cert" aria-pressed="false">Certificados</button>
-        </div>
-      </div>
-    </div>
-    <ul class="car" id="car" tabindex="0" aria-label="Trajetória, role para o lado">
-      <li class="item" data-g="trabalho"><div><p class="mono k">Ago 2025 – ago 2027 · Estágio</p><h3>Estagiário full stack</h3></div><p>Tribunal Superior Eleitoral · SEUE. Atuo em dois sistemas com Angular e JavaScript: funcionalidades, ajustes de interface e testes unitários. Em algumas demandas, atuo como QA. Desenvolvo agentes e skills de IA para o fluxo de trabalho.</p></li>
-      <li class="item" data-g="trabalho"><div><p class="mono k">6 meses · Trabalho</p><h3>Gestor de tráfego e desenvolvedor</h3></div><p>Muvve Tech. Campanhas de tráfego pago no Google Ads e no Meta Ads para clientes, redes sociais, propostas comerciais e contratos em layout padronizado.</p></li>
-      <li class="item" data-g="trabalho"><div><p class="mono k">4 meses · Estágio</p><h3>Estagiário de infraestrutura de TI</h3></div><p>Novacap. Atuação na área de infraestrutura de TI.</p></li>
-      <li class="item" data-g="formacao"><div><p class="mono k">Ago 2023 – ago 2027 · Formação</p><h3>Ciência da Computação, 7º semestre</h3></div><p>Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p></li>
-      <li class="item" data-g="cert" data-h="5.5"><div><p class="mono k">Udemy · <time datetime="2025-12-05">5 dez 2025</time></p><h3>Testes Unitários do Zero com Angular, Jasmine e Karma</h3></div><div class="foot mono"><span>5,5 h</span><span class="chip">Udemy</span></div></li>
-      <li class="item" data-g="cert" data-h="15.5"><div><p class="mono k">Udemy · <time datetime="2025-10-24">24 out 2025</time></p><h3>Figma Design de Interfaces, do zero ao profissional</h3></div><div class="foot mono"><span>15,5 h</span><span class="chip">Udemy</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Intermediate Data Visualization with Seaborn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Unsupervised Learning in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Supervised Learning with scikit-learn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Introduction to FastAPI</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Python Toolbox</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
-      <li class="item" data-g="cert" data-h="2"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Intermediate Python for Developers</h3></div><div class="foot mono"><span>2 h</span><span class="chip">Python e APIs</span></div></li>
-      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Object-Oriented Programming in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
-      <li class="item" data-g="cert" data-h="3"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Introduction to Python for Developers</h3></div><div class="foot mono"><span>3 h</span><span class="chip">Python e APIs</span></div></li>
-      <li class="item" data-g="cert" data-h="30.5"><div><p class="mono k">Udemy · <time datetime="2025-02-19">19 fev 2025</time></p><h3>Algoritmos e Lógica de Programação: o curso completo</h3></div><div class="foot mono"><span>30,5 h</span><span class="chip">Udemy</span></div></li>
-      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Fundamentos do SCRUM</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
-      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Desenvolvimento colaborativo em GitHub</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
-      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-09-01">1 set 2024</time></p><h3>Nivelamento em Introdução às Finanças Corporativas</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
-      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-08-20">20 ago 2024</time></p><h3>Nivelamento em Matemática Elementar</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
-    </ul>
-    <div class="wrap">
-      <div class="car-ctl">
-        <button class="round" type="button" id="carPrev" aria-label="Anterior" hidden>←</button>
-        <button class="round" type="button" id="carNext" aria-label="Próximo" hidden>→</button>
-        <span class="count" id="carCount" aria-live="polite"></span>
-      </div>
-    </div>
-  </section>
-
   <!-- 8. Sobre -->
-  <section id="sobre" class="sec" data-tone="paper" aria-labelledby="t-sobre">
+  <section id="sobre" class="sec" data-tone="accent" aria-labelledby="t-sobre">
     <div class="wrap sobre-grid">
       <div class="sobre-text">
         <p class="mono eyebrow">Sobre</p>

@@ -45,7 +45,23 @@ Nunca dois blocos do mesmo tom lado a lado. Ordem atual: início (accent), faixa
 | Texto | Schibsted Grotesk 400, 500 e 600 | leitura, botões, rótulos, chips, datas |
 | Código | JetBrains Mono 400 e 500 | só nomes de agentes e o painel de execução |
 
-Tamanhos: corpo 18px com entrelinha 1,65; lede 1,25rem; cartões 1rem; menor texto 0,8rem. Título de seção `clamp(44px, 6.2vw, 88px)`; nome `clamp(72px, 14vw, 200px)` (celular `clamp(88px, 30vw, 180px)`). Rótulos (eyebrow, chips, datas) em minúsculas, sem espaçamento largo, para não parecerem painel técnico. `text-wrap: pretty` nos parágrafos.
+Tamanhos (tokens `--fs-*`): corpo 19px com entrelinha 1,65; lede 21px; parágrafos de cartões, trajetória e habilidades 17px; passos e gestos 16px; rótulos de 14 a 16px (mínimo 14). Título de seção `clamp(44px, 6.2vw, 88px)`; nome `clamp(72px, min(14vw, 22svh), 200px)` (celular `clamp(88px, 30vw, 180px)`). Rótulos (eyebrow, chips, datas) em minúsculas, sem espaçamento largo. `text-wrap: pretty` nos parágrafos.
+
+## Início
+
+O círculo âmbar ao lado dos quadrados P e C é um selo com ícone de TI/IA. Três variantes em teste (chip, nó de agente em forma de grafo, código `</>`): abrir `?icones` na URL para trocar; a escolhida fica em `localStorage` até ser fixada no código. Abaixo do texto: a linha "Busco oportunidades..." (do currículo) e os botões Ver projetos e Baixar currículo. No celular a ilustração vem depois do texto, para os botões ficarem na primeira tela.
+
+## Números
+
+Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas de curso e 3 projetos. Contam de 0 ao valor ao entrar na tela (sem animação, mostram o valor final).
+
+## Foto
+
+Encaixe pronto no cartão do Sobre (`.mono-tile`, 96px), com o quadrado PC como reserva. Arquivos esperados: `assets/foto-pedro-288.webp` e `foto-pedro-576.webp`, quadrados, centrados no rosto, menos de 150 KB. Gerar com o script de recorte (Chrome headless) a partir da foto original.
+
+## Idioma
+
+Português é o padrão (nunca detecta o navegador). Botão PT/EN no cabeçalho e no menu; a troca grava `lang` em `localStorage` e recarrega. O HTML é em português; em inglês o script troca os textos por um dicionário (`EN`), inclusive datas, números, rótulos e meta tags. Currículo só existe em português e o botão em inglês avisa isso. [PENDENTE: currículo em inglês]
 
 ## Movimento
 

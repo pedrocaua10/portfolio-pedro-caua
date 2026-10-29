@@ -7,7 +7,7 @@
 <meta name="description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília. Angular e testes unitários no TSE, QA, projetos com IA aplicada, o Nodify (meu TCC) e certificados.">
 <meta name="author" content="Pedro Cauã">
 <meta name="color-scheme" content="dark light">
-<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m);var ic=localStorage.getItem("icone");if(ic)document.documentElement.setAttribute("data-icone",ic);var tm=localStorage.getItem("theme");if(tm==="light"||tm==="dark")document.documentElement.setAttribute("data-theme",tm)}catch(e){}</script>
+<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m);var ic=localStorage.getItem("icone");if(ic)document.documentElement.setAttribute("data-icone",ic);var lg=localStorage.getItem("lang");if(lg==="en")document.documentElement.setAttribute("lang","en");var tm=localStorage.getItem("theme");if(tm==="light"||tm==="dark")document.documentElement.setAttribute("data-theme",tm)}catch(e){}</script>
 <meta name="theme-color" content="#1A1613">
 <!-- [PENDENTE: URL final] troque em canonical, og:url, og:image, twitter:image e no JSON-LD pela URL publicada (ex.: https://pedrocaua10.github.io/) -->
 <link rel="canonical" href="https://[PENDENTE: URL final]/">
@@ -159,6 +159,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .round[data-motion-toggle][aria-pressed="false"] .slash{display:block}
 .round[data-motion-toggle][aria-pressed="true"]{background:var(--t-fg);color:var(--t-bg)}
 .round[hidden],.btn[hidden]{display:none}
+@media (min-width:901px) and (max-width:1060px){.hdr-actions .socials li:nth-child(n+2){display:none}}
 .burger{display:none;width:40px;height:40px;position:relative;border:1.5px solid currentColor;border-radius:50%;background:transparent;color:var(--t-fg);cursor:pointer}
 .burger span{position:absolute;left:10px;right:10px;height:2px;border-radius:2px;background:currentColor;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base)}
 .burger span:nth-child(1){top:13px}.burger span:nth-child(2){top:18px}.burger span:nth-child(3){top:23px}
@@ -493,6 +494,7 @@ p{text-wrap:pretty}
         <li><a class="round" href="https://www.linkedin.com/in/pedro-rodrigues-202956323/" aria-label="LinkedIn de Pedro Cauã" rel="noopener">in</a></li>
         <li><a class="round" href="mailto:pedro.cauadf@gmail.com" aria-label="Enviar e-mail para Pedro Cauã"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
       </ul>
+      <button class="round" type="button" data-lang-toggle aria-label="Mudar para inglês (English)" title="Mudar para inglês (English)">EN</button>
       <button class="round" type="button" data-motion-toggle hidden aria-pressed="true" aria-label="Animações: ligadas" title="Animações: ligadas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12c2.5-6 4.5-6 6.5 0s4 6 6.5 0 3-4 5-2"/><path class="slash" d="M4 20 20 4"/></svg></button>
       <button class="btn btn--sm" type="button" data-theme-toggle>Tema escuro</button>
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
@@ -513,6 +515,7 @@ p{text-wrap:pretty}
       <li><a class="round" href="mailto:pedro.cauadf@gmail.com" aria-label="Enviar e-mail para Pedro Cauã"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a></li>
     </ul>
     <button class="btn btn--sm" type="button" data-theme-toggle style="align-self:flex-start">Tema escuro</button>
+    <button class="btn btn--sm" type="button" data-lang-toggle style="align-self:flex-start">English</button>
     <button class="btn btn--sm" type="button" data-motion-toggle hidden aria-pressed="true" style="align-self:flex-start">Animações: ligadas</button>
   </nav>
 </header>
@@ -839,6 +842,44 @@ p{text-wrap:pretty}
   var root = document.documentElement;
   function $(s, r){ return (r || document).querySelector(s); }
   function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  /* ----- idioma: o HTML é em português; em inglês o script troca os textos pelo dicionário (a troca de idioma recarrega a página) ----- */
+  var LANG = root.getAttribute("lang") === "en" ? "en" : "pt";
+  var EN = {"Ir para o conteúdo":"Skip to content","Trajetória":"Timeline","Projetos":"Projects","Agentes":"Agents","Habilidades":"Skills","Sobre":"About","Contato":"Contact","Tema claro":"Light theme","Tema escuro":"Dark theme","Animações: ligadas":"Animations: on","Animações: desligadas":"Animations: off","Pedro Cauã, início":"Pedro Cauã, home","Seções":"Sections","Redes":"Social links","GitHub de Pedro Cauã":"Pedro Cauã on GitHub","LinkedIn de Pedro Cauã":"Pedro Cauã on LinkedIn","Enviar e-mail para Pedro Cauã":"Email Pedro Cauã","Abrir menu":"Open menu","Fechar menu":"Close menu","Menu":"Menu","Brasília · Ciência da Computação, 7º semestre":"Brasília · Computer Science, 7th semester","Faço estágio full stack no TSE e curso Ciência da Computação na UCB. Antes, passei por marketing digital e por infraestrutura de TI.":"I'm a full stack intern at the TSE (Brazil's Superior Electoral Court) and I study Computer Science at UCB. I also have experience in digital marketing and IT infrastructure.","Busco oportunidades em desenvolvimento de software, qualidade e IA aplicada.":"I'm looking for opportunities in software development, quality and applied AI.","Ver projetos":"See projects","Baixar currículo (PDF)":"Download résumé (PDF, in Portuguese)","Baixar currículo de Pedro Cauã em PDF":"Download Pedro Cauã's résumé as a PDF (in Portuguese)","Tecnologias e ferramentas":"Technologies and tools","Trajetória · do mais antigo ao mais recente":"Timeline · oldest to newest","Em números":"In numbers","sistemas no TSE":"systems at the TSE","cursos concluídos":"courses completed","horas de curso":"course hours","projetos":"projects","itens":"items","item":"item","cursos":"courses","horas":"hours","de":"of","Tudo":"All","Trabalho":"Work","Certificados":"Certificates","Filtrar a trajetória":"Filter the timeline","Trajetória, role para o lado":"Timeline, scroll sideways","Anterior":"Previous","Próximo":"Next","Pausar rolagem automática":"Pause auto-scroll","Retomar rolagem automática":"Resume auto-scroll","Ago/2023 a ago/2027 · Formação":"Aug 2023 to Aug 2027 · Education","Ciência da Computação, 7º semestre":"Computer Science, 7th semester","Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.":"Catholic University of Brasília. Courses include Calculus I, Operations Research and Software Analysis and Design. My capstone project is Nodify.","Nivelamento em Matemática Elementar":"Elementary Mathematics (bridging course)","Nivelamento em Introdução às Finanças Corporativas":"Introduction to Corporate Finance (bridging course)","Fundamentos do SCRUM":"Scrum Fundamentals","Desenvolvimento colaborativo em GitHub":"Collaborative development on GitHub","Base acadêmica":"Academic base","Processos e equipe":"Process and teamwork","IA e dados":"AI and data","Python e APIs":"Python and APIs","Fev/2025 · 4 meses · Estágio":"Feb 2025 · 4 months · Internship","Estagiário de infraestrutura de TI":"IT infrastructure intern","Novacap. Estágio na área de infraestrutura de TI.":"Novacap. Internship in IT infrastructure.","Algoritmos e Lógica de Programação: o curso completo":"Algorithms and Programming Logic: the complete course","Ago/2025 a ago/2027 · Estágio":"Aug 2025 to Aug 2027 · Internship","Estagiário full stack":"Full stack intern","Tribunal Superior Eleitoral, SEUE. Trabalho em dois sistemas com Angular e JavaScript: funcionalidades, ajustes de interface e testes unitários. Em algumas demandas faço o papel de QA. Também desenvolvo agentes e skills de IA para o fluxo de trabalho.":"Superior Electoral Court (TSE), SEUE. I work on two systems with Angular and JavaScript: features, interface adjustments and unit tests. On some tasks I act as QA. I also build AI agents and skills for the work process.","Figma Design de Interfaces, do zero ao profissional":"Figma Interface Design, from scratch to professional","Testes Unitários do Zero com Angular, Jasmine e Karma":"Unit Testing from Scratch with Angular, Jasmine and Karma","2026 · 6 meses · Em paralelo ao TSE":"2026 · 6 months · Alongside the TSE","Gestor de tráfego e desenvolvedor":"Traffic manager and developer","Muvve Tech. Campanhas de tráfego pago no Google Ads e no Meta Ads para clientes. Também cuidei de redes sociais, propostas comerciais e contratos em layout padronizado.":"Muvve Tech. Paid traffic campaigns on Google Ads and Meta Ads for clients. I also handled social media, commercial proposals and contracts in a standard layout.","Três projetos: o app de acessibilidade do meu TCC, o fluxo de agentes que uso no TSE e um assistente de voz que fiz por hobby.":"Three projects: the accessibility app from my capstone, the agent workflow I use at the TSE and a voice assistant I built as a hobby.","TCC · UCB":"Capstone · UCB","É o meu TCC na UCB: um app Android que controla o Spotify com movimentos da cabeça. A câmera frontal capta o gesto e tudo é processado no próprio celular. Começou como ferramenta de acessibilidade e já tem modelagem UML e documentação completa.":"It's my capstone project at UCB: an Android app that controls Spotify with head movements. The front camera picks up the gesture and everything is processed on the phone itself. It started as an accessibility tool and already has UML modeling and full documentation.","visão computacional":"computer vision","acessibilidade":"accessibility","no aparelho":"on-device","Ver o Nodify em ação":"See Nodify in action","Documentação técnica":"Technical documentation","fluxo de trabalho":"workflow","Agentes de IA no trabalho":"AI agents at work","No TSE, desenvolvo agentes e skills de IA no Claude Code para analisar tarefas, escrever histórias de usuário e apoiar a implementação e a revisão de código. O hu-analyst e o agent-dev já estão em uso; o code-reviewer e o orquestrador ainda estão em desenho. Nada entra sem a minha aprovação.":"At the TSE, I build AI agents and skills in Claude Code to analyze tasks, write user stories and support implementation and code review. The hu-analyst and agent-dev are already in use; the code-reviewer and the orchestrator are still being designed. Nothing goes in without my approval.","agentes":"agents","revisão humana":"human review","Ver o fluxo":"See the workflow","concluído":"completed","voz":"voice","automação":"automation","Um assistente de IA que obedece a comandos de voz. Fiz por hobby, para testar automação, agentes e leitura de mensagens.":"An AI assistant that takes voice commands. I built it as a hobby to try out automation, agents and reading messages.","Continue rolando para ver todos os projetos →":"Keep scrolling to see all projects →","Nodify · ilustração do conceito":"Nodify · concept illustration","Nodify em ação":"Nodify in action","A câmera frontal acompanha a cabeça e o app transforma cada gesto em um comando do Spotify.":"The front camera follows the head and the app turns each gesture into a Spotify command.","Detecção do rosto":"Face detection","A câmera encontra o rosto. A imagem não sai do celular.":"The camera finds the face. The image never leaves the phone.","Cabeça para a direita":"Head turn to the right","Pula a faixa.":"Skips the track.","Cabeça para a esquerda":"Head turn to the left","Volta para a faixa anterior.":"Goes back to the previous track.","Aceno para baixo":"Nod down","Abaixa a música.":"Turns the music down.","Processamento 100% no aparelho":"100% on-device processing","câmera ativa":"camera on","rosto detectado":"face detected","Tocando agora":"Now playing","Faixa":"Track","Faixa 1":"Track 1","Faixa 2":"Track 2","Tocando":"Playing","Volume menor":"Volume down","Ilustração do conceito":"Concept illustration","Agentes no trabalho · 4 etapas":"Agents at work · 4 steps","Como uso agentes no trabalho":"How I use agents at work","em uso":"in use","em desenho":"being designed","orquestrador":"orchestrator","Entende a tarefa antes de qualquer código":"Understands the task before any code","Lê o texto e as imagens da tarefa e monta o contexto para a etapa seguinte.":"Reads the task text and images and builds the context for the next step.","Implementa dentro do padrão do projeto":"Implements within the project's standards","Atua em front e back e segue a lógica que já existe, sem mudar o que não foi pedido.":"Works on front and back end and follows the existing logic, without changing what wasn't asked.","Revisa e procura vulnerabilidades":"Reviews and looks for vulnerabilities","Confere o que o agent-dev entregou antes de qualquer pessoa abrir o código.":"Checks what agent-dev delivered before anyone opens the code.","Faz os agentes conversarem":"Gets the agents talking to each other","Passa o trabalho de um agente para o outro e confere cada etapa até a entrega.":"Hands the work from one agent to the next and checks each step through to delivery.","fluxo de agentes que desenhei":"agent workflow I designed","Fluxo de agentes desenhado por mim":"Agent workflow I designed","Lê a tarefa, o texto e as imagens. Monta o contexto.":"Reads the task, text and images. Builds the context.","Implementa seguindo o padrão do projeto.":"Implements following the project's standards.","Revisa o código e procura vulnerabilidades.":"Reviews the code and looks for vulnerabilities.","Confere cada etapa até a entrega.":"Checks each step through to delivery.","→ entrega pronta para revisão humana":"→ delivery ready for human review","Quem aprova sou eu":"I'm the one who approves","As skills aprendem com o uso. A cada 5 tarefas concluídas fazem uma retrospectiva e gravam uma proposta de melhoria. Nada muda sem a minha aprovação.":"The skills learn from use. After every 5 finished tasks they run a retrospective and write down an improvement proposal. Nothing changes without my approval.","Agentes para vários projetos":"Agents for many projects","Não ficam presos a um repositório. Atuam em frontend e backend, em projetos diferentes, e viraram skills instaláveis.":"They aren't tied to one repository. They work on front end and back end, across different projects, and became installable skills.","Protótipo descartável":"Throwaway prototype","Prototipo direto no projeto, em uma branch local que nunca sobe. Tiro os prints e descarto. É mais rápido que desenhar tudo em ferramenta de design.":"I prototype straight in the project, on a local branch that never gets pushed. I take the screenshots and throw it away. It's faster than drawing everything in a design tool.","Habilidades · 4 áreas":"Skills · 4 areas","Áreas de habilidade":"Skill areas","Processo":"Process","Negócio":"Business","No TSE, desenvolvo funcionalidades, ajusto interfaces e escrevo testes unitários em Angular 16. Este portfólio eu fiz em HTML, CSS e JavaScript puro, com GSAP nas animações.":"At the TSE, I build features, adjust interfaces and write unit tests in Angular 16. I built this portfolio in plain HTML, CSS and JavaScript, with GSAP for the animations.","Testes unitários":"Unit tests","Uso o Claude Code para criar agentes e skills. No Nodify, trabalho com visão computacional no próprio aparelho. Estudei aprendizado de máquina, supervisionado e não supervisionado, com scikit-learn. No AlavancaquIA, um diagnóstico de landing pages para pequenos negócios, o Gemini roda no servidor e o lead segue para o WhatsApp.":"I use Claude Code to create agents and skills. In Nodify, I work with computer vision on the device itself. I studied machine learning, supervised and unsupervised, with scikit-learn. In AlavancaquIA, a landing page diagnostic tool for small businesses, Gemini runs on the server and the lead continues on WhatsApp.","Fiz dois cursos de 30 h na UCB, um de Scrum e outro de trabalho colaborativo no GitHub. Nos fluxos com agentes, a tarefa passa por análise, implementação e revisão, e eu aprovo no fim. Os protótipos ficam em uma branch local que nunca sobe.":"I took two 30-hour courses at UCB, one on Scrum and one on collaborative work on GitHub. In agent workflows, the task goes through analysis, implementation and review, and I approve at the end. Prototypes stay on a local branch that never gets pushed.","Git e GitHub":"Git and GitHub","Revisão de código":"Code review","Em 2026, passei seis meses na Muvve Tech como gestor de tráfego e desenvolvedor. Cuidei de campanhas pagas no Google Ads e no Meta Ads, das redes sociais, de propostas comerciais e de contratos em layout padronizado.":"In 2026, I spent six months at Muvve Tech as a traffic manager and developer. I handled paid campaigns on Google Ads and Meta Ads, social media, commercial proposals and contracts in a standard layout.","Redes sociais":"Social media","Propostas e contratos":"Proposals and contracts","Quem sou eu?":"Who am I?","Sou o Pedro Cauã, estudante do 7º semestre de Ciência da Computação na UCB e estagiário full stack no Tribunal Superior Eleitoral. Cuido de dois sistemas com Angular e JavaScript e, algumas vezes, atuo como QA.":"I'm Pedro Cauã, a 7th-semester Computer Science student at UCB and a full stack intern at the Superior Electoral Court (TSE). I look after two systems with Angular and JavaScript and, sometimes, work as QA.","Já passei por marketing digital na Muvve Tech, com tráfego pago e desenvolvimento, e por infraestrutura de TI na Novacap. Hoje também aplico IA no meu fluxo de trabalho, com agentes e skills que ajudam na análise de tarefas e na revisão de código.":"I've worked in digital marketing at Muvve Tech, with paid traffic and development, and in IT infrastructure at Novacap. Today I also use AI in my workflow, with agents and skills that help with task analysis and code review.","Gosto de software que as pessoas conseguem usar. Meu TCC, o Nodify, é um aplicativo de acessibilidade que controla o Spotify com movimentos da cabeça.":"I like software that people can actually use. My capstone project, Nodify, is an accessibility app that controls Spotify with head movements.","Estagiário full stack · TSE":"Full stack intern · TSE","IA aplicada":"Applied AI","Marketing digital":"Digital marketing","Currículo · PDF · 2 páginas · atualizado em out/2026":"Résumé · PDF · 2 pages · updated Oct 2026 · in Portuguese","Abrir no navegador":"Open in browser","Vamos conversar?":"Let's talk?","Busco oportunidades em desenvolvimento de software, qualidade e IA aplicada. Se tem algo assim na sua equipe, me chama.":"I'm looking for opportunities in software development, quality and applied AI. If your team has something like that, get in touch.","Copiar":"Copy","Copiado":"Copied"};
+  function T(s){ return LANG === "en" && EN[s] !== undefined ? EN[s] : s; }
+  function formatoNum(v, dec){ return dec ? v.toLocaleString(LANG === "en" ? "en-US" : "pt-BR", { maximumFractionDigits: 1 }) : String(Math.round(v)); }
+  (function traduzirPagina(){
+    if(LANG !== "en") return;
+    var wk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), nos = [], n;
+    while((n = wk.nextNode())){ var pe = n.parentElement; if(pe && !/^(SCRIPT|STYLE|NOSCRIPT)$/.test(pe.tagName)) nos.push(n); }
+    nos.forEach(function(no){
+      var raw = no.nodeValue, chave = raw.replace(/\s+/g, " ").trim();
+      if(!chave) return;
+      var en = EN[chave];
+      if(en === undefined){ var m = chave.match(/^(\d+),(\d) h$/); if(m) en = m[1] + "." + m[2] + " h"; }
+      if(en !== undefined) no.nodeValue = raw.match(/^\s*/)[0] + en + raw.match(/\s*$/)[0];
+    });
+    $$("[aria-label],[title],[alt]").forEach(function(el){
+      ["aria-label", "title", "alt"].forEach(function(a){ if(el.hasAttribute(a)){ var v = EN[el.getAttribute(a).trim()]; if(v !== undefined) el.setAttribute(a, v); } });
+    });
+    $$("time[datetime]").forEach(function(t){
+      var d = new Date(t.getAttribute("datetime") + "T12:00:00");
+      t.textContent = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    });
+    $$(".numeros .num").forEach(function(el){ el.textContent = formatoNum(parseFloat(el.getAttribute("data-to")), el.getAttribute("data-dec") === "1"); });
+    document.title = "Pedro Cauã · Full stack intern";
+    [["meta[name=description]", "Pedro Cauã's portfolio, full stack intern in Brasília. Angular and unit tests at the TSE, QA, applied AI projects, Nodify (my capstone) and certificates."], ["meta[property='og:title']", "Pedro Cauã · Full stack intern"], ["meta[property='og:description']", "Pedro Cauã's portfolio, full stack intern in Brasília. Angular and unit tests at the TSE, QA, applied AI projects, Nodify (my capstone) and certificates."], ["meta[name='twitter:title']", "Pedro Cauã · Full stack intern"], ["meta[name='twitter:description']", "Pedro Cauã's portfolio, full stack intern in Brasília. Angular and unit tests at the TSE, QA, applied AI projects, Nodify (my capstone) and certificates."]]
+      .forEach(function(p){ var m = $(p[0]); if(m) m.setAttribute("content", p[1]); });
+    var loc = $("meta[property='og:locale']"); if(loc) loc.setAttribute("content", "en_US");
+  })();
+  $$("[data-lang-toggle]").forEach(function(b){
+    var en = LANG === "en";
+    if(b.classList.contains("round")){ b.textContent = en ? "PT" : "EN"; }
+    else { b.textContent = en ? "Português" : "English"; }
+    var rot = en ? "Mudar para português (Portuguese)" : "Mudar para inglês (English)";
+    b.setAttribute("aria-label", en ? "Switch to Portuguese (Português)" : rot); b.title = en ? "Switch to Portuguese (Português)" : rot;
+    b.addEventListener("click", function(){ try{ localStorage.setItem("lang", en ? "pt" : "en"); }catch(e){} location.reload(); });
+  });
+
   var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
   /* movimento: a escolha da pessoa (botão) vale mais que o sistema; sem escolha, vale o sistema */
   function reduced(){
@@ -850,7 +891,7 @@ p{text-wrap:pretty}
     b.hidden = false;
     var on = !reduced();
     b.setAttribute("aria-pressed", on ? "true" : "false");
-    var rotulo = "Animações: " + (on ? "ligadas" : "desligadas");
+    var rotulo = T("Animações: " + (on ? "ligadas" : "desligadas"));
     b.setAttribute("aria-label", rotulo); b.title = rotulo;
     if(b.classList.contains("btn")) b.textContent = rotulo;
     b.addEventListener("click", function(){
@@ -862,7 +903,7 @@ p{text-wrap:pretty}
 
   /* ----- tema ----- */
   function isDark(){ return root.getAttribute("data-theme") !== "light"; }
-  function themeLabel(){ $$("[data-theme-toggle]").forEach(function(b){ b.textContent = isDark() ? "Tema claro" : "Tema escuro"; }); }
+  function themeLabel(){ $$("[data-theme-toggle]").forEach(function(b){ b.textContent = T(isDark() ? "Tema claro" : "Tema escuro"); }); }
   $$("[data-theme-toggle]").forEach(function(b){
     b.addEventListener("click", function(){
       root.classList.add("theme-swap");
@@ -894,7 +935,7 @@ p{text-wrap:pretty}
   var burger = $("#burger"), drawer = $("#menu"), scrim = $("#scrim");
   function setMenu(open){
     burger.setAttribute("aria-expanded", open ? "true" : "false");
-    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    burger.setAttribute("aria-label", T(open ? "Fechar menu" : "Abrir menu"));
     drawer.classList.toggle("open", open);
     scrim.classList.toggle("open", open);
     if(open){ var first = $("a", drawer); if(first) first.focus({preventScroll:true}); }
@@ -968,7 +1009,7 @@ p{text-wrap:pretty}
     var items = $$(".item", car), prev = $("#carPrev"), next = $("#carNext"), count = $("#carCount");
     var cCount = $("#cCount"), cLabel = $("#cLabel"), cHours = $("#cHours"), hLabel = $("#hLabel");
     var current = "all", tickingC = false;
-    function show(el, v, dec){ el.textContent = dec ? v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) : Math.round(v); }
+    function show(el, v, dec){ el.textContent = formatoNum(v, dec); }
     function tween(el, to, dec){
       var from = el._v != null ? el._v : (parseFloat(String(el.textContent).replace(",", ".")) || 0);
       el._v = to;
@@ -987,7 +1028,7 @@ p{text-wrap:pretty}
       tickingC = false;
       var v = visible(), s = step();
       var idx = Math.min(v.length, Math.round(car.scrollLeft / s) + 1);
-      count.textContent = v.length ? idx + " de " + v.length : "";
+      count.textContent = v.length ? idx + " " + T("de") + " " + v.length : "";
       var max = car.scrollWidth - car.clientWidth;
       prev.disabled = car.scrollLeft <= 2;
       next.disabled = car.scrollLeft >= max - 2;
@@ -1010,11 +1051,11 @@ p{text-wrap:pretty}
       var v = visible();
       tween(cCount, v.length);
       if(f === "cert"){
-        cLabel.textContent = "cursos";
+        cLabel.textContent = T("cursos");
         var h = v.reduce(function(sum, el){ return sum + (+el.getAttribute("data-h") || 0); }, 0);
         cHours.hidden = hLabel.hidden = false; tween(cHours, h, true);
       } else {
-        cLabel.textContent = v.length === 1 ? "item" : "itens";
+        cLabel.textContent = T(v.length === 1 ? "item" : "itens");
         cHours.hidden = hLabel.hidden = true;
       }
       car.scrollTo({ left: 0, behavior: "auto" });
@@ -1052,7 +1093,7 @@ p{text-wrap:pretty}
     function paintBtn(){
       var r = rodando();
       play.setAttribute("aria-pressed", r ? "true" : "false");
-      var t = r ? "Pausar rolagem automática" : "Retomar rolagem automática";
+      var t = T(r ? "Pausar rolagem automática" : "Retomar rolagem automática");
       play.setAttribute("aria-label", t); play.title = t;
       car.classList.toggle("is-auto", r);
     }
@@ -1111,7 +1152,7 @@ p{text-wrap:pretty}
   /* ----- copiar ----- */
   $$("[data-copy]").forEach(function(btn){
     btn.addEventListener("click", function(){
-      var done = function(){ btn.textContent = "Copiado"; setTimeout(function(){ btn.textContent = "Copiar"; }, 1500); };
+      var done = function(){ btn.textContent = T("Copiado"); setTimeout(function(){ btn.textContent = T("Copiar"); }, 1500); };
       if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(done, function(){}); }
     });
   });
@@ -1199,9 +1240,9 @@ p{text-wrap:pretty}
         if(hot !== last.hot){ priv.classList.toggle("is-hot", hot); last.hot = hot; }
         var track, a, b;
         if(seg < 1.5){ track = 1; a = 0; b = 1.5; } else if(seg < 2.5){ track = 2; a = 1.5; b = 2.5; } else { track = 1; a = 2.5; b = 4; }
-        if(track !== last.track){ trk.textContent = "Faixa " + track; last.track = track; }
+        if(track !== last.track){ trk.textContent = T("Faixa") + " " + track; last.track = track; }
         var baixou = seg >= 3.6;
-        if(baixou !== last.paused){ stt.textContent = baixou ? "Volume menor" : "Tocando"; last.paused = baixou; }
+        if(baixou !== last.paused){ stt.textContent = T(baixou ? "Volume menor" : "Tocando"); last.paused = baixou; }
         vol.setAttribute("width", (104 * (seg < 3.5 ? 1 : Math.max(0.4, 1 - (seg - 3.5) * 1.2))).toFixed(1));
         var f = Math.min(1, Math.max(0, (seg - a) / (b - a)));
         fill.setAttribute("width", (192 * (0.06 + 0.8 * f)).toFixed(1));
@@ -1222,7 +1263,7 @@ p{text-wrap:pretty}
         sec.classList.remove("is-pinned");
         items.forEach(function(el){ el.classList.remove("is-on"); });
         priv.classList.remove("is-hot");
-        trk.textContent = "Faixa 1"; stt.textContent = "Tocando"; fill.setAttribute("width", "64"); vol.setAttribute("width", "104");
+        trk.textContent = T("Faixa 1"); stt.textContent = T("Tocando"); fill.setAttribute("width", "64"); vol.setAttribute("width", "104");
       };
     });
 

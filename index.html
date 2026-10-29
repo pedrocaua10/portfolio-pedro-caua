@@ -214,7 +214,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .steps::before{background:var(--t-ln)}
 .steps::after{background:var(--t-fg);transform-origin:50% 0;transform:scaleY(var(--p))}
 .step{position:relative;display:grid;gap:4px}
-.step .node{position:absolute;left:-52px;top:0;display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--t-fg);border-radius:50%;background:var(--t-bg);color:var(--t-fg);font:500 .8rem var(--font-mono)}
+.step .node{position:absolute;left:-52px;top:0;display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--t-fg);border-radius:50%;background:var(--t-bg);color:var(--t-fg);font:500 .92rem var(--font-mono)}
 .step.done .node{background:var(--t-fg);color:var(--t-bg)}
 .step-tag{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--t-fg)}
 .step h3{font:600 1.1rem/1.3 var(--font-body)}
@@ -244,6 +244,11 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 #camOn circle{animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.25}}
 @media (max-width:900px){#frame{display:none}}
+.scene-agentes .h-big{font-size:clamp(34px,4vw,56px)}
+.scene-agentes .step h3{font-size:1.05rem}
+.scene-agentes .step p{font-size:.9rem;line-height:1.45}
+.scene-agentes .steps{gap:14px}
+.trace li .st{transition:color var(--dur-fast)}
 
 /* ===== habilidades ===== */
 .skills-head{display:grid;gap:16px;margin-bottom:28px}
@@ -807,6 +812,45 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         items.forEach(function(el){ el.classList.remove("is-on"); });
         priv.classList.remove("is-hot");
         trk.textContent = "Faixa 1"; stt.textContent = "Tocando"; fill.setAttribute("width", "64");
+      };
+    });
+
+    /* agentes no trabalho: os passos acendem com o scroll e o painel marca ✓ por etapa (sem setTimeout) */
+    mm.add(MOTION, function(){
+      var sec = $("#agentes"), stage = $("#agentesStage"), stepsEl = $("#steps");
+      var steps = $$(".step", stepsEl), lines = $$("#traceList li"), foot = $("#traceFoot");
+      var done = -1, footOk = null;
+      sec.classList.add("is-pinned");
+      function sync(p){
+        var t = p * 4.4, n = 0;
+        for(var i = 0; i < steps.length; i++) if(t > i + 0.2) n = i + 1;
+        if(n !== done){
+          steps.forEach(function(s, k){ s.classList.toggle("done", k < n); });
+          lines.forEach(function(li, k){
+            var ok = k < n;
+            li.className = ok ? "ok" : "";
+            $(".st", li).textContent = ok ? "✓" : "…";
+          });
+          done = n;
+        }
+        var fo = p > 0.9;
+        if(fo !== footOk){ foot.classList.toggle("ok", fo); footOk = fo; }
+      }
+      gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: { trigger: stage, start: "top top", end: "+=200%", pin: true, scrub: 1, onUpdate: function(self){ sync(self.progress); } }
+      }).fromTo(stepsEl, { "--p": 0 }, { "--p": 1, duration: 1 });
+      sync(0);
+      /* depois do pin, os três princípios sobem em sequência (partem visíveis, só deslocados) */
+      gsap.from($$("#principles li"), {
+        y: 28, duration: 0.6, ease: "power3.out", stagger: 0.06,
+        scrollTrigger: { trigger: "#principles", start: "top 88%", toggleActions: "play none none none" }
+      });
+      return function(){
+        sec.classList.remove("is-pinned");
+        steps.forEach(function(s){ s.classList.add("done"); });
+        lines.forEach(function(li){ li.className = "ok"; $(".st", li).textContent = "✓"; });
+        foot.classList.add("ok");
       };
     });
 

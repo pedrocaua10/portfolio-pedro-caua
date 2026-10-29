@@ -235,6 +235,16 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .principles h3{font:600 1.2rem/1.25 var(--font-body)}
 .principles p{color:var(--t-mu)}
 
+/* modo "pin" das cenas: o JS liga .is-pinned só em telas largas e com movimento permitido */
+.scene.is-pinned{scroll-margin-top:calc(var(--hdr) * -1)}
+.scene.is-pinned .stage{height:100vh;padding:var(--hdr) 0 0;display:flex;align-items:center}
+.scene.is-pinned .stage-grid{width:100%}
+.gesto,.privacy{transition:background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.privacy.is-hot{background:var(--t-fg);color:var(--t-bg)}
+#camOn circle{animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (max-width:900px){#frame{display:none}}
+
 /* ===== habilidades ===== */
 .skills-head{display:grid;gap:16px;margin-bottom:28px}
 .tabs-list{display:none;gap:10px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px;scrollbar-width:thin}
@@ -756,6 +766,47 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         sec.classList.remove("is-track");
         trilho.setAttribute("tabindex", "0");
         dica.style.opacity = "";
+      };
+    });
+
+    /* Nodify em ação: 4 etapas ligadas ao scroll, com a cabeça girando de forma contínua */
+    mm.add(MOTION, function(){
+      var sec = $("#nodify"), stage = $("#nodifyStage");
+      var head = $("#head"), feat = $("#feat"), frame = $("#frame"), fill = $("#bar"), trk = $("#trk"), stt = $("#stt");
+      var items = $$("#gestos .gesto"), priv = $("#privacy");
+      var last = { i: -1, hot: null, track: 0, paused: null };
+      sec.classList.add("is-pinned");
+      gsap.set([head, frame], { svgOrigin: "150 200" });
+      function sync(p){
+        var seg = p * 4, i = Math.min(3, Math.floor(seg));
+        if(i !== last.i){ items.forEach(function(el, k){ el.classList.toggle("is-on", k === i); }); last.i = i; }
+        var hot = seg < 1;
+        if(hot !== last.hot){ priv.classList.toggle("is-hot", hot); last.hot = hot; }
+        var track, a, b;
+        if(seg < 1.5){ track = 1; a = 0; b = 1.5; } else if(seg < 2.5){ track = 2; a = 1.5; b = 2.5; } else { track = 1; a = 2.5; b = 4; }
+        if(track !== last.track){ trk.textContent = "Faixa " + track; last.track = track; }
+        var paused = seg >= 3.6;
+        if(paused !== last.paused){ stt.textContent = paused ? "Pausado" : "Tocando"; last.paused = paused; }
+        var f = Math.min(1, Math.max(0, (seg - a) / (b - a)));
+        fill.setAttribute("width", (192 * (0.06 + 0.8 * f)).toFixed(1));
+      }
+      var tl = gsap.timeline({
+        defaults: { ease: "none" },
+        scrollTrigger: { trigger: stage, start: "top top", end: "+=350%", pin: true, scrub: 1, onUpdate: function(self){ sync(self.progress); } }
+      });
+      tl.fromTo(head, { x: -26, y: 14 }, { x: 0, y: 0, duration: 1 }, 0)
+        .fromTo(frame, { scale: 1.22 }, { scale: 1, duration: 1 }, 0)
+        .to(head, { rotation: 16, duration: 1 }, 1).to(feat, { x: 8, duration: 1 }, 1).to(frame, { rotation: 6, duration: 1 }, 1)
+        .to(head, { rotation: -16, duration: 1 }, 2).to(feat, { x: -8, duration: 1 }, 2).to(frame, { rotation: -6, duration: 1 }, 2)
+        .to(head, { rotation: 0, duration: 0.5 }, 3).to(feat, { x: 0, duration: 0.5 }, 3).to(frame, { rotation: 0, duration: 0.5 }, 3)
+        .to(head, { y: 14, duration: 0.25 }, 3.5).to(feat, { y: 6, duration: 0.25 }, 3.5)
+        .to(head, { y: 0, duration: 0.25 }, 3.75).to(feat, { y: 0, duration: 0.25 }, 3.75);
+      sync(0);
+      return function(){
+        sec.classList.remove("is-pinned");
+        items.forEach(function(el){ el.classList.remove("is-on"); });
+        priv.classList.remove("is-hot");
+        trk.textContent = "Faixa 1"; stt.textContent = "Tocando"; fill.setAttribute("width", "64");
       };
     });
 

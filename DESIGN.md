@@ -61,11 +61,17 @@ No cartão do Sobre (`.mono-tile`, 96px, 80px no celular), com o quadrado PC com
 
 ## Idioma
 
-Português é o padrão (nunca detecta o navegador). Botão PT/EN no cabeçalho e no menu; a troca grava `lang` em `localStorage` e recarrega. O HTML é em português; em inglês o script troca os textos por um dicionário (`EN`), inclusive datas, números, rótulos e meta tags. Currículo só existe em português e o botão em inglês avisa isso. [PENDENTE: currículo em inglês]
+Português é o padrão (nunca detecta o navegador). Botão PT/EN no cabeçalho e no menu; a troca grava `lang` em `localStorage` e recarrega. O HTML é em português; em inglês o script troca os textos por um dicionário (`EN`), inclusive datas, números, rótulos e meta tags. A troca ignora cliques repetidos (uma única recarga) e não refaz a entrada do nome. Currículo só existe em português e o botão em inglês diz "Download CV (PDF, in Portuguese)". [PENDENTE: currículo em inglês]
+
+O nome "Pedro Cauã" leva `translate="no"` (título, marca, cartão, rodapé, links e o texto do Sobre, inclusive depois da revelação palavra por palavra) para o tradutor automático do navegador não mexer nele. E-mails e URLs também.
 
 ## Movimento
 
-Durações 200, 350, 600 e 1000 ms; curvas `power3.out` e `power1.out`. Pins com GSAP + ScrollTrigger 3.12.2, no desktop e no celular (até 900px, com layout próprio que cabe na altura). Faixa de tecnologias e rolagem automática da trajetória em loop, com pausa. O botão de animações no cabeçalho guarda a escolha; sem escolha vale a preferência do sistema.
+Durações 200, 350, 600 e 1000 ms; curvas `power3.out` e `power1.out`. Pins com GSAP + ScrollTrigger 3.12.2, no desktop e no celular (até 900px, com layout próprio que cabe na altura; no celular só Projetos e Agentes prendem a tela). Faixa de tecnologias e rolagem automática da trajetória em loop, com pausa. O botão de animações no cabeçalho guarda a escolha; sem escolha vale a preferência do sistema.
+
+## Nodify no celular
+
+Até 900px o Nodify não prende a tela: título, celular de até 340px e a lista dos 4 gestos com explicação, tudo em rolagem normal. O celular anima em ciclo (cerca de 11 s) só enquanto está visível. Com movimento reduzido fica parado.
 
 ## Voz
 

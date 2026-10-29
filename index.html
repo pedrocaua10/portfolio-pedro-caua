@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Portfólio Pedro Cauã</title>
+<meta name="description" content="Portfólio de Pedro Cauã: IA aplicada, agentes, projetos, experiência e certificados.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  /* Layout: trilho fixo à esquerda com progresso de scroll, coluna de leitura à direita, fluxo de agentes que se acende ao rolar e cards de projeto que empilham. */
+  --bg:#EAEFF5; --surface:#F7F9FC; --fg:#0E1A2E; --muted:#4A5A74; --line:#C6D1DF;
+  --accent:#1E3FE0; --on-accent:#FFFFFF; --signal:#F7C21B; --ok:#16794F;
+  --shadow:rgba(14,26,46,.28);
+  --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --font-body:'Instrument Sans','Segoe UI',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A1325; --surface:#111D36; --fg:#E7EDF8; --muted:#9AA9C4; --line:#24365C;
+    --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --ok:#5BD99C; --shadow:rgba(0,0,0,.55);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A1325; --surface:#111D36; --fg:#E7EDF8; --muted:#9AA9C4; --line:#24365C;
+  --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --ok:#5BD99C; --shadow:rgba(0,0,0,.55);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1,h2,h3,p,ol,ul,dl,dd,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mono{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+
+/* barra superior (telas estreitas) */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.topbar strong{font:700 1.05rem var(--font-display);letter-spacing:-.01em}
+.topbar i{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent)}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:.65em 1.15em;border:1px solid var(--fg);border-radius:999px;background:transparent;color:var(--fg);
+  font:500 .95rem var(--font-body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.btn.small{padding:.4em .85em;font-size:.82rem;border-color:var(--line);color:var(--muted)}
+.btn.small:hover{color:var(--fg);border-color:var(--fg)}
+
+.shell{max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:56px;
+  padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.rail{display:none}
+@media (min-width:1040px){
+  .topbar{display:none}
+  .shell{grid-template-columns:200px minmax(0,1fr);padding-block:32px 48px}
+  .rail{display:flex;flex-direction:column;gap:32px;position:sticky;top:32px;align-self:start}
+  .rail .who{display:grid;gap:4px}
+  .rail .who strong{font:700 1.35rem/1.1 var(--font-display);letter-spacing:-.02em}
+  .rail nav{position:relative;padding-left:18px;--p:0}
+  .rail nav::before,.rail nav::after{content:"";position:absolute;left:0;top:4px;width:2px}
+  .rail nav::before{bottom:4px;background:var(--line)}
+  .rail nav::after{height:calc((100% - 8px) * var(--p));background:var(--accent)}
+  .rail ol{display:grid;gap:10px}
+  .rail a{text-decoration:none;color:var(--muted);font-size:.95rem;transition:color .2s;display:block}
+  .rail a:hover{color:var(--fg)}
+  .rail a[aria-current="true"]{color:var(--fg);font-weight:600}
+}
+
+main{min-width:0}
+main>section,main>header{padding-block:clamp(56px,8vw,112px);border-top:1px solid var(--line)}
+main>header{border-top:0;padding-top:clamp(32px,5vw,64px)}
+.sec-head{display:grid;gap:16px;max-width:46rem;margin-bottom:clamp(32px,5vw,56px)}
+.eyebrow{color:var(--accent)}
+h1{font:700 clamp(2.5rem,1.1rem + 5vw,5rem)/1.02 var(--font-display);letter-spacing:-.035em;text-wrap:balance;max-width:14em}
+h2{font:700 clamp(1.9rem,1rem + 3vw,3rem)/1.08 var(--font-display);letter-spacing:-.025em;text-wrap:balance}
+h3{font:600 1.25rem/1.25 var(--font-display);letter-spacing:-.01em}
+.lede{font-size:1.18rem;max-width:40rem;color:var(--muted)}
+.lede b{color:var(--fg);font-weight:500}
+mark{background:linear-gradient(transparent 58%,var(--signal) 58% 92%,transparent 92%);color:inherit;padding:0 .06em}
+
+/* hero */
+.hero{position:relative;overflow:clip;display:grid;gap:28px}
+.hero>*{position:relative;z-index:1}
+.hero::before,.hero::after{content:"";position:absolute;border:1px solid var(--line);border-radius:50%;z-index:0;pointer-events:none}
+.hero::before{width:min(80%,760px);aspect-ratio:1;right:-18%;top:-6%}
+.hero::after{width:min(52%,500px);aspect-ratio:1;right:-4%;top:14%}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.trace{margin-top:12px;max-width:44rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 28px 56px -36px var(--shadow);overflow:hidden}
+.trace-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted)}
+.trace-bar button{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--accent);background:none;border:0;cursor:pointer;padding:2px 4px}
+.trace ol{display:grid;gap:0}
+.trace li{display:grid;grid-template-columns:20px 8.5rem minmax(0,1fr);gap:12px;align-items:baseline;padding:13px 16px;border-bottom:1px solid var(--line);font:400 .88rem/1.45 var(--font-mono)}
+.trace .st{color:var(--muted)}
+.trace li.ok .st{color:var(--ok)}
+.trace li.run .st{color:var(--accent);animation:blink .7s steps(2) infinite}
+.trace .who{font-weight:500}
+.trace .what{color:var(--muted);font-family:var(--font-body);font-size:.95rem}
+.trace-foot{padding:12px 16px;color:var(--muted)}
+.trace-foot.ok{color:var(--ok)}
+@keyframes blink{50%{opacity:.25}}
+@media (max-width:560px){.trace li{grid-template-columns:20px minmax(0,1fr)}.trace .what{grid-column:2}}
+
+/* método */
+.steps{position:relative;display:grid;gap:clamp(24px,3.5vw,40px);padding-left:52px;--p:0;max-width:46rem}
+.steps::before,.steps::after{content:"";position:absolute;left:15px;top:6px;width:2px}
+.steps::before{bottom:6px;background:var(--line)}
+.steps::after{height:calc((100% - 12px) * var(--p));background:var(--accent)}
+.step{position:relative;display:grid;gap:8px;opacity:.62;transition:opacity .35s}
+.step.done{opacity:1}
+.step .node{position:absolute;left:-52px;top:0;width:32px;height:32px;border-radius:50%;border:2px solid var(--line);background:var(--bg);
+  display:grid;place-items:center;font:500 .78rem var(--font-mono);transition:background .3s,border-color .3s,color .3s}
+.step.done .node{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.step-tag{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--muted)}
+.chip{display:inline-block;padding:2px 10px;border:1px solid var(--line);border-radius:999px;font:500 .7rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chip.live{color:var(--ok);border-color:var(--ok)}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 32px;margin-top:clamp(40px,6vw,72px)}
+.principles li{display:grid;gap:8px;align-content:start;padding-top:16px;border-top:2px solid var(--fg)}
+.principles p{color:var(--muted);font-size:1rem}
+
+/* projetos */
+.stack{display:grid;gap:28px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,36px);display:grid;gap:24px;
+  box-shadow:0 28px 56px -36px var(--shadow);position:relative}
+@media (min-width:720px){.proj{position:sticky;top:calc(24px + var(--i) * 16px)}}
+@media (min-width:900px){.proj{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px}}
+.proj-main{display:grid;gap:16px;align-content:start}
+.proj-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.proj h3{font:700 clamp(1.8rem,1rem + 2.4vw,2.6rem)/1.05 var(--font-display);letter-spacing:-.025em}
+.proj p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.proj-side{display:grid;gap:16px;align-content:start}
+.proj-side .mono{color:var(--muted)}
+.flow{display:grid;gap:22px}
+.flow li{position:relative;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-size:.97rem}
+.flow li+li::before{content:"↓";position:absolute;left:16px;top:-21px;font:500 .9rem var(--font-mono);color:var(--accent)}
+.proj-note{padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
+
+/* capacidades */
+.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px 32px}
+.cap{display:grid;gap:10px;align-content:start;padding-top:16px;border-top:2px solid var(--line);transition:border-color .25s}
+.cap:hover{border-top-color:var(--accent)}
+.cap p{color:var(--muted);font-size:1rem}
+.cap a{color:var(--accent);text-decoration:none}
+.cap a:hover{text-decoration:underline}
+
+/* experiência */
+.xp{display:grid;max-width:52rem}
+.xp>li{display:grid;grid-template-columns:minmax(0,10rem) minmax(0,1fr);gap:8px 32px;padding-block:28px;border-top:1px solid var(--line)}
+.xp>li:last-child{border-bottom:1px solid var(--line)}
+.xp .when{color:var(--muted);padding-top:6px}
+.xp .what{display:grid;gap:8px}
+.xp .what p{color:var(--muted)}
+.xp .where{font:500 .95rem var(--font-body);color:var(--fg)}
+@media (max-width:640px){.xp>li{grid-template-columns:minmax(0,1fr)}}
+
+/* certificados */
+.certbar{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 32px;margin-bottom:28px}
+.certstat{font:700 clamp(2.2rem,1rem + 4vw,3.6rem)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.certstat small{font:500 .75rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:500 .85rem var(--font-body);padding:.45em .95em;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--fg);border-color:var(--fg)}
+.filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.cert{display:grid;gap:10px;align-content:space-between;padding:18px;border:1px solid var(--line);border-radius:6px;background:var(--surface);min-width:0}
+.cert h3{font-size:1.08rem}
+.cert-top{color:var(--muted)}
+.cert-foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.cert-foot .mono{font-variant-numeric:tabular-nums}
+
+/* contato */
+.closing{display:grid;gap:24px;max-width:46rem}
+.closing h2{font-size:clamp(2.1rem,1rem + 4vw,3.8rem)}
+.contacts{display:flex;flex-wrap:wrap;gap:12px}
+.contacts li{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.contacts code{font:500 .9rem var(--font-mono);user-select:all;overflow-wrap:anywhere}
+footer{padding-top:48px;color:var(--muted);font-size:.9rem}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <strong>Pedro Cauã</strong>
+  <button class="btn small" data-theme-toggle type="button" id="themeBtnTop">Tema escuro</button>
+  <i aria-hidden="true"></i>
+</div>
+
+<div class="shell">
+  <aside class="rail" aria-label="Navegação da página">
+    <div class="who">
+      <strong>Pedro Cauã</strong>
+      <span class="mono muted">IA aplicada · frontend</span>
+    </div>
+    <nav aria-label="Seções">
+      <ol>
+        <li><a href="#inicio" data-nav="inicio">Início</a></li>
+        <li><a href="#metodo" data-nav="metodo">Método</a></li>
+        <li><a href="#projetos" data-nav="projetos">Projetos</a></li>
+        <li><a href="#capacidades" data-nav="capacidades">Capacidades</a></li>
+        <li><a href="#experiencia" data-nav="experiencia">Experiência</a></li>
+        <li><a href="#certificados" data-nav="certificados">Certificados</a></li>
+        <li><a href="#contato" data-nav="contato">Contato</a></li>
+      </ol>
+    </nav>
+    <button class="btn small" data-theme-toggle type="button" id="themeBtnRail" style="align-self:start">Tema escuro</button>
+  </aside>
+
+  <main>
+    <header id="inicio" class="hero" data-sec>
+      <p class="mono eyebrow">Brasília, DF · 15°47′S 47°53′W</p>
+      <h1>Faço agentes de IA trabalharem como um <mark>time de engenharia</mark>.</h1>
+      <p class="lede">Sou o <b>Pedro Cauã</b>. Trabalho como desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital. Meu foco é IA aplicada: agentes que escrevem e revisam código, assistentes de voz e produtos movidos por modelos de linguagem.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#projetos">Ver projetos</a>
+        <a class="btn" href="#certificados">Ver certificados</a>
+      </div>
+      <figure class="trace" aria-label="Fluxo de agentes desenhado por mim">
+        <figcaption class="trace-bar mono">
+          <span>fluxo de agentes que desenhei</span>
+          <button type="button" id="replay">repetir</button>
+        </figcaption>
+        <ol>
+          <li class="ok"><span class="st">✓</span><span class="who">hu-analyst</span><span class="what">Lê a tarefa, o texto e as imagens. Monta o contexto.</span></li>
+          <li class="ok"><span class="st">✓</span><span class="who">agent-dev</span><span class="what">Implementa seguindo o padrão do projeto.</span></li>
+          <li class="ok"><span class="st">✓</span><span class="who">code-reviewer</span><span class="what">Revisa o código e procura vulnerabilidades.</span></li>
+          <li class="ok"><span class="st">✓</span><span class="who">orquestrador</span><span class="what">Confere cada etapa até a entrega.</span></li>
+        </ol>
+        <p class="trace-foot mono ok" id="traceFoot">→ entrega pronta para revisão humana</p>
+      </figure>
+    </header>
+
+    <section id="metodo" data-sec>
+      <div class="sec-head">
+        <p class="mono eyebrow">Método · 4 etapas</p>
+        <h2>Um fluxo de agentes com uma pessoa no comando</h2>
+        <p class="lede">Monto agentes e skills para o Claude Code que cobrem a tarefa inteira, da leitura à revisão. Cada etapa tem um papel claro, e a decisão final continua sendo minha.</p>
+      </div>
+      <ol class="steps" id="steps">
+        <li class="step">
+          <span class="node" aria-hidden="true">1</span>
+          <div class="step-tag mono"><span>hu-analyst</span><span class="chip live">em uso</span></div>
+          <h3>Entende a tarefa antes de qualquer código</h3>
+          <p class="muted">Lê o texto e as imagens da tarefa e prepara tudo o que a próxima etapa precisa para implementar sem tropeçar.</p>
+        </li>
+        <li class="step">
+          <span class="node" aria-hidden="true">2</span>
+          <div class="step-tag mono"><span>agent-dev</span><span class="chip live">em uso</span></div>
+          <h3>Implementa dentro do padrão do projeto</h3>
+          <p class="muted">Atua em front e back, aprende as convenções do código e segue a lógica que já existe, sem mudar o que não foi pedido. Comenta pouco.</p>
+        </li>
+        <li class="step">
+          <span class="node" aria-hidden="true">3</span>
+          <div class="step-tag mono"><span>code-reviewer</span><span class="chip">em desenho</span></div>
+          <h3>Revisa e procura vulnerabilidades</h3>
+          <p class="muted">Confere o que o agent-dev entregou e verifica falhas de segurança antes de qualquer pessoa abrir o código.</p>
+        </li>
+        <li class="step">
+          <span class="node" aria-hidden="true">4</span>
+          <div class="step-tag mono"><span>orquestrador</span><span class="chip">em desenho</span></div>
+          <h3>Faz os agentes conversarem</h3>
+          <p class="muted">Entende a atividade, coordena as etapas e verifica tudo até a finalização.</p>
+        </li>
+      </ol>
+      <ul class="principles">
+        <li>
+          <h3>Quem aprova sou eu</h3>
+          <p>As skills aprendem com o uso. A cada 5 tarefas concluídas fazem uma retrospectiva e gravam uma proposta de melhoria. Nada muda sem a minha aprovação.</p>
+        </li>
+        <li>
+          <h3>Agentes para vários projetos</h3>
+          <p>Não ficam presos a um repositório. Atuam em frontend e backend, em projetos diferentes, e viraram skills instaláveis.</p>
+        </li>
+        <li>
+          <h3>Protótipo descartável</h3>
+          <p>Prototipo direto no projeto, em uma branch local que nunca sobe. Tiro os prints e descarto. É mais rápido que desenhar tudo em ferramenta de design.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="projetos" data-sec>
+      <div class="sec-head">
+        <p class="mono eyebrow">Projetos · 3</p>
+        <h2>Projetos em que a IA é parte do produto</h2>
+        <p class="lede">Um assistente de voz, um app de acessibilidade com visão computacional e um SaaS com modelo de linguagem.</p>
+      </div>
+      <div class="stack">
+        <article class="proj" style="--i:0">
+          <div class="proj-main">
+            <div class="proj-top"><span class="chip">em construção</span><span class="chip">projeto pessoal</span></div>
+            <h3>Jarvis</h3>
+            <p>Assistente pessoal controlado por voz. A ideia é um único comando cobrir o dia: programar como um desenvolvedor full stack, montar automações, criar agentes de IA, ler e-mails e mensagens do Discord, WhatsApp e Teams e resumir as notícias.</p>
+            <div class="tags"><span class="chip">voz</span><span class="chip">agentes</span><span class="chip">automação</span></div>
+          </div>
+          <div class="proj-side">
+            <p class="mono">como funciona</p>
+            <ol class="flow">
+              <li>Comando de voz</li>
+              <li>Interpretação do pedido</li>
+              <li>Ação: código, automação ou leitura de mensagens</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="proj" style="--i:1">
+          <div class="proj-main">
+            <div class="proj-top"><span class="chip">TCC · UCB</span><span class="chip">Android</span></div>
+            <h3>Nodify</h3>
+            <p>App Android que controla o Spotify com movimentos da cabeça. A câmera frontal capta o gesto e todo o processamento acontece no próprio aparelho. Nasceu como ferramenta de acessibilidade.</p>
+            <div class="tags"><span class="chip">visão computacional</span><span class="chip">acessibilidade</span><span class="chip">on-device</span></div>
+          </div>
+          <div class="proj-side">
+            <p class="mono">como funciona</p>
+            <ol class="flow">
+              <li>Câmera frontal</li>
+              <li>Movimento da cabeça</li>
+              <li>Comando no Spotify</li>
+            </ol>
+            <p class="proj-note">Processamento 100% local: a imagem da câmera não sai do celular.</p>
+          </div>
+        </article>
+
+        <article class="proj" style="--i:2">
+          <div class="proj-main">
+            <div class="proj-top"><span class="chip">SaaS</span><span class="chip">para pequenos negócios</span></div>
+            <h3>AlavancaquIA</h3>
+            <p>Diagnóstico de landing pages feito por IA para donos de pequenos negócios. O Google Gemini roda no servidor e o contato com o lead acontece pelo WhatsApp, sem banco de dados no meio. O visual tem identidade própria em preto e dourado.</p>
+            <div class="tags"><span class="chip">Gemini API</span><span class="chip">landing pages</span><span class="chip">WhatsApp</span></div>
+          </div>
+          <div class="proj-side">
+            <p class="mono">como funciona</p>
+            <ol class="flow">
+              <li>Diagnóstico da landing page com Gemini, no servidor</li>
+              <li>Lead segue para o WhatsApp</li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="capacidades" data-sec>
+      <div class="sec-head">
+        <p class="mono eyebrow">Capacidades · 6 frentes</p>
+        <h2>O que eu já faço com IA</h2>
+        <p class="lede">Cada frente tem uma prova: um projeto meu ou um curso concluído.</p>
+      </div>
+      <ul class="caps">
+        <li class="cap">
+          <h3>Agentes e orquestração</h3>
+          <p>Fluxos com agentes e skills no Claude Code, com etapas de análise, implementação e revisão, e aprovação humana no fim.</p>
+          <span class="mono"><a href="#metodo">Prova: método</a></span>
+        </li>
+        <li class="cap">
+          <h3>Voz e automação</h3>
+          <p>Assistente por comandos de voz que lê mensagens, automatiza rotinas e cria agentes.</p>
+          <span class="mono"><a href="#projetos">Prova: Jarvis</a></span>
+        </li>
+        <li class="cap">
+          <h3>Visão computacional no aparelho</h3>
+          <p>Reconhecimento de gestos pela câmera, com processamento local e foco em acessibilidade.</p>
+          <span class="mono"><a href="#projetos">Prova: Nodify</a></span>
+        </li>
+        <li class="cap">
+          <h3>Produtos com modelos de linguagem</h3>
+          <p>Integração da API do Gemini no servidor, em um produto com público e fluxo de contato reais.</p>
+          <span class="mono"><a href="#projetos">Prova: AlavancaquIA</a></span>
+        </li>
+        <li class="cap">
+          <h3>Aprendizado de máquina</h3>
+          <p>Modelos supervisionados com scikit-learn e técnicas não supervisionadas em Python.</p>
+          <span class="mono"><a href="#certificados">Prova: 2 cursos DataCamp</a></span>
+        </li>
+        <li class="cap">
+          <h3>Python, APIs e dados</h3>
+          <p>Python orientado a objetos, APIs com FastAPI e visualização de dados com Seaborn.</p>
+          <span class="mono"><a href="#certificados">Prova: 6 cursos DataCamp</a></span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="experiencia" data-sec>
+      <div class="sec-head">
+        <p class="mono eyebrow">Experiência · 3 frentes ativas</p>
+        <h2>Onde eu aplico tudo isso</h2>
+      </div>
+      <ul class="xp">
+        <li>
+          <span class="when mono">Atual</span>
+          <div class="what">
+            <h3>Desenvolvedor frontend</h3>
+            <span class="where">Tribunal Superior Eleitoral · equipe SEUE</span>
+            <p>Funcionalidades, testes unitários e ajustes de interface em Angular 16. Levo agentes e skills de IA para o fluxo de trabalho, da leitura da tarefa até a branch pronta.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when mono">Atual</span>
+          <div class="what">
+            <h3>Fundador e gestor de tráfego</h3>
+            <span class="where">Muvve Tech · Brasília</span>
+            <p>Agência de marketing digital. Gestão de campanhas no Google Ads e Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p>
+          </div>
+        </li>
+        <li>
+          <span class="when mono">Atual</span>
+          <div class="what">
+            <h3>Ciência da Computação, 6º semestre</h3>
+            <span class="where">Universidade Católica de Brasília</span>
+            <p>Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="certificados" data-sec>
+      <div class="sec-head">
+        <p class="mono eyebrow">Certificados · de ago/2024 a jun/2025</p>
+        <h2>Da base de matemática ao aprendizado de máquina</h2>
+        <p class="lede">Cursos concluídos na DataCamp e na Universidade Católica de Brasília. Use os filtros para ver cada trilha.</p>
+      </div>
+      <div class="certbar">
+        <p class="certstat"><span id="cCount">12</span><small>cursos</small><span id="cHours">169</span><small>horas</small></p>
+        <div class="filters" role="group" aria-label="Filtrar por área">
+          <button type="button" data-f="all" aria-pressed="true">Todos</button>
+          <button type="button" data-f="ia" aria-pressed="false">IA e dados</button>
+          <button type="button" data-f="py" aria-pressed="false">Python e APIs</button>
+          <button type="button" data-f="proc" aria-pressed="false">Processos e equipe</button>
+          <button type="button" data-f="base" aria-pressed="false">Base acadêmica</button>
+        </div>
+      </div>
+      <ul class="certs" id="certs"></ul>
+    </section>
+
+    <section id="contato" data-sec>
+      <div class="closing">
+        <p class="mono eyebrow">Contato</p>
+        <h2>Tem um problema que um time de agentes resolveria?</h2>
+        <p class="lede">Converso sobre IA aplicada, agentes de código, assistentes de voz e produtos com modelos de linguagem.</p>
+        <ul class="contacts" id="contacts"></ul>
+      </div>
+      <footer>© 2026 Pedro Cauã Rodrigues Pereira · Feito em Brasília</footer>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function $(s,r){return (r||document).querySelector(s)}
+  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  var root = document.documentElement;
+
+  /* contatos: preencha para exibir. Exemplo: {label:'E-mail', value:'voce@dominio.com'} ou {label:'LinkedIn', value:'linkedin.com/in/seu-perfil', href:'https://linkedin.com/in/seu-perfil'} */
+  var CONTACT = [];
+
+  /* tema */
+  function isDark(){
+    var t = root.getAttribute('data-theme');
+    if(t) return t === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function themeLabel(){ $$('[data-theme-toggle]').forEach(function(b){ b.textContent = isDark() ? 'Tema claro' : 'Tema escuro'; }); }
+  $$('[data-theme-toggle]').forEach(function(b){
+    b.addEventListener('click', function(){ root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); themeLabel(); });
+  });
+  themeLabel();
+
+  /* progresso e fluxo de agentes */
+  var railNav = $('.rail nav'), bar = $('.topbar i'), steps = $('#steps'), stepEls = $$('.step');
+  var ticking = false;
+  function clamp(v){ return Math.min(1, Math.max(0, v)); }
+  function update(){
+    ticking = false;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? clamp(window.scrollY / max) : 0;
+    if(railNav) railNav.style.setProperty('--p', p);
+    if(bar) bar.style.width = (p * 100) + '%';
+    var c = window.innerHeight * 0.6;
+    var r = steps.getBoundingClientRect();
+    steps.style.setProperty('--p', clamp((c - r.top) / r.height));
+    stepEls.forEach(function(el){ el.classList.toggle('done', el.getBoundingClientRect().top < c); });
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  update();
+
+  /* seção ativa no trilho */
+  var links = {};
+  $$('[data-nav]').forEach(function(a){ links[a.getAttribute('data-nav')] = a; });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
+          if(links[e.target.id]) links[e.target.id].setAttribute('aria-current','true');
+        }
+      });
+    }, {rootMargin:'-40% 0px -55% 0px'});
+    $$('[data-sec]').forEach(function(s){ io.observe(s); });
+  }
+  if(links.inicio) links.inicio.setAttribute('aria-current','true');
+
+  /* animação do fluxo no hero */
+  var lines = $$('.trace li'), foot = $('#traceFoot'), token = 0;
+  function runTrace(){
+    var my = ++token, i = 0;
+    lines.forEach(function(li){ li.className = ''; $('.st', li).textContent = '…'; });
+    foot.classList.remove('ok');
+    (function next(){
+      if(my !== token) return;
+      if(i >= lines.length){ foot.classList.add('ok'); return; }
+      var li = lines[i++];
+      li.className = 'run';
+      setTimeout(function(){
+        if(my !== token) return;
+        li.className = 'ok';
+        $('.st', li).textContent = '✓';
+        next();
+      }, 650);
+    })();
+  }
+  if(!reduce) setTimeout(runTrace, 400);
+  $('#replay').addEventListener('click', function(){
+    if(reduce){ return; }
+    runTrace();
+  });
+
+  /* certificados */
+  var AREA = {ia:'IA e dados', py:'Python e APIs', proc:'Processos e equipe', base:'Base acadêmica'};
+  var CERTS = [
+    {t:'Intermediate Data Visualization with Seaborn', i:'DataCamp', h:4, d:'2025-06-13', a:'ia'},
+    {t:'Unsupervised Learning in Python', i:'DataCamp', h:4, d:'2025-06-13', a:'ia'},
+    {t:'Supervised Learning with scikit-learn', i:'DataCamp', h:4, d:'2025-06-09', a:'ia'},
+    {t:'Introduction to FastAPI', i:'DataCamp', h:4, d:'2025-06-09', a:'py'},
+    {t:'Python Toolbox', i:'DataCamp', h:4, d:'2025-05-10', a:'py'},
+    {t:'Intermediate Python for Developers', i:'DataCamp', h:2, d:'2025-05-10', a:'py'},
+    {t:'Object-Oriented Programming in Python', i:'DataCamp', h:4, d:'2025-05-09', a:'py'},
+    {t:'Introduction to Python for Developers', i:'DataCamp', h:3, d:'2025-05-09', a:'py'},
+    {t:'Fundamentos do SCRUM', i:'TIC em Trilhas · UCB', h:30, d:'2024-09-27', a:'proc'},
+    {t:'Desenvolvimento colaborativo em GitHub', i:'TIC em Trilhas · UCB', h:30, d:'2024-09-27', a:'proc'},
+    {t:'Nivelamento em Introdução às Finanças Corporativas', i:'Católica EAD · UCB', h:40, d:'2024-09-01', a:'base'},
+    {t:'Nivelamento em Matemática Elementar', i:'Católica EAD · UCB', h:40, d:'2024-08-20', a:'base'}
+  ];
+  var MONTHS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  function fmt(d){ var p = d.split('-'); return p[2] + ' ' + MONTHS[+p[1]-1] + ' ' + p[0]; }
+  var grid = $('#certs'), cCount = $('#cCount'), cHours = $('#cHours');
+  function tween(el, to){
+    var from = +el.textContent || 0;
+    if(reduce || from === to){ el.textContent = to; return; }
+    var t0 = null, dur = 500;
+    function f(ts){
+      if(t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(from + (to - from) * e);
+      if(k < 1) requestAnimationFrame(f);
+    }
+    requestAnimationFrame(f);
+  }
+  function render(f){
+    var list = CERTS.filter(function(c){ return f === 'all' || c.a === f; });
+    grid.innerHTML = '';
+    list.forEach(function(c){
+      var li = document.createElement('li');
+      li.className = 'cert';
+      var top = document.createElement('span'); top.className = 'mono cert-top'; top.textContent = c.i + ' · ' + fmt(c.d);
+      var h = document.createElement('h3'); h.textContent = c.t;
+      var foot = document.createElement('div'); foot.className = 'cert-foot';
+      var hrs = document.createElement('span'); hrs.className = 'mono'; hrs.textContent = c.h + ' h';
+      var chip = document.createElement('span'); chip.className = 'chip'; chip.textContent = AREA[c.a];
+      foot.appendChild(hrs); foot.appendChild(chip);
+      li.appendChild(top); li.appendChild(h); li.appendChild(foot);
+      grid.appendChild(li);
+    });
+    tween(cCount, list.length);
+    tween(cHours, list.reduce(function(s,c){ return s + c.h; }, 0));
+  }
+  $$('.filters button').forEach(function(b){
+    b.addEventListener('click', function(){
+      $$('.filters button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      render(b.getAttribute('data-f'));
+    });
+  });
+  render('all');
+
+  /* contatos */
+  var ul = $('#contacts');
+  if(!CONTACT.length){ ul.remove(); }
+  else CONTACT.forEach(function(c){
+    var li = document.createElement('li');
+    var lab = document.createElement('span'); lab.className = 'mono muted'; lab.textContent = c.label;
+    li.appendChild(lab);
+    if(c.href){
+      var a = document.createElement('a'); a.href = c.href; a.textContent = c.value; a.className = 'btn small'; li.appendChild(a);
+    } else {
+      var code = document.createElement('code'); code.textContent = c.value; li.appendChild(code);
+    }
+    var cp = document.createElement('button'); cp.type = 'button'; cp.className = 'btn small'; cp.textContent = 'Copiar';
+    cp.addEventListener('click', function(){
+      function done(){ cp.textContent = 'Copiado'; setTimeout(function(){ cp.textContent = 'Copiar'; }, 1500); }
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(c.value).then(done, function(){}); }
+    });
+    li.appendChild(cp);
+    ul.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>

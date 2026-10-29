@@ -3,187 +3,281 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Portfólio Pedro Cauã</title>
-<meta name="description" content="Portfólio de Pedro Cauã: IA aplicada, agentes, projetos, experiência e certificados.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<title>Pedro Cauã · Desenvolvedor frontend</title>
+<meta name="description" content="Portfólio de Pedro Cauã: desenvolvimento frontend, IA aplicada, agentes, projetos, experiência e certificados.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
+/* ===== tokens ===== */
 :root{
-  /* Layout: trilho fixo à esquerda com progresso de scroll, coluna de leitura à direita, fluxo de agentes que se acende ao rolar e cards de projeto que empilham. */
-  --bg:#EAEFF5; --surface:#F7F9FC; --fg:#0E1A2E; --muted:#4A5A74; --line:#C6D1DF;
-  --accent:#1E3FE0; --on-accent:#FFFFFF; --signal:#F7C21B; --ok:#16794F;
-  --shadow:rgba(14,26,46,.28);
-  --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --accent:#1E3FE0; --on-accent:#FFFFFF; --signal:#F7C21B; --on-signal:#0E1A2E; --ok:#0F6B44; --ok-on-dark:#5BD99C;
+  --hero-c:#1E3FE0; --shadow:rgba(14,26,46,.28);
+  --hdr:72px; --gut:clamp(16px,5vw,64px);
+  --font-display:'Big Shoulders Display','Arial Narrow','Segoe UI',system-ui,sans-serif;
   --font-body:'Instrument Sans','Segoe UI',system-ui,sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --dur-fast:200ms; --dur-base:350ms; --dur-slow:600ms; --dur-scene:1000ms;
+  --ease-out:cubic-bezier(.215,.61,.355,1); --ease-soft:cubic-bezier(.25,.46,.45,.94); --ease-inout:cubic-bezier(.65,0,.35,1);
+  /* tons de fundo: a = azul de destaque, d = escuro, p = off-white */
+  --ta-bg:#1E3FE0; --ta-fg:#FFFFFF; --ta-mu:#D9E1FF; --ta-ln:rgba(255,255,255,.42); --ta-sf:#0E1A2E; --ta-sfg:#E7EDF8; --ta-smu:#9AA9C4; --ta-ink:#FFFFFF; --ta-bt:#0E1A2E; --ta-btf:#FFFFFF;
+  --td-bg:#0E1A2E; --td-fg:#E7EDF8; --td-mu:#9AA9C4; --td-ln:#2A3D66; --td-sf:#16264A; --td-sfg:#E7EDF8; --td-smu:#9AA9C4; --td-ink:#8CA4FF; --td-bt:#E7EDF8; --td-btf:#0E1A2E;
+  --tp-bg:#F2F5FA; --tp-fg:#0E1A2E; --tp-mu:#4A5A74; --tp-ln:#C6D1DF; --tp-sf:#FFFFFF; --tp-sfg:#0E1A2E; --tp-smu:#4A5A74; --tp-ink:#1E3FE0; --tp-bt:#0E1A2E; --tp-btf:#F2F5FA;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0A1325; --surface:#111D36; --fg:#E7EDF8; --muted:#9AA9C4; --line:#24365C;
-    --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --ok:#5BD99C; --shadow:rgba(0,0,0,.55);
+    --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --on-signal:#0A1325; --ok:#5BD99C; --hero-c:#0A1325; --shadow:rgba(0,0,0,.55);
+    --ta-bg:#8CA4FF; --ta-fg:#0A1325; --ta-mu:#1B2A52; --ta-ln:rgba(10,19,37,.42); --ta-sf:#0A1325; --ta-sfg:#E7EDF8; --ta-smu:#9AA9C4; --ta-ink:#0A1325; --ta-bt:#0A1325; --ta-btf:#E7EDF8;
+    --td-bg:#060C1A; --td-fg:#E7EDF8; --td-mu:#9AA9C4; --td-ln:#1F2F55; --td-sf:#101B36; --td-sfg:#E7EDF8; --td-smu:#9AA9C4; --td-ink:#8CA4FF; --td-bt:#E7EDF8; --td-btf:#060C1A;
+    --tp-bg:#0F1C3A; --tp-fg:#E7EDF8; --tp-mu:#9AA9C4; --tp-ln:#24365C; --tp-sf:#16264A; --tp-sfg:#E7EDF8; --tp-smu:#9AA9C4; --tp-ink:#8CA4FF; --tp-bt:#E7EDF8; --tp-btf:#0F1C3A;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0A1325; --surface:#111D36; --fg:#E7EDF8; --muted:#9AA9C4; --line:#24365C;
-  --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --ok:#5BD99C; --shadow:rgba(0,0,0,.55);
+  --accent:#8CA4FF; --on-accent:#0A1325; --signal:#FFCB2E; --on-signal:#0A1325; --ok:#5BD99C; --hero-c:#0A1325; --shadow:rgba(0,0,0,.55);
+  --ta-bg:#8CA4FF; --ta-fg:#0A1325; --ta-mu:#1B2A52; --ta-ln:rgba(10,19,37,.42); --ta-sf:#0A1325; --ta-sfg:#E7EDF8; --ta-smu:#9AA9C4; --ta-ink:#0A1325; --ta-bt:#0A1325; --ta-btf:#E7EDF8;
+  --td-bg:#060C1A; --td-fg:#E7EDF8; --td-mu:#9AA9C4; --td-ln:#1F2F55; --td-sf:#101B36; --td-sfg:#E7EDF8; --td-smu:#9AA9C4; --td-ink:#8CA4FF; --td-bt:#E7EDF8; --td-btf:#060C1A;
+  --tp-bg:#0F1C3A; --tp-fg:#E7EDF8; --tp-mu:#9AA9C4; --tp-ln:#24365C; --tp-sf:#16264A; --tp-sfg:#E7EDF8; --tp-smu:#9AA9C4; --tp-ink:#8CA4FF; --tp-bt:#E7EDF8; --tp-btf:#0F1C3A;
   color-scheme:dark;
 }
+/* cada elemento com data-tone herda as cores do seu bloco */
+[data-tone="accent"]{--t-bg:var(--ta-bg);--t-fg:var(--ta-fg);--t-mu:var(--ta-mu);--t-ln:var(--ta-ln);--t-sf:var(--ta-sf);--t-sfg:var(--ta-sfg);--t-smu:var(--ta-smu);--t-ink:var(--ta-ink);--t-bt:var(--ta-bt);--t-btf:var(--ta-btf)}
+[data-tone="dark"]{--t-bg:var(--td-bg);--t-fg:var(--td-fg);--t-mu:var(--td-mu);--t-ln:var(--td-ln);--t-sf:var(--td-sf);--t-sfg:var(--td-sfg);--t-smu:var(--td-smu);--t-ink:var(--td-ink);--t-bt:var(--td-bt);--t-btf:var(--td-btf)}
+[data-tone="paper"]{--t-bg:var(--tp-bg);--t-fg:var(--tp-fg);--t-mu:var(--tp-mu);--t-ln:var(--tp-ln);--t-sf:var(--tp-sf);--t-sfg:var(--tp-sfg);--t-smu:var(--tp-smu);--t-ink:var(--tp-ink);--t-bt:var(--tp-bt);--t-btf:var(--tp-btf)}
+[data-tone]{background-color:var(--t-bg);color:var(--t-fg)}
 
+/* ===== base ===== */
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{background:var(--bg);color:var(--fg);font:400 1.0625rem/1.6 var(--font-body);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
-h1,h2,h3,p,ol,ul,dl,dd,figure{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--hdr);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--td-bg);color:var(--td-fg);font:400 1.0625rem/1.6 var(--font-body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ol,ul,figure,dl,dd{margin:0}
 ol,ul{padding:0;list-style:none}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img,svg{display:block;max-width:100%}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--t-ink,currentColor);outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;padding:10px 16px;background:var(--td-fg);color:var(--td-bg);border-radius:6px;text-decoration:none;font-weight:600}
+.skip:focus{top:12px}
+.wrap{width:100%;max-width:1344px;margin-inline:auto;padding-inline:max(var(--gut),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))}
 .mono{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
-.muted{color:var(--muted)}
+.eyebrow{color:var(--t-ink)}
+.muted{color:var(--t-mu)}
+.h-giant{font:800 clamp(46px,7vw,96px)/.9 var(--font-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.h-big{font:800 clamp(40px,5.2vw,76px)/.92 var(--font-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
+.lede{font-size:1.125rem;max-width:40rem}
+.sec{padding-block:clamp(40px,5vw,72px)}
+main>section[data-tone]:not(#inicio){border-top:2px dotted var(--t-ln)}
 
-/* barra superior (telas estreitas) */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--bg);border-bottom:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.topbar strong{font:700 1.05rem var(--font-display);letter-spacing:-.01em}
-.topbar i{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--accent)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:.7em 1.3em;border:1.5px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:600 .95rem/1.2 var(--font-body);text-decoration:none;cursor:pointer;
+  transition:transform var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--solid{background:var(--t-bt);color:var(--t-btf);border-color:var(--t-bt)}
+.btn--sm{padding:.45em .95em;font-size:.85rem}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.6;cursor:not-allowed}
+.btn:disabled:hover,.btn[aria-disabled="true"]:hover{transform:none}
+.chip{display:inline-block;padding:2px 10px;border:1px solid currentColor;border-radius:999px;font:500 .7rem/1.6 var(--font-mono);letter-spacing:.06em;text-transform:uppercase}
+.chip--signal{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
 
-.btn{display:inline-flex;align-items:center;gap:8px;padding:.65em 1.15em;border:1px solid var(--fg);border-radius:999px;background:transparent;color:var(--fg);
-  font:500 .95rem var(--font-body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
-.btn:hover{transform:translateY(-1px)}
-.btn.primary{background:var(--fg);color:var(--bg)}
-.btn.small{padding:.4em .85em;font-size:.82rem;border-color:var(--line);color:var(--muted)}
-.btn.small:hover{color:var(--fg);border-color:var(--fg)}
-
-.shell{max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr);gap:56px;
-  padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.rail{display:none}
-@media (min-width:1040px){
-  .topbar{display:none}
-  .shell{grid-template-columns:200px minmax(0,1fr);padding-block:32px 48px}
-  .rail{display:flex;flex-direction:column;gap:32px;position:sticky;top:32px;align-self:start}
-  .rail .who{display:grid;gap:4px}
-  .rail .who strong{font:700 1.35rem/1.1 var(--font-display);letter-spacing:-.02em}
-  .rail nav{position:relative;padding-left:18px;--p:0}
-  .rail nav::before,.rail nav::after{content:"";position:absolute;left:0;top:4px;width:2px}
-  .rail nav::before{bottom:4px;background:var(--line)}
-  .rail nav::after{height:calc((100% - 8px) * var(--p));background:var(--accent)}
-  .rail ol{display:grid;gap:10px}
-  .rail a{text-decoration:none;color:var(--muted);font-size:.95rem;transition:color .2s;display:block}
-  .rail a:hover{color:var(--fg)}
-  .rail a[aria-current="true"]{color:var(--fg);font-weight:600}
+/* ===== cabeçalho ===== */
+.site-header{position:fixed;inset:0 0 auto;z-index:80;height:var(--hdr);border-bottom:1px dashed var(--t-ln)}
+.progress{position:absolute;inset:0 0 auto;height:3px;pointer-events:none}
+.progress i{display:block;height:100%;background:var(--t-fg);transform-origin:0 50%;transform:scaleX(0)}
+.hdr-in{height:100%;display:flex;align-items:center;gap:clamp(14px,2vw,28px);padding-inline:max(var(--gut),env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))}
+.brand{display:grid;place-items:center;flex:none;width:46px;height:38px;border-radius:4px;background:var(--t-fg);color:var(--t-bg);font:800 24px/1 var(--font-display);letter-spacing:.03em;text-decoration:none}
+.nav{display:flex;gap:clamp(12px,1.7vw,28px);margin-inline:auto}
+.nav a{position:relative;padding-block:6px;color:var(--t-fg);font:600 .875rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform var(--dur-fast) var(--ease-out)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+.hdr-actions{display:flex;align-items:center;gap:10px;flex:none}
+.socials{display:flex;gap:8px}
+.round{display:grid;place-items:center;width:34px;height:34px;border:1.5px solid currentColor;border-radius:50%;background:transparent;color:var(--t-fg);font:700 .78rem/1 var(--font-body);text-decoration:none;cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out)}
+.round svg{width:16px;height:16px}
+a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var(--t-bg);transform:translateY(-2px)}
+.round:disabled{opacity:.55;cursor:not-allowed}
+.burger{display:none;width:40px;height:40px;position:relative;border:1.5px solid currentColor;border-radius:50%;background:transparent;color:var(--t-fg);cursor:pointer}
+.burger span{position:absolute;left:10px;right:10px;height:2px;border-radius:2px;background:currentColor;transition:transform var(--dur-base) var(--ease-out),opacity var(--dur-base)}
+.burger span:nth-child(1){top:13px}.burger span:nth-child(2){top:18px}.burger span:nth-child(3){top:23px}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.scrim{position:fixed;inset:0;z-index:85;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity var(--dur-base),visibility 0s var(--dur-base)}
+.scrim.open{opacity:1;visibility:visible;transition:opacity var(--dur-base)}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(78vw,320px);padding:96px 28px 28px;display:flex;flex-direction:column;gap:22px;overflow-y:auto;
+  transform:translateX(100%);visibility:hidden;transition:transform .4s var(--ease-out),visibility 0s .4s}
+.drawer.open{transform:none;visibility:visible;transition:transform .4s var(--ease-out)}
+.drawer a.dl{font:800 2rem/1 var(--font-display);text-transform:uppercase;text-decoration:none;letter-spacing:.01em}
+.drawer .socials{margin-top:8px}
+@media (max-width:900px){
+  :root{--hdr:64px}
+  .nav,.hdr-actions .socials,.hdr-actions .btn{display:none}
+  .burger{display:block}
+  .hdr-in{justify-content:space-between}
 }
 
-main{min-width:0}
-main>section,main>header{padding-block:clamp(56px,8vw,112px);border-top:1px solid var(--line)}
-main>header{border-top:0;padding-top:clamp(32px,5vw,64px)}
-.sec-head{display:grid;gap:16px;max-width:46rem;margin-bottom:clamp(32px,5vw,56px)}
-.eyebrow{color:var(--accent)}
-h1{font:700 clamp(2.5rem,1.1rem + 5vw,5rem)/1.02 var(--font-display);letter-spacing:-.035em;text-wrap:balance;max-width:14em}
-h2{font:700 clamp(1.9rem,1rem + 3vw,3rem)/1.08 var(--font-display);letter-spacing:-.025em;text-wrap:balance}
-h3{font:600 1.25rem/1.25 var(--font-display);letter-spacing:-.01em}
-.lede{font-size:1.18rem;max-width:40rem;color:var(--muted)}
-.lede b{color:var(--fg);font-weight:500}
-mark{background:linear-gradient(transparent 58%,var(--signal) 58% 92%,transparent 92%);color:inherit;padding:0 .06em}
+/* ===== início ===== */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr) + 24px) 0 112px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:40px}
+.hero-text{display:grid;gap:20px;justify-items:start}
+.nome{font:800 clamp(72px,14vw,200px)/.95 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
+.nome .line{display:block;overflow:hidden;padding-top:.24em;margin-top:-.2em;white-space:nowrap}
+.hero .lede{max-width:30rem;color:var(--t-fg)}
+.hero-art{width:100%;max-width:460px;justify-self:center;aspect-ratio:1}
+.hero-art svg{width:100%;height:100%;overflow:visible}
+.sq{stroke:var(--t-fg);stroke-width:3}
+.sq-dark{fill:var(--t-sf)}.sq-light{fill:#F2F5FA}
+.sq-letter{font:800 130px var(--font-display)}
+.sq-letter--p{fill:#F2F5FA}.sq-letter--c{fill:var(--hero-c)}
+.sig{fill:var(--signal);stroke:var(--t-fg);stroke-width:3}
+@media (max-width:900px){
+  .hero{align-items:flex-start;padding-top:calc(var(--hdr) + 28px)}
+  .nome{font-size:clamp(88px,30vw,180px)}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:24px}
+  .hero-art{order:-1;max-width:240px;justify-self:start}
+}
 
-/* hero */
-.hero{position:relative;overflow:clip;display:grid;gap:28px}
-.hero>*{position:relative;z-index:1}
-.hero::before,.hero::after{content:"";position:absolute;border:1px solid var(--line);border-radius:50%;z-index:0;pointer-events:none}
-.hero::before{width:min(80%,760px);aspect-ratio:1;right:-18%;top:-6%}
-.hero::after{width:min(52%,500px);aspect-ratio:1;right:-4%;top:14%}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
-.trace{margin-top:12px;max-width:44rem;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:0 28px 56px -36px var(--shadow);overflow:hidden}
-.trace-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--muted)}
-.trace-bar button{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--accent);background:none;border:0;cursor:pointer;padding:2px 4px}
-.trace ol{display:grid;gap:0}
-.trace li{display:grid;grid-template-columns:20px 8.5rem minmax(0,1fr);gap:12px;align-items:baseline;padding:13px 16px;border-bottom:1px solid var(--line);font:400 .88rem/1.45 var(--font-mono)}
-.trace .st{color:var(--muted)}
-.trace li.ok .st{color:var(--ok)}
-.trace li.run .st{color:var(--accent);animation:blink .7s steps(2) infinite}
+/* ===== faixa de tecnologias ===== */
+.strip{position:relative;z-index:5;margin-top:-46px;overflow:hidden;padding:16px 0;border-block:2px solid var(--t-ln);transform:rotate(-.3deg) scale(1.02)}
+.strip-track{display:flex;width:max-content}
+.strip ul{display:flex;flex:none}
+.strip li{display:flex;align-items:center;gap:28px;padding-inline:28px;font:800 26px/1 var(--font-display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.strip li::after{content:"✦";color:var(--signal);font-size:14px}
+
+/* ===== projetos ===== */
+.projetos-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 30px;padding-block:clamp(40px,5vw,72px) 28px}
+.projetos-head p{max-width:24rem;color:var(--t-mu)}
+.projetos-wrap{display:flex;flex-direction:column;justify-content:center}
+.trilho{display:flex;gap:34px;align-items:stretch;padding:20px max(var(--gut),env(safe-area-inset-left,0px)) 28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.card{position:relative;display:flex;flex-direction:column;gap:14px;flex:0 0 clamp(300px,62vw,520px);scroll-snap-align:start;padding:22px;border-radius:18px 18px 4px 18px;background:var(--t-sf);color:var(--t-sfg);box-shadow:0 30px 60px -30px var(--shadow)}
+.card--lead{flex-basis:calc(clamp(300px,62vw,520px) * 1.3);border:2px solid var(--t-ink)}
+.card p{color:var(--t-smu)}
+.card h3{font:800 clamp(34px,3.4vw,44px)/.95 var(--font-display);text-transform:uppercase;letter-spacing:.01em}
+.card .tags{color:var(--t-smu)}
+.frame{display:grid;place-items:center;height:clamp(170px,27vh,250px);border-radius:10px;overflow:hidden}
+.frame svg{width:100%;height:100%}
+.card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
+.hint{padding:6px max(var(--gut),env(safe-area-inset-left,0px)) 0;font:500 .78rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-mu)}
+.projetos-wrap{padding-bottom:clamp(24px,4vw,48px)}
+
+/* ===== cenas (Nodify e Agentes) ===== */
+.stage{padding-block:clamp(40px,5vw,72px)}
+.stage-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+@media (min-width:900px){.stage-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
+.stage-copy{display:grid;gap:18px;align-content:center}
+.gestos{display:grid;gap:10px}
+.gesto{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 14px;padding:12px 14px;border:1px solid var(--t-ln);border-radius:8px}
+.gesto .n{grid-row:span 2;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:2px solid var(--t-fg);font:500 .8rem var(--font-mono)}
+.gesto h3{font:600 1.05rem/1.3 var(--font-body)}
+.gesto p{font-size:.92rem;color:var(--t-mu)}
+.gesto.is-on{background:var(--t-fg);color:var(--t-bg)}
+.gesto.is-on p{color:var(--t-bg)}
+.gesto.is-on .n{border-color:var(--t-bg)}
+.privacy{display:inline-flex;align-items:center;gap:10px;width:fit-content;padding:8px 14px;border:1.5px solid var(--t-fg);border-radius:999px;font:600 .9rem var(--font-body)}
+.privacy svg{width:16px;height:16px;flex:none}
+.phone{justify-self:center;width:100%;max-width:300px}
+.phone svg{width:100%;height:auto;max-height:calc(100svh - var(--hdr) - 90px);overflow:visible}
+.phone figcaption{margin-top:10px;text-align:center;font:500 .75rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-mu)}
+.ph-body{fill:var(--t-sf);stroke:var(--t-fg);stroke-width:3}
+.ph-screen{fill:#0E1A2E}
+.ph-head{fill:#F2F5FA}
+.ph-feat{stroke:#0E1A2E;stroke-width:5;stroke-linecap:round;fill:none}
+.ph-frame{stroke:var(--signal);stroke-width:4;fill:none;stroke-linecap:round}
+.ph-cam{fill:#9AA9C4}
+.ph-rec{fill:var(--signal)}
+.ph-t{font:600 15px var(--font-body);fill:#E7EDF8}
+.ph-s{font:500 11px var(--font-mono);letter-spacing:.06em;fill:#9AA9C4;text-transform:uppercase}
+.ph-bar{fill:#2A3D66}.ph-fill{fill:var(--signal)}
+.ph-ctl{fill:#E7EDF8}
+
+.steps{position:relative;display:grid;gap:clamp(14px,1.8vw,20px);padding-left:52px;--p:1;max-width:40rem}
+.steps::before,.steps::after{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:2px}
+.steps::before{background:var(--t-ln)}
+.steps::after{background:var(--t-fg);transform-origin:50% 0;transform:scaleY(var(--p))}
+.step{position:relative;display:grid;gap:4px}
+.step .node{position:absolute;left:-52px;top:0;display:grid;place-items:center;width:32px;height:32px;border:2px solid var(--t-fg);border-radius:50%;background:var(--t-bg);color:var(--t-fg);font:500 .8rem var(--font-mono)}
+.step.done .node{background:var(--t-fg);color:var(--t-bg)}
+.step-tag{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--t-fg)}
+.step h3{font:600 1.1rem/1.3 var(--font-body)}
+.step p{color:var(--t-mu);font-size:.97rem}
+.step:not(.done) h3{color:var(--t-mu)}
+.trace{border:1px solid var(--t-ln);border-radius:10px;overflow:hidden;box-shadow:0 28px 56px -36px var(--shadow)}
+.trace-bar{padding:12px 16px;border-bottom:1px solid var(--t-ln);color:var(--t-mu)}
+.trace li{display:grid;grid-template-columns:20px 8.5rem minmax(0,1fr);gap:12px;align-items:baseline;padding:13px 16px;border-bottom:1px solid var(--t-ln);font:400 .88rem/1.45 var(--font-mono)}
+.trace .st{color:var(--t-mu)}
+.trace li.ok .st{color:var(--ok-on-dark)}
 .trace .who{font-weight:500}
-.trace .what{color:var(--muted);font-family:var(--font-body);font-size:.95rem}
-.trace-foot{padding:12px 16px;color:var(--muted)}
-.trace-foot.ok{color:var(--ok)}
-@keyframes blink{50%{opacity:.25}}
+.trace .what{color:var(--t-mu);font-family:var(--font-body);font-size:.95rem}
+.trace-foot{padding:12px 16px;color:var(--t-mu)}
+.trace-foot.ok{color:var(--ok-on-dark)}
 @media (max-width:560px){.trace li{grid-template-columns:20px minmax(0,1fr)}.trace .what{grid-column:2}}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 32px;padding-block:clamp(8px,2vw,24px) clamp(40px,5vw,72px)}
+.principles li{display:grid;gap:8px;align-content:start;padding-top:16px;border-top:2px solid var(--t-fg)}
+.principles h3{font:600 1.2rem/1.25 var(--font-body)}
+.principles p{color:var(--t-mu)}
 
-/* método */
-.steps{position:relative;display:grid;gap:clamp(24px,3.5vw,40px);padding-left:52px;--p:0;max-width:46rem}
-.steps::before,.steps::after{content:"";position:absolute;left:15px;top:6px;width:2px}
-.steps::before{bottom:6px;background:var(--line)}
-.steps::after{height:calc((100% - 12px) * var(--p));background:var(--accent)}
-.step{position:relative;display:grid;gap:8px;opacity:.62;transition:opacity .35s}
-.step.done{opacity:1}
-.step .node{position:absolute;left:-52px;top:0;width:32px;height:32px;border-radius:50%;border:2px solid var(--line);background:var(--bg);
-  display:grid;place-items:center;font:500 .78rem var(--font-mono);transition:background .3s,border-color .3s,color .3s}
-.step.done .node{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
-.step-tag{display:flex;flex-wrap:wrap;align-items:center;gap:10px;color:var(--muted)}
-.chip{display:inline-block;padding:2px 10px;border:1px solid var(--line);border-radius:999px;font:500 .7rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.chip.live{color:var(--ok);border-color:var(--ok)}
-.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 32px;margin-top:clamp(40px,6vw,72px)}
-.principles li{display:grid;gap:8px;align-content:start;padding-top:16px;border-top:2px solid var(--fg)}
-.principles p{color:var(--muted);font-size:1rem}
+/* ===== habilidades ===== */
+.skills-head{display:grid;gap:16px;margin-bottom:28px}
+.tabs-list{display:none;gap:10px;overflow-x:auto;padding-bottom:8px;margin-bottom:24px;scrollbar-width:thin}
+.tabs-ready .tabs-list{display:flex}
+.tab{flex:none;padding:.6em 1.2em;border:1.5px solid var(--t-fg);border-radius:999px;background:transparent;color:var(--t-fg);font:600 .9rem var(--font-body);cursor:pointer;transition:background-color var(--dur-fast),color var(--dur-fast)}
+.tab:hover,.tab[aria-selected="true"]{background:var(--t-fg);color:var(--t-bg)}
+.panel{display:grid;gap:14px;margin-bottom:16px;padding:clamp(24px,4vw,44px);border-radius:22px;background-color:var(--t-bg);color:var(--t-fg)}
+.panel h3{font:800 clamp(30px,3.4vw,42px)/.95 var(--font-display);text-transform:uppercase}
+.panel p{max-width:46rem;color:var(--t-mu)}
+.panel .tags{margin-top:6px}
+.panel .chip{color:var(--t-fg)}
+.tabs-ready .panel{margin-bottom:0}
+.panel:not([hidden]){animation:entraPainel .45s ease both}
+@keyframes entraPainel{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* projetos */
-.stack{display:grid;gap:28px}
-.proj{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:clamp(20px,3vw,36px);display:grid;gap:24px;
-  box-shadow:0 28px 56px -36px var(--shadow);position:relative}
-@media (min-width:720px){.proj{position:sticky;top:calc(24px + var(--i) * 16px)}}
-@media (min-width:900px){.proj{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:36px}}
-.proj-main{display:grid;gap:16px;align-content:start}
-.proj-top{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.proj h3{font:700 clamp(1.8rem,1rem + 2.4vw,2.6rem)/1.05 var(--font-display);letter-spacing:-.025em}
-.proj p{color:var(--muted)}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.proj-side{display:grid;gap:16px;align-content:start}
-.proj-side .mono{color:var(--muted)}
-.flow{display:grid;gap:22px}
-.flow li{position:relative;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-size:.97rem}
-.flow li+li::before{content:"↓";position:absolute;left:16px;top:-21px;font:500 .9rem var(--font-mono);color:var(--accent)}
-.proj-note{padding-top:12px;border-top:1px dashed var(--line);font-size:.92rem}
-
-/* capacidades */
-.caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px 32px}
-.cap{display:grid;gap:10px;align-content:start;padding-top:16px;border-top:2px solid var(--line);transition:border-color .25s}
-.cap:hover{border-top-color:var(--accent)}
-.cap p{color:var(--muted);font-size:1rem}
-.cap a{color:var(--accent);text-decoration:none}
-.cap a:hover{text-decoration:underline}
-
-/* experiência */
-.xp{display:grid;max-width:52rem}
-.xp>li{display:grid;grid-template-columns:minmax(0,10rem) minmax(0,1fr);gap:8px 32px;padding-block:28px;border-top:1px solid var(--line)}
-.xp>li:last-child{border-bottom:1px solid var(--line)}
-.xp .when{color:var(--muted);padding-top:6px}
-.xp .what{display:grid;gap:8px}
-.xp .what p{color:var(--muted)}
-.xp .where{font:500 .95rem var(--font-body);color:var(--fg)}
-@media (max-width:640px){.xp>li{grid-template-columns:minmax(0,1fr)}}
-
-/* certificados */
-.certbar{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 32px;margin-bottom:28px}
-.certstat{font:700 clamp(2.2rem,1rem + 4vw,3.6rem)/1 var(--font-display);letter-spacing:-.03em;font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.certstat small{font:500 .75rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+/* ===== trajetória ===== */
+.traj-bar{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 32px;margin-block:24px 24px}
+.stat{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font:800 clamp(40px,5vw,64px)/1 var(--font-display);font-variant-numeric:tabular-nums}
+.stat small{font:500 .75rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--t-mu)}
 .filters{display:flex;flex-wrap:wrap;gap:8px}
-.filters button{font:500 .85rem var(--font-body);padding:.45em .95em;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
-.filters button:hover{color:var(--fg);border-color:var(--fg)}
-.filters button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
-.cert{display:grid;gap:10px;align-content:space-between;padding:18px;border:1px solid var(--line);border-radius:6px;background:var(--surface);min-width:0}
-.cert h3{font-size:1.08rem}
-.cert-top{color:var(--muted)}
-.cert-foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
-.cert-foot .mono{font-variant-numeric:tabular-nums}
+.filters button{padding:.5em 1.05em;border:1.5px solid var(--t-ln);border-radius:999px;background:transparent;color:var(--t-mu);font:600 .88rem var(--font-body);cursor:pointer;transition:background-color var(--dur-fast),color var(--dur-fast),border-color var(--dur-fast)}
+.filters button:hover{color:var(--t-fg);border-color:var(--t-fg)}
+.filters button[aria-pressed="true"]{background:var(--t-fg);color:var(--t-bg);border-color:var(--t-fg)}
+.car{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(var(--gut),env(safe-area-inset-left,0px)) 20px;scrollbar-width:thin}
+.item{flex:0 0 clamp(264px,28vw,340px);scroll-snap-align:start;display:grid;gap:10px;align-content:space-between;padding:20px;border:1px solid var(--t-ln);border-radius:12px;background:var(--t-sf);color:var(--t-sfg)}
+.item[hidden]{display:none}
+.item .k{color:var(--t-smu)}
+.item h3{font:800 1.6rem/1 var(--font-display);text-transform:uppercase;letter-spacing:.01em}
+.item p{font-size:.95rem;color:var(--t-smu)}
+.item .foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;color:var(--t-smu)}
+.car-ctl{display:flex;align-items:center;gap:14px;padding-top:4px}
+.car-ctl .round{width:40px;height:40px;font-size:1.05rem}
+.car-ctl .count{font:500 .8rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-mu)}
 
-/* contato */
-.closing{display:grid;gap:24px;max-width:46rem}
-.closing h2{font-size:clamp(2.1rem,1rem + 4vw,3.8rem)}
-.contacts{display:flex;flex-wrap:wrap;gap:12px}
-.contacts li{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
-.contacts code{font:500 .9rem var(--font-mono);user-select:all;overflow-wrap:anywhere}
-footer{padding-top:48px;color:var(--muted);font-size:.9rem}
+/* ===== sobre ===== */
+.sobre-grid{display:grid;gap:clamp(28px,5vw,56px);align-items:start;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.sobre-text{display:grid;gap:18px;max-width:36rem}
+.sobre-text p{line-height:1.7}
+.id-card{display:grid;gap:22px;padding:26px;border-radius:22px;margin-top:clamp(0px,4vw,56px)}
+.id-top{display:flex;align-items:center;gap:16px}
+.mono-tile{display:grid;place-items:center;flex:none;width:72px;height:72px;border-radius:14px;background:var(--accent);color:var(--on-accent);font:800 34px/1 var(--font-display);letter-spacing:.03em}
+.id-top h3{font:800 1.9rem/1 var(--font-display);text-transform:uppercase}
+.id-top p{font-size:.9rem;color:var(--t-mu)}
+.id-cv{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--t-ln);color:var(--t-mu);font-size:.9rem}
+.id-cv .btn{color:var(--t-fg)}
+@media (max-width:1100px){.sobre-grid{grid-template-columns:minmax(0,1fr)}.id-card{margin-top:0}}
 
+/* ===== contato ===== */
+.contato{padding-block:clamp(48px,6vw,88px) 28px}
+.contato-in{display:grid;gap:22px;justify-items:center;text-align:center}
+.contato h2{font:800 clamp(52px,11vw,150px)/.88 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
+.contato .lede{max-width:34rem}
+.contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.contacts li{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;border:1.5px solid var(--t-ln);border-radius:999px}
+.contacts .lab{color:var(--t-mu)}
+.contacts a.val{font:500 .9rem var(--font-mono);overflow-wrap:anywhere}
+.pend{font:500 .8rem var(--font-mono);color:var(--t-mu)}
+footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px dashed var(--t-ln);color:var(--t-mu);font-size:.85rem}
+
+/* ===== movimento reduzido ===== */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -191,428 +285,410 @@ footer{padding-top:48px;color:var(--muted);font-size:.9rem}
 </style>
 </head>
 <body>
-<div class="topbar">
-  <strong>Pedro Cauã</strong>
-  <button class="btn small" data-theme-toggle type="button" id="themeBtnTop">Tema escuro</button>
-  <i aria-hidden="true"></i>
-</div>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
-<div class="shell">
-  <aside class="rail" aria-label="Navegação da página">
-    <div class="who">
-      <strong>Pedro Cauã</strong>
-      <span class="mono muted">IA aplicada · frontend</span>
-    </div>
-    <nav aria-label="Seções">
-      <ol>
-        <li><a href="#inicio" data-nav="inicio">Início</a></li>
-        <li><a href="#metodo" data-nav="metodo">Método</a></li>
-        <li><a href="#projetos" data-nav="projetos">Projetos</a></li>
-        <li><a href="#capacidades" data-nav="capacidades">Capacidades</a></li>
-        <li><a href="#experiencia" data-nav="experiencia">Experiência</a></li>
-        <li><a href="#certificados" data-nav="certificados">Certificados</a></li>
-        <li><a href="#contato" data-nav="contato">Contato</a></li>
-      </ol>
+<header class="site-header" data-tone="dark" id="topo">
+  <div class="progress" aria-hidden="true"><i></i></div>
+  <div class="hdr-in">
+    <a class="brand" href="#inicio" aria-label="Pedro Cauã, início">PC</a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#nodify">Nodify</a>
+      <a href="#agentes">Agentes</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#trajetoria">Trajetória</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
     </nav>
-    <button class="btn small" data-theme-toggle type="button" id="themeBtnRail" style="align-self:start">Tema escuro</button>
-  </aside>
+    <div class="hdr-actions">
+      <ul class="socials" aria-label="Redes">
+        <li><a class="round" href="https://github.com/pedrocaua10" aria-label="GitHub de Pedro Cauã" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.700.2 2.900.1 3.200.8.800 1.200 1.900 1.200 3.200 0 4.600-2.800 5.600-5.500 5.900.4.400.8 1.100.8 2.200v3.300c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a></li>
+        <li><button class="round" type="button" disabled aria-label="LinkedIn (indisponível)" title="[PENDENTE: URL do LinkedIn]">in</button></li>
+        <li><button class="round" type="button" disabled aria-label="E-mail (indisponível)" title="[PENDENTE: e-mail]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></li>
+      </ul>
+      <button class="btn btn--sm" type="button" data-theme-toggle>Tema escuro</button>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="scrim" id="scrim"></div>
+  <div class="drawer" id="menu" data-tone="dark" aria-label="Menu">
+    <a class="dl" href="#projetos">Projetos</a>
+    <a class="dl" href="#nodify">Nodify</a>
+    <a class="dl" href="#agentes">Agentes</a>
+    <a class="dl" href="#habilidades">Habilidades</a>
+    <a class="dl" href="#trajetoria">Trajetória</a>
+    <a class="dl" href="#sobre">Sobre</a>
+    <a class="dl" href="#contato">Contato</a>
+    <ul class="socials" aria-label="Redes">
+      <li><a class="round" href="https://github.com/pedrocaua10" aria-label="GitHub de Pedro Cauã" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.700.2 2.900.1 3.200.8.800 1.200 1.900 1.200 3.200 0 4.600-2.800 5.600-5.500 5.900.4.400.8 1.100.8 2.200v3.300c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a></li>
+      <li><button class="round" type="button" disabled aria-label="LinkedIn (indisponível)" title="[PENDENTE: URL do LinkedIn]">in</button></li>
+      <li><button class="round" type="button" disabled aria-label="E-mail (indisponível)" title="[PENDENTE: e-mail]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></li>
+    </ul>
+    <button class="btn btn--sm" type="button" data-theme-toggle style="align-self:flex-start">Tema escuro</button>
+  </div>
+</header>
 
-  <main>
-    <header id="inicio" class="hero" data-sec>
-      <p class="mono eyebrow">Brasília, DF · 15°47′S 47°53′W</p>
-      <h1>Faço agentes de IA trabalharem como um <mark>time de engenharia</mark>.</h1>
-      <p class="lede">Sou o <b>Pedro Cauã</b>. Trabalho como desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital. Meu foco é IA aplicada: agentes que escrevem e revisam código, assistentes de voz e produtos movidos por modelos de linguagem.</p>
-      <div class="hero-cta">
-        <a class="btn primary" href="#projetos">Ver projetos</a>
-        <a class="btn" href="#certificados">Ver certificados</a>
-      </div>
-      <figure class="trace" aria-label="Fluxo de agentes desenhado por mim">
-        <figcaption class="trace-bar mono">
-          <span>fluxo de agentes que desenhei</span>
-          <button type="button" id="replay">repetir</button>
-        </figcaption>
-        <ol>
-          <li class="ok"><span class="st">✓</span><span class="who">hu-analyst</span><span class="what">Lê a tarefa, o texto e as imagens. Monta o contexto.</span></li>
-          <li class="ok"><span class="st">✓</span><span class="who">agent-dev</span><span class="what">Implementa seguindo o padrão do projeto.</span></li>
-          <li class="ok"><span class="st">✓</span><span class="who">code-reviewer</span><span class="what">Revisa o código e procura vulnerabilidades.</span></li>
-          <li class="ok"><span class="st">✓</span><span class="who">orquestrador</span><span class="what">Confere cada etapa até a entrega.</span></li>
-        </ol>
-        <p class="trace-foot mono ok" id="traceFoot">→ entrega pronta para revisão humana</p>
-      </figure>
-    </header>
+<main id="conteudo">
 
-    <section id="metodo" data-sec>
-      <div class="sec-head">
-        <p class="mono eyebrow">Método · 4 etapas</p>
-        <h2>Um fluxo de agentes com uma pessoa no comando</h2>
-        <p class="lede">Monto agentes e skills para o Claude Code que cobrem a tarefa inteira, da leitura à revisão. Cada etapa tem um papel claro, e a decisão final continua sendo minha.</p>
+  <!-- 1. Início -->
+  <section id="inicio" class="hero" data-tone="accent" aria-labelledby="nome">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="mono eyebrow">Brasília · Ciência da Computação, 7º semestre</p>
+        <h1 id="nome" class="nome" aria-label="Pedro Cauã"><span class="line"><span class="word">Pedro</span></span><span class="line"><span class="word">Cauã</span></span></h1>
+        <p class="lede">Desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital.</p>
+        <a class="btn btn--solid" href="#projetos">Ver projetos</a>
       </div>
-      <ol class="steps" id="steps">
-        <li class="step">
-          <span class="node" aria-hidden="true">1</span>
-          <div class="step-tag mono"><span>hu-analyst</span><span class="chip live">em uso</span></div>
-          <h3>Entende a tarefa antes de qualquer código</h3>
-          <p class="muted">Lê o texto e as imagens da tarefa e prepara tudo o que a próxima etapa precisa para implementar sem tropeçar.</p>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 400" focusable="false">
+          <g class="float">
+            <rect class="sq sq-dark" x="60" y="60" width="180" height="180" rx="18"/>
+            <text class="sq-letter sq-letter--p" x="150" y="190" text-anchor="middle">P</text>
+          </g>
+          <g class="float2">
+            <rect class="sq sq-light" x="180" y="180" width="160" height="160" rx="18"/>
+            <text class="sq-letter sq-letter--c" x="260" y="300" text-anchor="middle">C</text>
+          </g>
+          <circle class="sig" cx="330" cy="80" r="26"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Faixa de tecnologias -->
+  <div class="strip" data-tone="dark">
+    <div class="strip-track">
+      <ul aria-label="Tecnologias e ferramentas">
+        <li>Angular</li><li>Python</li><li>Claude Code</li><li>scikit-learn</li><li>FastAPI</li><li>Scrum</li><li>Git</li><li>Google Ads</li><li>Meta Ads</li>
+      </ul>
+      <ul aria-hidden="true">
+        <li>Angular</li><li>Python</li><li>Claude Code</li><li>scikit-learn</li><li>FastAPI</li><li>Scrum</li><li>Git</li><li>Google Ads</li><li>Meta Ads</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Projetos -->
+  <section id="projetos" class="projetos" data-tone="dark" aria-labelledby="t-projetos">
+    <div class="wrap projetos-head">
+      <h2 id="t-projetos" class="h-giant">Projetos</h2>
+      <p>Um app de acessibilidade com visão computacional, o fluxo de agentes que uso no trabalho e um assistente de voz de hobby.</p>
+    </div>
+    <div class="projetos-wrap" id="projetosWrap">
+      <ul class="trilho" id="trilho" tabindex="0" aria-label="Projetos">
+        <li class="card card--lead">
+          <div class="frame" data-tone="accent">
+            <!-- [PENDENTE: print do Nodify] -->
+            <svg viewBox="0 0 400 200" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><rect x="150" y="14" width="100" height="172" rx="16"/><circle cx="200" cy="92" r="26"/><path d="M168 66v-10h10M232 66v-10h-10M168 118v10h10M232 118v10h-10" stroke-width="3"/><path d="M60 100h50M290 100h50" stroke-dasharray="2 10"/></g></svg>
+          </div>
+          <div class="tags"><span class="chip chip--signal">TCC · UCB</span><span class="chip">Android</span></div>
+          <h3>Nodify</h3>
+          <p>App Android que controla o Spotify com movimentos da cabeça. A câmera frontal capta o gesto e todo o processamento acontece no próprio aparelho. Nasceu como ferramenta de acessibilidade.</p>
+          <div class="tags"><span class="chip">visão computacional</span><span class="chip">acessibilidade</span><span class="chip">on-device</span></div>
+          <div class="card-actions">
+            <a class="btn btn--sm" href="#nodify">Ver o Nodify em ação</a>
+            <button class="btn btn--sm" type="button" disabled title="[PENDENTE: link da documentação]">Documentação técnica</button>
+          </div>
         </li>
-        <li class="step">
-          <span class="node" aria-hidden="true">2</span>
-          <div class="step-tag mono"><span>agent-dev</span><span class="chip live">em uso</span></div>
-          <h3>Implementa dentro do padrão do projeto</h3>
-          <p class="muted">Atua em front e back, aprende as convenções do código e segue a lógica que já existe, sem mudar o que não foi pedido. Comenta pouco.</p>
+        <li class="card">
+          <div class="frame" data-tone="accent">
+            <svg viewBox="0 0 400 200" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="60" cy="100" r="18"/><circle cx="153" cy="100" r="18"/><circle cx="247" cy="100" r="18"/><circle cx="340" cy="100" r="18"/><path d="M78 100h57M171 100h58M265 100h57"/></g></svg>
+          </div>
+          <div class="tags"><span class="chip">fluxo de trabalho</span><span class="chip">Claude Code</span></div>
+          <h3>Agentes de IA no trabalho</h3>
+          <p>Agentes e skills para o Claude Code que cobrem a tarefa inteira, da leitura à revisão. O hu-analyst e o agent-dev estão em uso; o code-reviewer e o orquestrador estão em desenho. A decisão final continua sendo minha.</p>
+          <div class="tags"><span class="chip">agentes</span><span class="chip">skills</span><span class="chip">revisão humana</span></div>
+          <div class="card-actions"><a class="btn btn--sm" href="#agentes">Ver o fluxo</a></div>
         </li>
-        <li class="step">
-          <span class="node" aria-hidden="true">3</span>
-          <div class="step-tag mono"><span>code-reviewer</span><span class="chip">em desenho</span></div>
-          <h3>Revisa e procura vulnerabilidades</h3>
-          <p class="muted">Confere o que o agent-dev entregou e verifica falhas de segurança antes de qualquer pessoa abrir o código.</p>
-        </li>
-        <li class="step">
-          <span class="node" aria-hidden="true">4</span>
-          <div class="step-tag mono"><span>orquestrador</span><span class="chip">em desenho</span></div>
-          <h3>Faz os agentes conversarem</h3>
-          <p class="muted">Entende a atividade, coordena as etapas e verifica tudo até a finalização.</p>
-        </li>
-      </ol>
-      <ul class="principles">
-        <li>
-          <h3>Quem aprova sou eu</h3>
-          <p>As skills aprendem com o uso. A cada 5 tarefas concluídas fazem uma retrospectiva e gravam uma proposta de melhoria. Nada muda sem a minha aprovação.</p>
-        </li>
-        <li>
-          <h3>Agentes para vários projetos</h3>
-          <p>Não ficam presos a um repositório. Atuam em frontend e backend, em projetos diferentes, e viraram skills instaláveis.</p>
-        </li>
-        <li>
-          <h3>Protótipo descartável</h3>
-          <p>Prototipo direto no projeto, em uma branch local que nunca sobe. Tiro os prints e descarto. É mais rápido que desenhar tudo em ferramenta de design.</p>
+        <li class="card">
+          <div class="frame" data-tone="accent">
+            <svg viewBox="0 0 400 200" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="90" y="84" width="14" height="32" rx="7"/><rect x="122" y="60" width="14" height="80" rx="7"/><rect x="154" y="36" width="14" height="128" rx="7"/><rect x="186" y="70" width="14" height="60" rx="7"/><rect x="218" y="48" width="14" height="104" rx="7"/><rect x="250" y="72" width="14" height="56" rx="7"/><rect x="282" y="90" width="14" height="20" rx="7"/></g></svg>
+          </div>
+          <div class="tags"><span class="chip chip--signal">hobby</span><span class="chip">projeto pessoal</span></div>
+          <h3>Jarvis</h3>
+          <p>Assistente pessoal controlado por voz. A ideia é um único comando cobrir o dia: programar como um desenvolvedor full stack, montar automações, criar agentes de IA, ler e-mails e mensagens do Discord, WhatsApp e Teams e resumir as notícias.</p>
+          <div class="tags"><span class="chip">voz</span><span class="chip">agentes</span><span class="chip">automação</span></div>
         </li>
       </ul>
-    </section>
+      <p class="hint" id="trilhoHint">Continue rolando para ver todos os projetos →</p>
+    </div>
+  </section>
 
-    <section id="projetos" data-sec>
-      <div class="sec-head">
-        <p class="mono eyebrow">Projetos · 3</p>
-        <h2>Projetos em que a IA é parte do produto</h2>
-        <p class="lede">Um assistente de voz, um app de acessibilidade com visão computacional e um SaaS com modelo de linguagem.</p>
+  <!-- 4. Nodify em ação -->
+  <section id="nodify" class="scene scene-nodify" data-tone="paper" aria-labelledby="t-nodify">
+    <div class="stage" id="nodifyStage">
+      <div class="wrap stage-grid">
+        <div class="stage-copy">
+          <p class="mono eyebrow">Nodify · ilustração do conceito</p>
+          <h2 id="t-nodify" class="h-big">Nodify em ação</h2>
+          <p class="lede">A câmera frontal capta o movimento da cabeça e o app responde no Spotify. Quatro etapas do gesto ao comando.</p>
+          <ol class="gestos" id="gestos">
+            <li class="gesto"><span class="n" aria-hidden="true">1</span><h3>A câmera acompanha o rosto</h3><p>Comando: [PENDENTE: comando real]</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">2</span><h3>Cabeça para a direita</h3><p>Comando: [PENDENTE: comando real]</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">3</span><h3>Cabeça para a esquerda</h3><p>Comando: [PENDENTE: comando real]</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">4</span><h3>Aceno para baixo</h3><p>Comando: [PENDENTE: comando real]</p></li>
+          </ol>
+          <p class="privacy" id="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Processamento 100% no aparelho</p>
+        </div>
+        <figure class="phone">
+          <svg viewBox="0 0 300 600" aria-hidden="true" focusable="false">
+            <rect class="ph-body" x="14" y="8" width="272" height="584" rx="38"/>
+            <rect class="ph-screen" x="30" y="24" width="240" height="552" rx="28"/>
+            <circle class="ph-cam" cx="150" cy="46" r="6"/>
+            <g id="camOn"><circle class="ph-rec" cx="254" cy="46" r="4"/><text class="ph-s" x="244" y="50" text-anchor="end">câmera ativa</text></g>
+            <rect x="44" y="70" width="212" height="262" rx="16" fill="#16264A"/>
+            <g id="head">
+              <circle class="ph-head" cx="150" cy="200" r="66"/>
+              <g id="feat"><circle cx="128" cy="188" r="6" fill="#0E1A2E"/><circle cx="172" cy="188" r="6" fill="#0E1A2E"/><path class="ph-feat" d="M150 196v18M132 232q18 12 36 0"/></g>
+            </g>
+            <g id="frame"><path class="ph-frame" d="M74 128v-20h20M226 128v-20h-20M74 272v20h20M226 272v20h-20"/><text class="ph-s" x="150" y="316" text-anchor="middle">rosto detectado</text></g>
+            <text class="ph-s" x="54" y="372">Tocando agora</text>
+            <text class="ph-t" id="trk" x="54" y="398">Faixa 1</text>
+            <text class="ph-s" id="stt" x="54" y="420">Tocando</text>
+            <rect class="ph-bar" x="54" y="444" width="192" height="6" rx="3"/>
+            <rect class="ph-fill" id="bar" x="54" y="444" width="64" height="6" rx="3"/>
+            <g class="ph-ctl"><path d="M96 500l-16 11 16 11zM84 500v22"/><path d="M142 498h8v26h-8zM156 498h8v26h-8z"/><path d="M204 500l16 11-16 11z"/></g>
+          </svg>
+          <figcaption>Ilustração do conceito</figcaption>
+        </figure>
       </div>
-      <div class="stack">
-        <article class="proj" style="--i:0">
-          <div class="proj-main">
-            <div class="proj-top"><span class="chip">em construção</span><span class="chip">projeto pessoal</span></div>
-            <h3>Jarvis</h3>
-            <p>Assistente pessoal controlado por voz. A ideia é um único comando cobrir o dia: programar como um desenvolvedor full stack, montar automações, criar agentes de IA, ler e-mails e mensagens do Discord, WhatsApp e Teams e resumir as notícias.</p>
-            <div class="tags"><span class="chip">voz</span><span class="chip">agentes</span><span class="chip">automação</span></div>
-          </div>
-          <div class="proj-side">
-            <p class="mono">como funciona</p>
-            <ol class="flow">
-              <li>Comando de voz</li>
-              <li>Interpretação do pedido</li>
-              <li>Ação: código, automação ou leitura de mensagens</li>
-            </ol>
-          </div>
-        </article>
+    </div>
+  </section>
 
-        <article class="proj" style="--i:1">
-          <div class="proj-main">
-            <div class="proj-top"><span class="chip">TCC · UCB</span><span class="chip">Android</span></div>
-            <h3>Nodify</h3>
-            <p>App Android que controla o Spotify com movimentos da cabeça. A câmera frontal capta o gesto e todo o processamento acontece no próprio aparelho. Nasceu como ferramenta de acessibilidade.</p>
-            <div class="tags"><span class="chip">visão computacional</span><span class="chip">acessibilidade</span><span class="chip">on-device</span></div>
-          </div>
-          <div class="proj-side">
-            <p class="mono">como funciona</p>
-            <ol class="flow">
-              <li>Câmera frontal</li>
-              <li>Movimento da cabeça</li>
-              <li>Comando no Spotify</li>
-            </ol>
-            <p class="proj-note">Processamento 100% local: a imagem da câmera não sai do celular.</p>
-          </div>
-        </article>
-
-        <article class="proj" style="--i:2">
-          <div class="proj-main">
-            <div class="proj-top"><span class="chip">SaaS</span><span class="chip">para pequenos negócios</span></div>
-            <h3>AlavancaquIA</h3>
-            <p>Diagnóstico de landing pages feito por IA para donos de pequenos negócios. O Google Gemini roda no servidor e o contato com o lead acontece pelo WhatsApp, sem banco de dados no meio. O visual tem identidade própria em preto e dourado.</p>
-            <div class="tags"><span class="chip">Gemini API</span><span class="chip">landing pages</span><span class="chip">WhatsApp</span></div>
-          </div>
-          <div class="proj-side">
-            <p class="mono">como funciona</p>
-            <ol class="flow">
-              <li>Diagnóstico da landing page com Gemini, no servidor</li>
-              <li>Lead segue para o WhatsApp</li>
-            </ol>
-          </div>
-        </article>
+  <!-- 5. Agentes no trabalho -->
+  <section id="agentes" class="scene scene-agentes" data-tone="accent" aria-labelledby="t-agentes">
+    <div class="stage" id="agentesStage">
+      <div class="wrap stage-grid">
+        <div class="stage-copy">
+          <p class="mono eyebrow">Agentes no trabalho · 4 etapas</p>
+          <h2 id="t-agentes" class="h-big">Um fluxo de agentes com uma pessoa no comando</h2>
+          <ol class="steps" id="steps">
+            <li class="step done"><span class="node" aria-hidden="true">1</span><div class="step-tag mono"><span>hu-analyst</span><span class="chip">em uso</span></div><h3>Entende a tarefa antes de qualquer código</h3><p>Lê o texto e as imagens da tarefa e prepara o que a próxima etapa precisa.</p></li>
+            <li class="step done"><span class="node" aria-hidden="true">2</span><div class="step-tag mono"><span>agent-dev</span><span class="chip">em uso</span></div><h3>Implementa dentro do padrão do projeto</h3><p>Atua em front e back e segue a lógica que já existe, sem mudar o que não foi pedido.</p></li>
+            <li class="step done"><span class="node" aria-hidden="true">3</span><div class="step-tag mono"><span>code-reviewer</span><span class="chip">em desenho</span></div><h3>Revisa e procura vulnerabilidades</h3><p>Confere o que o agent-dev entregou antes de qualquer pessoa abrir o código.</p></li>
+            <li class="step done"><span class="node" aria-hidden="true">4</span><div class="step-tag mono"><span>orquestrador</span><span class="chip">em desenho</span></div><h3>Faz os agentes conversarem</h3><p>Coordena as etapas e verifica tudo até a finalização.</p></li>
+          </ol>
+        </div>
+        <figure class="trace" data-tone="dark" aria-label="Fluxo de agentes desenhado por mim">
+          <figcaption class="trace-bar mono">fluxo de agentes que desenhei</figcaption>
+          <ol id="traceList">
+            <li class="ok"><span class="st">✓</span><span class="who">hu-analyst</span><span class="what">Lê a tarefa, o texto e as imagens. Monta o contexto.</span></li>
+            <li class="ok"><span class="st">✓</span><span class="who">agent-dev</span><span class="what">Implementa seguindo o padrão do projeto.</span></li>
+            <li class="ok"><span class="st">✓</span><span class="who">code-reviewer</span><span class="what">Revisa o código e procura vulnerabilidades.</span></li>
+            <li class="ok"><span class="st">✓</span><span class="who">orquestrador</span><span class="what">Confere cada etapa até a entrega.</span></li>
+          </ol>
+          <p class="trace-foot mono ok" id="traceFoot">→ entrega pronta para revisão humana</p>
+        </figure>
       </div>
-    </section>
-
-    <section id="capacidades" data-sec>
-      <div class="sec-head">
-        <p class="mono eyebrow">Capacidades · 6 frentes</p>
-        <h2>O que eu já faço com IA</h2>
-        <p class="lede">Cada frente tem uma prova: um projeto meu ou um curso concluído.</p>
-      </div>
-      <ul class="caps">
-        <li class="cap">
-          <h3>Agentes e orquestração</h3>
-          <p>Fluxos com agentes e skills no Claude Code, com etapas de análise, implementação e revisão, e aprovação humana no fim.</p>
-          <span class="mono"><a href="#metodo">Prova: método</a></span>
-        </li>
-        <li class="cap">
-          <h3>Voz e automação</h3>
-          <p>Assistente por comandos de voz que lê mensagens, automatiza rotinas e cria agentes.</p>
-          <span class="mono"><a href="#projetos">Prova: Jarvis</a></span>
-        </li>
-        <li class="cap">
-          <h3>Visão computacional no aparelho</h3>
-          <p>Reconhecimento de gestos pela câmera, com processamento local e foco em acessibilidade.</p>
-          <span class="mono"><a href="#projetos">Prova: Nodify</a></span>
-        </li>
-        <li class="cap">
-          <h3>Produtos com modelos de linguagem</h3>
-          <p>Integração da API do Gemini no servidor, em um produto com público e fluxo de contato reais.</p>
-          <span class="mono"><a href="#projetos">Prova: AlavancaquIA</a></span>
-        </li>
-        <li class="cap">
-          <h3>Aprendizado de máquina</h3>
-          <p>Modelos supervisionados com scikit-learn e técnicas não supervisionadas em Python.</p>
-          <span class="mono"><a href="#certificados">Prova: 2 cursos DataCamp</a></span>
-        </li>
-        <li class="cap">
-          <h3>Python, APIs e dados</h3>
-          <p>Python orientado a objetos, APIs com FastAPI e visualização de dados com Seaborn.</p>
-          <span class="mono"><a href="#certificados">Prova: 6 cursos DataCamp</a></span>
-        </li>
+    </div>
+    <div class="wrap">
+      <ul class="principles" id="principles">
+        <li><h3>Quem aprova sou eu</h3><p>As skills aprendem com o uso. A cada 5 tarefas concluídas fazem uma retrospectiva e gravam uma proposta de melhoria. Nada muda sem a minha aprovação.</p></li>
+        <li><h3>Agentes para vários projetos</h3><p>Não ficam presos a um repositório. Atuam em frontend e backend, em projetos diferentes, e viraram skills instaláveis.</p></li>
+        <li><h3>Protótipo descartável</h3><p>Prototipo direto no projeto, em uma branch local que nunca sobe. Tiro os prints e descarto. É mais rápido que desenhar tudo em ferramenta de design.</p></li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section id="experiencia" data-sec>
-      <div class="sec-head">
-        <p class="mono eyebrow">Experiência · 3 frentes ativas</p>
-        <h2>Onde eu aplico tudo isso</h2>
+  <!-- 6. Habilidades -->
+  <section id="habilidades" class="sec" data-tone="paper" aria-labelledby="t-hab">
+    <div class="wrap">
+      <div class="skills-head">
+        <p class="mono eyebrow">Habilidades · 4 áreas</p>
+        <h2 id="t-hab" class="h-giant">Habilidades</h2>
       </div>
-      <ul class="xp">
-        <li>
-          <span class="when mono">Atual</span>
-          <div class="what">
-            <h3>Desenvolvedor frontend</h3>
-            <span class="where">Tribunal Superior Eleitoral · equipe SEUE</span>
-            <p>Funcionalidades, testes unitários e ajustes de interface em Angular 16. Levo agentes e skills de IA para o fluxo de trabalho, da leitura da tarefa até a branch pronta.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when mono">Atual</span>
-          <div class="what">
-            <h3>Fundador e gestor de tráfego</h3>
-            <span class="where">Muvve Tech · Brasília</span>
-            <p>Agência de marketing digital. Gestão de campanhas no Google Ads e Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when mono">Atual</span>
-          <div class="what">
-            <h3>Ciência da Computação, 6º semestre</h3>
-            <span class="where">Universidade Católica de Brasília</span>
-            <p>Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section id="certificados" data-sec>
-      <div class="sec-head">
-        <p class="mono eyebrow">Certificados · de ago/2024 a jun/2025</p>
-        <h2>Da base de matemática ao aprendizado de máquina</h2>
-        <p class="lede">Cursos concluídos na DataCamp e na Universidade Católica de Brasília. Use os filtros para ver cada trilha.</p>
-      </div>
-      <div class="certbar">
-        <p class="certstat"><span id="cCount">12</span><small>cursos</small><span id="cHours">169</span><small>horas</small></p>
-        <div class="filters" role="group" aria-label="Filtrar por área">
-          <button type="button" data-f="all" aria-pressed="true">Todos</button>
-          <button type="button" data-f="ia" aria-pressed="false">IA e dados</button>
-          <button type="button" data-f="py" aria-pressed="false">Python e APIs</button>
-          <button type="button" data-f="proc" aria-pressed="false">Processos e equipe</button>
-          <button type="button" data-f="base" aria-pressed="false">Base acadêmica</button>
+      <div id="skills">
+        <div class="tabs-list" role="tablist" aria-label="Áreas de habilidade">
+          <button class="tab" role="tab" type="button" id="tab-front" aria-controls="p-front" aria-selected="true">Frontend</button>
+          <button class="tab" role="tab" type="button" id="tab-ia" aria-controls="p-ia" aria-selected="false" tabindex="-1">IA e dados</button>
+          <button class="tab" role="tab" type="button" id="tab-proc" aria-controls="p-proc" aria-selected="false" tabindex="-1">Processo</button>
+          <button class="tab" role="tab" type="button" id="tab-neg" aria-controls="p-neg" aria-selected="false" tabindex="-1">Negócio</button>
+        </div>
+        <div class="panel" data-tone="dark" role="tabpanel" id="p-front" aria-labelledby="tab-front" tabindex="0">
+          <h3>Frontend</h3>
+          <p>Funcionalidades, testes unitários e ajustes de interface em Angular 16, no Tribunal Superior Eleitoral (equipe SEUE). Este portfólio é HTML, CSS e JavaScript sem framework.</p>
+          <div class="tags"><span class="chip">Angular 16</span><span class="chip">Testes unitários</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">GSAP</span></div>
+        </div>
+        <div class="panel" data-tone="dark" role="tabpanel" id="p-ia" aria-labelledby="tab-ia" tabindex="0">
+          <h3>IA e dados</h3>
+          <p>Agentes e skills no Claude Code, visão computacional no aparelho (Nodify) e aprendizado de máquina com scikit-learn, supervisionado e não supervisionado. No AlavancaquIA, um diagnóstico de landing pages para pequenos negócios, o Gemini roda no servidor e o lead segue para o WhatsApp.</p>
+          <div class="tags"><span class="chip">Claude Code</span><span class="chip">Gemini API</span><span class="chip">scikit-learn</span><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Seaborn</span></div>
+        </div>
+        <div class="panel" data-tone="dark" role="tabpanel" id="p-proc" aria-labelledby="tab-proc" tabindex="0">
+          <h3>Processo</h3>
+          <p>Scrum e desenvolvimento colaborativo no GitHub (dois cursos de 30 h pela UCB). Nos fluxos com agentes: análise, implementação, revisão e aprovação humana no fim, com protótipo descartável em uma branch local que nunca sobe.</p>
+          <div class="tags"><span class="chip">Scrum</span><span class="chip">Git e GitHub</span><span class="chip">Revisão de código</span><span class="chip">Protótipo descartável</span></div>
+        </div>
+        <div class="panel" data-tone="dark" role="tabpanel" id="p-neg" aria-labelledby="tab-neg" tabindex="0">
+          <h3>Negócio</h3>
+          <p>Fundador da Muvve Tech, agência de marketing digital em Brasília: gestão de campanhas no Google Ads e no Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p>
+          <div class="tags"><span class="chip">Google Ads</span><span class="chip">Meta Ads</span><span class="chip">Redes sociais</span><span class="chip">Propostas e contratos</span></div>
         </div>
       </div>
-      <ul class="certs" id="certs"></ul>
-    </section>
+    </div>
+  </section>
 
-    <section id="contato" data-sec>
-      <div class="closing">
-        <p class="mono eyebrow">Contato</p>
-        <h2>Tem um problema que um time de agentes resolveria?</h2>
-        <p class="lede">Converso sobre IA aplicada, agentes de código, assistentes de voz e produtos com modelos de linguagem.</p>
-        <ul class="contacts" id="contacts"></ul>
+  <!-- 7. Trajetória -->
+  <section id="trajetoria" class="sec" data-tone="dark" aria-labelledby="t-traj">
+    <div class="wrap">
+      <p class="mono eyebrow">Trajetória · trabalho, formação e certificados</p>
+      <h2 id="t-traj" class="h-giant">Trajetória</h2>
+      <div class="traj-bar">
+        <p class="stat"><span id="cCount">15</span><small id="cLabel">itens</small><span id="cHours" hidden>0</span></p>
+        <div class="filters" role="group" aria-label="Filtrar a trajetória">
+          <button type="button" data-f="all" aria-pressed="true">Tudo</button>
+          <button type="button" data-f="trabalho" aria-pressed="false">Trabalho</button>
+          <button type="button" data-f="cert" aria-pressed="false">Certificados</button>
+        </div>
       </div>
-      <footer>© 2026 Pedro Cauã Rodrigues Pereira · Feito em Brasília</footer>
-    </section>
-  </main>
-</div>
+    </div>
+    <ul class="car" id="car" tabindex="0" aria-label="Trajetória, role para o lado">
+      <li class="item" data-g="trabalho"><div><p class="mono k">Atual · Trabalho</p><h3>Desenvolvedor frontend</h3></div><p>Tribunal Superior Eleitoral · equipe SEUE. Funcionalidades, testes unitários e ajustes de interface em Angular 16. Levo agentes e skills de IA para o fluxo de trabalho, da leitura da tarefa até a branch pronta.</p></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">Atual · Trabalho</p><h3>Fundador e gestor de tráfego</h3></div><p>Muvve Tech · Brasília. Agência de marketing digital. Gestão de campanhas no Google Ads e Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p></li>
+      <li class="item" data-g="formacao"><div><p class="mono k">Atual · Formação</p><h3>Ciência da Computação, 7º semestre</h3></div><p>Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Intermediate Data Visualization with Seaborn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Unsupervised Learning in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Supervised Learning with scikit-learn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Introduction to FastAPI</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Python Toolbox</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="2"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Intermediate Python for Developers</h3></div><div class="foot mono"><span>2 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Object-Oriented Programming in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="3"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Introduction to Python for Developers</h3></div><div class="foot mono"><span>3 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Fundamentos do SCRUM</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
+      <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Desenvolvimento colaborativo em GitHub</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
+      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-09-01">1 set 2024</time></p><h3>Nivelamento em Introdução às Finanças Corporativas</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
+      <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-08-20">20 ago 2024</time></p><h3>Nivelamento em Matemática Elementar</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
+    </ul>
+    <div class="wrap">
+      <div class="car-ctl">
+        <button class="round" type="button" id="carPrev" aria-label="Anterior" hidden>←</button>
+        <button class="round" type="button" id="carNext" aria-label="Próximo" hidden>→</button>
+        <span class="count" id="carCount" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
 
+  <!-- 8. Sobre -->
+  <section id="sobre" class="sec" data-tone="paper" aria-labelledby="t-sobre">
+    <div class="wrap sobre-grid">
+      <div class="sobre-text">
+        <p class="mono eyebrow">Sobre</p>
+        <h2 id="t-sobre" class="h-giant">Quem sou eu?</h2>
+        <p>Sou o Pedro Cauã. Trabalho como desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital.</p>
+        <p>Meu foco é IA aplicada: agentes que escrevem e revisam código, assistentes de voz e produtos movidos por modelos de linguagem.</p>
+      </div>
+      <div class="id-card" data-tone="dark">
+        <div class="id-top">
+          <!-- [PENDENTE: foto de perfil em WebP, tamanho real de uso] -->
+          <div class="mono-tile" aria-hidden="true">PC</div>
+          <div><h3>Pedro Cauã</h3><p>Desenvolvedor frontend · TSE</p></div>
+        </div>
+        <div class="id-cv">
+          <span>[PENDENTE: PDF do currículo]</span>
+          <button class="btn btn--sm" type="button" disabled>Baixar currículo</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Contato -->
+  <section id="contato" class="contato" data-tone="dark" aria-labelledby="t-contato">
+    <div class="wrap contato-in">
+      <p class="mono eyebrow">Contato</p>
+      <h2 id="t-contato">Vamos conversar?</h2>
+      <p class="lede">Converso sobre desenvolvimento frontend, IA aplicada, agentes de código, assistentes de voz e produtos com modelos de linguagem.</p>
+      <ul class="contacts" id="contacts">
+        <li><span class="mono lab">GitHub</span><a class="val" href="https://github.com/pedrocaua10" rel="noopener">github.com/pedrocaua10</a><button class="btn btn--sm" type="button" data-copy="https://github.com/pedrocaua10">Copiar</button></li>
+        <li><span class="mono lab">LinkedIn</span><span class="pend">[PENDENTE: URL do LinkedIn]</span><button class="btn btn--sm" type="button" disabled>Copiar</button></li>
+        <li><span class="mono lab">E-mail</span><span class="pend">[PENDENTE: e-mail]</span><button class="btn btn--sm" type="button" disabled>Copiar</button></li>
+      </ul>
+    </div>
+    <div class="wrap">
+      <footer class="rodape">© 2026 Pedro Cauã · Brasília</footer>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function $(s,r){return (r||document).querySelector(s)}
-  function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+  "use strict";
   var root = document.documentElement;
+  var reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  function $(s, r){ return (r || document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
 
-  /* contatos: preencha para exibir. Exemplo: {label:'E-mail', value:'voce@dominio.com'} ou {label:'LinkedIn', value:'linkedin.com/in/seu-perfil', href:'https://linkedin.com/in/seu-perfil'} */
-  var CONTACT = [];
-
-  /* tema */
+  /* ----- tema ----- */
   function isDark(){
-    var t = root.getAttribute('data-theme');
-    if(t) return t === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var t = root.getAttribute("data-theme");
+    if(t) return t === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
-  function themeLabel(){ $$('[data-theme-toggle]').forEach(function(b){ b.textContent = isDark() ? 'Tema claro' : 'Tema escuro'; }); }
-  $$('[data-theme-toggle]').forEach(function(b){
-    b.addEventListener('click', function(){ root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); themeLabel(); });
+  function themeLabel(){ $$("[data-theme-toggle]").forEach(function(b){ b.textContent = isDark() ? "Tema claro" : "Tema escuro"; }); }
+  $$("[data-theme-toggle]").forEach(function(b){
+    b.addEventListener("click", function(){ root.setAttribute("data-theme", isDark() ? "light" : "dark"); themeLabel(); });
   });
   themeLabel();
 
-  /* progresso e fluxo de agentes */
-  var railNav = $('.rail nav'), bar = $('.topbar i'), steps = $('#steps'), stepEls = $$('.step');
-  var ticking = false;
-  function clamp(v){ return Math.min(1, Math.max(0, v)); }
+  /* ----- menu móvel: fecha por link, clique fora e Esc, e devolve o foco ----- */
+  var burger = $("#burger"), drawer = $("#menu"), scrim = $("#scrim");
+  function setMenu(open){
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    drawer.classList.toggle("open", open);
+    scrim.classList.toggle("open", open);
+    if(open){ var first = $("a", drawer); if(first) first.focus({preventScroll:true}); }
+  }
+  burger.addEventListener("click", function(){ setMenu(burger.getAttribute("aria-expanded") !== "true"); });
+  scrim.addEventListener("click", function(){ setMenu(false); burger.focus(); });
+  $$("a.dl", drawer).forEach(function(a){ a.addEventListener("click", function(){ setMenu(false); }); });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape" && drawer.classList.contains("open")){ setMenu(false); burger.focus(); }
+  });
+  window.matchMedia("(min-width: 901px)").addEventListener("change", function(e){ if(e.matches) setMenu(false); });
+
+  /* ----- copiar ----- */
+  $$("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var done = function(){ btn.textContent = "Copiado"; setTimeout(function(){ btn.textContent = "Copiar"; }, 1500); };
+      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(btn.getAttribute("data-copy")).then(done, function(){}); }
+    });
+  });
+
+  /* ----- cor do cabeçalho, link ativo e progresso (lidos da posição, sem depender dos pins) ----- */
+  var header = $("#topo"), bar = $(".progress i");
+  var sections = $$("main > section[data-tone]");
+  var links = {};
+  $$(".nav a").forEach(function(a){ links[a.getAttribute("href").slice(1)] = a; });
+  var ticking = false, lastId = "";
   function update(){
     ticking = false;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    var p = max > 0 ? clamp(window.scrollY / max) : 0;
-    if(railNav) railNav.style.setProperty('--p', p);
-    if(bar) bar.style.width = (p * 100) + '%';
-    var c = window.innerHeight * 0.6;
-    var r = steps.getBoundingClientRect();
-    steps.style.setProperty('--p', clamp((c - r.top) / r.height));
-    stepEls.forEach(function(el){ el.classList.toggle('done', el.getBoundingClientRect().top < c); });
+    var h = header.offsetHeight, cur = sections[0];
+    for(var i = 0; i < sections.length; i++){
+      var r = sections[i].getBoundingClientRect();
+      if(r.top <= h && r.bottom > h){ cur = sections[i]; break; }
+    }
+    if(header.getAttribute("data-tone") !== cur.getAttribute("data-tone")) header.setAttribute("data-tone", cur.getAttribute("data-tone"));
+    if(cur.id !== lastId){
+      lastId = cur.id;
+      Object.keys(links).forEach(function(k){ if(k === cur.id) links[k].setAttribute("aria-current", "true"); else links[k].removeAttribute("aria-current"); });
+    }
+    var max = root.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0) + ")";
   }
   function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", onScroll);
   update();
 
-  /* seção ativa no trilho */
-  var links = {};
-  $$('[data-nav]').forEach(function(a){ links[a.getAttribute('data-nav')] = a; });
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
-          if(links[e.target.id]) links[e.target.id].setAttribute('aria-current','true');
-        }
-      });
-    }, {rootMargin:'-40% 0px -55% 0px'});
-    $$('[data-sec]').forEach(function(s){ io.observe(s); });
+  /* ----- GSAP: registro e recálculo depois de fontes e carga ----- */
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    var refresh = function(){ ScrollTrigger.refresh(); update(); };
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    window.addEventListener("load", refresh);
   }
-  if(links.inicio) links.inicio.setAttribute('aria-current','true');
-
-  /* animação do fluxo no hero */
-  var lines = $$('.trace li'), foot = $('#traceFoot'), token = 0;
-  function runTrace(){
-    var my = ++token, i = 0;
-    lines.forEach(function(li){ li.className = ''; $('.st', li).textContent = '…'; });
-    foot.classList.remove('ok');
-    (function next(){
-      if(my !== token) return;
-      if(i >= lines.length){ foot.classList.add('ok'); return; }
-      var li = lines[i++];
-      li.className = 'run';
-      setTimeout(function(){
-        if(my !== token) return;
-        li.className = 'ok';
-        $('.st', li).textContent = '✓';
-        next();
-      }, 650);
-    })();
-  }
-  if(!reduce) setTimeout(runTrace, 400);
-  $('#replay').addEventListener('click', function(){
-    if(reduce){ return; }
-    runTrace();
-  });
-
-  /* certificados */
-  var AREA = {ia:'IA e dados', py:'Python e APIs', proc:'Processos e equipe', base:'Base acadêmica'};
-  var CERTS = [
-    {t:'Intermediate Data Visualization with Seaborn', i:'DataCamp', h:4, d:'2025-06-13', a:'ia'},
-    {t:'Unsupervised Learning in Python', i:'DataCamp', h:4, d:'2025-06-13', a:'ia'},
-    {t:'Supervised Learning with scikit-learn', i:'DataCamp', h:4, d:'2025-06-09', a:'ia'},
-    {t:'Introduction to FastAPI', i:'DataCamp', h:4, d:'2025-06-09', a:'py'},
-    {t:'Python Toolbox', i:'DataCamp', h:4, d:'2025-05-10', a:'py'},
-    {t:'Intermediate Python for Developers', i:'DataCamp', h:2, d:'2025-05-10', a:'py'},
-    {t:'Object-Oriented Programming in Python', i:'DataCamp', h:4, d:'2025-05-09', a:'py'},
-    {t:'Introduction to Python for Developers', i:'DataCamp', h:3, d:'2025-05-09', a:'py'},
-    {t:'Fundamentos do SCRUM', i:'TIC em Trilhas · UCB', h:30, d:'2024-09-27', a:'proc'},
-    {t:'Desenvolvimento colaborativo em GitHub', i:'TIC em Trilhas · UCB', h:30, d:'2024-09-27', a:'proc'},
-    {t:'Nivelamento em Introdução às Finanças Corporativas', i:'Católica EAD · UCB', h:40, d:'2024-09-01', a:'base'},
-    {t:'Nivelamento em Matemática Elementar', i:'Católica EAD · UCB', h:40, d:'2024-08-20', a:'base'}
-  ];
-  var MONTHS = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-  function fmt(d){ var p = d.split('-'); return p[2] + ' ' + MONTHS[+p[1]-1] + ' ' + p[0]; }
-  var grid = $('#certs'), cCount = $('#cCount'), cHours = $('#cHours');
-  function tween(el, to){
-    var from = +el.textContent || 0;
-    if(reduce || from === to){ el.textContent = to; return; }
-    var t0 = null, dur = 500;
-    function f(ts){
-      if(t0 === null) t0 = ts;
-      var k = Math.min(1, (ts - t0) / dur), e = 1 - Math.pow(1 - k, 3);
-      el.textContent = Math.round(from + (to - from) * e);
-      if(k < 1) requestAnimationFrame(f);
-    }
-    requestAnimationFrame(f);
-  }
-  function render(f){
-    var list = CERTS.filter(function(c){ return f === 'all' || c.a === f; });
-    grid.innerHTML = '';
-    list.forEach(function(c){
-      var li = document.createElement('li');
-      li.className = 'cert';
-      var top = document.createElement('span'); top.className = 'mono cert-top'; top.textContent = c.i + ' · ' + fmt(c.d);
-      var h = document.createElement('h3'); h.textContent = c.t;
-      var foot = document.createElement('div'); foot.className = 'cert-foot';
-      var hrs = document.createElement('span'); hrs.className = 'mono'; hrs.textContent = c.h + ' h';
-      var chip = document.createElement('span'); chip.className = 'chip'; chip.textContent = AREA[c.a];
-      foot.appendChild(hrs); foot.appendChild(chip);
-      li.appendChild(top); li.appendChild(h); li.appendChild(foot);
-      grid.appendChild(li);
-    });
-    tween(cCount, list.length);
-    tween(cHours, list.reduce(function(s,c){ return s + c.h; }, 0));
-  }
-  $$('.filters button').forEach(function(b){
-    b.addEventListener('click', function(){
-      $$('.filters button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      render(b.getAttribute('data-f'));
-    });
-  });
-  render('all');
-
-  /* contatos */
-  var ul = $('#contacts');
-  if(!CONTACT.length){ ul.remove(); }
-  else CONTACT.forEach(function(c){
-    var li = document.createElement('li');
-    var lab = document.createElement('span'); lab.className = 'mono muted'; lab.textContent = c.label;
-    li.appendChild(lab);
-    if(c.href){
-      var a = document.createElement('a'); a.href = c.href; a.textContent = c.value; a.className = 'btn small'; li.appendChild(a);
-    } else {
-      var code = document.createElement('code'); code.textContent = c.value; li.appendChild(code);
-    }
-    var cp = document.createElement('button'); cp.type = 'button'; cp.className = 'btn small'; cp.textContent = 'Copiar';
-    cp.addEventListener('click', function(){
-      function done(){ cp.textContent = 'Copiado'; setTimeout(function(){ cp.textContent = 'Copiar'; }, 1500); }
-      if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(c.value).then(done, function(){}); }
-    });
-    li.appendChild(cp);
-    ul.appendChild(li);
-  });
 })();
 </script>
 </body>

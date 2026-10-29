@@ -349,6 +349,10 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .item .foot{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;color:var(--t-smu)}
 .car-ctl{display:flex;align-items:center;gap:14px;padding-top:4px}
 .car-ctl .round{width:40px;height:40px;font-size:1.05rem}
+.car.is-auto{scroll-snap-type:none}
+#carPlay .i-play{display:none}
+#carPlay[aria-pressed="false"] .i-pause{display:none}
+#carPlay[aria-pressed="false"] .i-play{display:block}
 .car-ctl .count{font:500 .8rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-mu)}
 
 /* ===== sobre ===== */
@@ -520,6 +524,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <div class="car-ctl">
         <button class="round" type="button" id="carPrev" aria-label="Anterior" hidden>←</button>
         <button class="round" type="button" id="carNext" aria-label="Próximo" hidden>→</button>
+        <button class="round" type="button" id="carPlay" hidden aria-pressed="true" aria-label="Pausar rolagem automática" title="Pausar rolagem automática"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path class="i-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/><path class="i-play" d="M8 5.5v13l11-6.5z"/></svg></button>
         <span class="count" id="carCount" aria-live="polite"></span>
       </div>
     </div>
@@ -580,10 +585,10 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
           <h2 id="t-nodify" class="h-big">Nodify em ação</h2>
           <p class="lede">A câmera frontal capta o movimento da cabeça e o app responde no Spotify. Quatro etapas do gesto ao comando.</p>
           <ol class="gestos" id="gestos">
-            <li class="gesto"><span class="n" aria-hidden="true">1</span><h3>A câmera acompanha o rosto</h3><p>Comando: [PENDENTE: comando real]</p></li>
-            <li class="gesto"><span class="n" aria-hidden="true">2</span><h3>Cabeça para a direita</h3><p>Comando: [PENDENTE: comando real]</p></li>
-            <li class="gesto"><span class="n" aria-hidden="true">3</span><h3>Cabeça para a esquerda</h3><p>Comando: [PENDENTE: comando real]</p></li>
-            <li class="gesto"><span class="n" aria-hidden="true">4</span><h3>Aceno para baixo</h3><p>Comando: [PENDENTE: comando real]</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">1</span><h3>Detecção do rosto</h3><p>Câmera frontal ativa, sem enviar imagem para fora do celular.</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">2</span><h3>Cabeça para a direita</h3><p>Comando: pular faixa</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">3</span><h3>Cabeça para a esquerda</h3><p>Comando: voltar para a faixa anterior</p></li>
+            <li class="gesto"><span class="n" aria-hidden="true">4</span><h3>Aceno para baixo</h3><p>Comando: abaixar a música</p></li>
           </ol>
           <p class="privacy" id="privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Processamento 100% no aparelho</p>
         </div>
@@ -605,6 +610,9 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
             <rect class="ph-bar" x="54" y="444" width="192" height="6" rx="3"/>
             <rect class="ph-fill" id="bar" x="54" y="444" width="64" height="6" rx="3"/>
             <g class="ph-ctl"><path d="M96 500l-16 11 16 11zM84 500v22"/><path d="M142 498h8v26h-8zM156 498h8v26h-8z"/><path d="M204 500l16 11-16 11z"/></g>
+            <text class="ph-s" x="54" y="556">Volume</text>
+            <rect class="ph-bar" x="108" y="550" width="138" height="6" rx="3"/>
+            <rect class="ph-fill" id="vol" x="108" y="550" width="104" height="6" rx="3"/>
           </svg>
           <figcaption>Ilustração do conceito</figcaption>
         </figure>
@@ -910,9 +918,74 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       b.addEventListener("click", function(){
         $$(".filters button").forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
         filter(b.getAttribute("data-f"));
+        auto.pos = 0; auto.phase = "drift"; kick();
       });
     });
     sync();
+
+    /* rolagem automática: deriva devagar para a direita, volta ao começo no fim; pausa ao passar o mouse, ao focar,
+       quando a seção sai da tela, quando a pessoa mexe no carrossel e pelo botão. Desligada com movimento reduzido. */
+    var play = $("#carPlay"), SPEED = 55;
+    var auto = { on: !reduced(), userPaused: false, hover: false, focus: false, visible: false, pos: 0, last: 0, phase: "drift", wait: 0, raf: 0 };
+    function rodando(){ return auto.on && !auto.userPaused; }
+    function shouldRun(){ return rodando() && !auto.hover && !auto.focus && auto.visible && !document.hidden; }
+    function paintBtn(){
+      var r = rodando();
+      play.setAttribute("aria-pressed", r ? "true" : "false");
+      var t = r ? "Pausar rolagem automática" : "Retomar rolagem automática";
+      play.setAttribute("aria-label", t); play.title = t;
+      car.classList.toggle("is-auto", r);
+    }
+    function kick(){ if(!auto.raf && shouldRun()) auto.raf = requestAnimationFrame(frame); }
+    function userPause(){ if(!auto.userPaused){ auto.userPaused = true; paintBtn(); } }
+    function frame(ts){
+      auto.raf = 0;
+      if(!shouldRun()){ auto.last = 0; return; }
+      var max = car.scrollWidth - car.clientWidth;
+      if(max <= 2){ auto.last = 0; return; }
+      var seguindo = auto.last !== 0;
+      var dt = seguindo ? Math.min(64, ts - auto.last) : 16;
+      auto.last = ts;
+      if(!seguindo) auto.pos = car.scrollLeft;
+      if(auto.phase === "drift"){
+        if(seguindo && Math.abs(car.scrollLeft - Math.round(auto.pos)) > 3){ userPause(); return; }
+        auto.pos = Math.min(max, auto.pos + SPEED * dt / 1000);
+        car.scrollLeft = auto.pos;
+        if(auto.pos >= max - 0.5){ auto.phase = "fim"; auto.wait = 2200; }
+      } else if(auto.phase === "fim"){
+        auto.wait -= dt;
+        if(auto.wait <= 0){ auto.phase = "volta"; car.scrollTo({ left: 0, behavior: "smooth" }); }
+      } else if(auto.phase === "volta"){
+        if(car.scrollLeft <= 1){ auto.phase = "inicio"; auto.wait = 1200; auto.pos = 0; }
+      } else {
+        auto.wait -= dt;
+        if(auto.wait <= 0) auto.phase = "drift";
+      }
+      kick();
+    }
+    if(auto.on){
+      play.hidden = false; paintBtn();
+      play.addEventListener("click", function(){
+        auto.userPaused = !auto.userPaused;
+        if(!auto.userPaused){ auto.pos = car.scrollLeft; auto.phase = "drift"; auto.last = 0; }
+        paintBtn(); kick();
+      });
+      [car, $(".car-ctl")].forEach(function(el){
+        el.addEventListener("pointerenter", function(e){ if(e.pointerType === "mouse"){ auto.hover = true; } });
+        el.addEventListener("pointerleave", function(e){ if(e.pointerType === "mouse"){ auto.hover = false; auto.last = 0; kick(); } });
+      });
+      car.addEventListener("pointerdown", function(e){ if(e.pointerType !== "mouse") userPause(); });
+      prev.addEventListener("click", userPause);
+      next.addEventListener("click", userPause);
+      car.addEventListener("keydown", function(e){ if(e.key === "ArrowLeft" || e.key === "ArrowRight") userPause(); });
+      var area = $("#trajetoria");
+      area.addEventListener("focusin", function(e){ if(e.target.matches && e.target.matches(":focus-visible")) auto.focus = true; });
+      area.addEventListener("focusout", function(){ auto.focus = false; auto.last = 0; kick(); });
+      document.addEventListener("visibilitychange", function(){ auto.last = 0; kick(); });
+      if("IntersectionObserver" in window){
+        new IntersectionObserver(function(es){ auto.visible = es[0].isIntersecting; auto.last = 0; kick(); }, { threshold: 0.25 }).observe(area);
+      } else { auto.visible = true; kick(); }
+    }
   })();
 
   /* ----- copiar ----- */
@@ -992,7 +1065,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     mm.add(MOTION, function(){
       if(reduced()) return;
       var sec = $("#nodify"), stage = $("#nodifyStage");
-      var head = $("#head"), feat = $("#feat"), frame = $("#frame"), fill = $("#bar"), trk = $("#trk"), stt = $("#stt");
+      var head = $("#head"), feat = $("#feat"), frame = $("#frame"), fill = $("#bar"), trk = $("#trk"), stt = $("#stt"), vol = $("#vol");
       var items = $$("#gestos .gesto"), priv = $("#privacy");
       var last = { i: -1, hot: null, track: 0, paused: null };
       sec.classList.add("is-pinned");
@@ -1005,8 +1078,9 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         var track, a, b;
         if(seg < 1.5){ track = 1; a = 0; b = 1.5; } else if(seg < 2.5){ track = 2; a = 1.5; b = 2.5; } else { track = 1; a = 2.5; b = 4; }
         if(track !== last.track){ trk.textContent = "Faixa " + track; last.track = track; }
-        var paused = seg >= 3.6;
-        if(paused !== last.paused){ stt.textContent = paused ? "Pausado" : "Tocando"; last.paused = paused; }
+        var baixou = seg >= 3.6;
+        if(baixou !== last.paused){ stt.textContent = baixou ? "Volume menor" : "Tocando"; last.paused = baixou; }
+        vol.setAttribute("width", (104 * (seg < 3.5 ? 1 : Math.max(0.4, 1 - (seg - 3.5) * 1.2))).toFixed(1));
         var f = Math.min(1, Math.max(0, (seg - a) / (b - a)));
         fill.setAttribute("width", (192 * (0.06 + 0.8 * f)).toFixed(1));
       }
@@ -1026,7 +1100,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         sec.classList.remove("is-pinned");
         items.forEach(function(el){ el.classList.remove("is-on"); });
         priv.classList.remove("is-hot");
-        trk.textContent = "Faixa 1"; stt.textContent = "Tocando"; fill.setAttribute("width", "64");
+        trk.textContent = "Faixa 1"; stt.textContent = "Tocando"; fill.setAttribute("width", "64"); vol.setAttribute("width", "104");
       };
     });
 

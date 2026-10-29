@@ -171,6 +171,13 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .card-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:6px}
 .hint{padding:6px max(var(--gut),env(safe-area-inset-left,0px)) 0;font:500 .78rem var(--font-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-mu)}
 .projetos-wrap{padding-bottom:clamp(24px,4vw,48px)}
+.hint{transition:opacity var(--dur-base) var(--ease-out)}
+/* modo "pin": o JS liga esta classe só em telas largas e com movimento permitido; sem ela, o trilho rola na horizontal com snap */
+#projetos.is-track{overflow-x:clip}
+.is-track .projetos-wrap{height:100vh;padding:var(--hdr) 0 0}
+.is-track .trilho{position:relative;overflow:visible;scroll-snap-type:none;padding-block:8px;will-change:transform}
+.is-track .card{scroll-snap-align:none}
+.is-track .hint{padding-top:14px}
 
 /* ===== cenas (Nodify e Agentes) ===== */
 .stage{padding-block:clamp(40px,5vw,72px)}
@@ -717,6 +724,41 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   /* ----- GSAP: registro e recálculo depois de fontes e carga ----- */
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
+    var mm = gsap.matchMedia();
+    var MOTION = "(min-width: 901px) and (prefers-reduced-motion: no-preference)";
+
+    /* projetos na horizontal: o scroll vertical empurra o trilho para o lado */
+    mm.add(MOTION, function(){
+      var sec = $("#projetos"), wrap = $("#projetosWrap"), trilho = $("#trilho"), dica = $("#trilhoHint");
+      sec.classList.add("is-track");
+      trilho.removeAttribute("tabindex");
+      var distancia = function(){ return Math.max(1, trilho.scrollWidth - window.innerWidth + 80); };
+      var tween = gsap.to(trilho, {
+        x: function(){ return -distancia(); },
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrap, start: "top top", end: function(){ return "+=" + distancia(); },
+          scrub: true, pin: true, invalidateOnRefresh: true,
+          onUpdate: function(self){ dica.style.opacity = self.progress > 0.05 ? "0" : "1"; }
+        }
+      });
+      /* foco por teclado em um cartão fora da tela leva o scroll até ele */
+      function onFocus(e){
+        var card = e.target.closest && e.target.closest(".card");
+        if(!card) return;
+        var st = tween.scrollTrigger, d = distancia();
+        var alvo = Math.min(d, Math.max(0, card.offsetLeft - parseFloat(getComputedStyle(trilho).paddingLeft)));
+        window.scrollTo({ top: st.start + (alvo / d) * (st.end - st.start), behavior: "instant" });
+      }
+      trilho.addEventListener("focusin", onFocus);
+      return function(){
+        trilho.removeEventListener("focusin", onFocus);
+        sec.classList.remove("is-track");
+        trilho.setAttribute("tabindex", "0");
+        dica.style.opacity = "";
+      };
+    });
+
     var refresh = function(){ ScrollTrigger.refresh(); update(); };
     if(document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
     window.addEventListener("load", refresh);

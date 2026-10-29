@@ -8,7 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* ===== tokens ===== */
 :root{
@@ -66,7 +66,7 @@ button{font:inherit;color:inherit}
 .h-giant{font:800 clamp(46px,7vw,96px)/.9 var(--font-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
 .h-big{font:800 clamp(40px,5.2vw,76px)/.92 var(--font-display);text-transform:uppercase;letter-spacing:.01em;text-wrap:balance}
 .lede{font-size:1.125rem;max-width:40rem}
-.sec{padding-block:clamp(40px,5vw,72px)}
+.sec{padding-block:clamp(32px,4vw,56px)}
 main>section[data-tone]:not(#inicio){border-top:2px dotted var(--t-ln)}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:.7em 1.3em;border:1.5px solid currentColor;border-radius:999px;background:transparent;color:inherit;font:600 .95rem/1.2 var(--font-body);text-decoration:none;cursor:pointer;
@@ -119,7 +119,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 }
 
 /* ===== início ===== */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr) + 24px) 0 112px}
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr) + 24px) 0 84px}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:40px}
 .hero-text{display:grid;gap:20px;justify-items:start}
 .nome{font:800 clamp(72px,14vw,200px)/.95 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
@@ -157,7 +157,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 @keyframes rolar{to{transform:translateX(-50%)}}
 
 /* ===== projetos ===== */
-.projetos-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 30px;padding-block:clamp(40px,5vw,72px) 28px}
+.projetos-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 30px;padding-block:clamp(32px,4vw,56px) 24px}
 .projetos-head p{max-width:24rem;color:var(--t-mu)}
 .projetos-wrap{display:flex;flex-direction:column;justify-content:center}
 .trilho{display:flex;gap:34px;align-items:stretch;padding:20px var(--edge) 28px;scroll-padding-inline:var(--edge);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--t-mu) transparent}
@@ -180,7 +180,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .is-track .hint{padding-top:14px}
 
 /* ===== cenas (Nodify e Agentes) ===== */
-.stage{padding-block:clamp(40px,5vw,72px)}
+.stage{padding-block:clamp(32px,4vw,56px)}
 .stage-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
 @media (min-width:900px){.stage-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
 .stage-copy{display:grid;gap:18px;align-content:center}
@@ -230,7 +230,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .trace-foot{padding:12px 16px;color:var(--t-mu)}
 .trace-foot.ok{color:var(--ok-on-dark)}
 @media (max-width:560px){.trace li{grid-template-columns:20px minmax(0,1fr)}.trace .what{grid-column:2}}
-.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 32px;padding-block:clamp(8px,2vw,24px) clamp(40px,5vw,72px)}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px 32px;padding-block:clamp(8px,2vw,24px) clamp(32px,4vw,56px)}
 .principles li{display:grid;gap:8px;align-content:start;padding-top:16px;border-top:2px solid var(--t-fg)}
 .principles h3{font:600 1.2rem/1.25 var(--font-body)}
 .principles p{color:var(--t-mu)}
@@ -299,16 +299,18 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 @media (max-width:1100px){.sobre-grid{grid-template-columns:minmax(0,1fr)}.id-card{margin-top:0}}
 
 /* ===== contato ===== */
-.contato{padding-block:clamp(48px,6vw,88px) 28px}
+.contato{padding-block:clamp(40px,5vw,72px) 24px}
 .contato-in{display:grid;gap:22px;justify-items:center;text-align:center}
 .contato h2{font:800 clamp(52px,11vw,150px)/.88 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
 .contato .lede{max-width:34rem}
 .contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .contacts li{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;border:1.5px solid var(--t-ln);border-radius:999px}
 .contacts .lab{color:var(--t-mu)}
-.contacts a.val{font:500 .9rem var(--font-mono);overflow-wrap:anywhere}
+.contacts a.val{display:inline-block;padding-block:6px;font:500 .9rem var(--font-mono);overflow-wrap:anywhere}
 .pend{font:500 .8rem var(--font-mono);color:var(--t-mu)}
 footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px dashed var(--t-ln);color:var(--t-mu);font-size:.85rem}
+
+.theme-swap *,.theme-swap *::before,.theme-swap *::after{transition:none!important}
 
 /* ===== movimento reduzido ===== */
 @media (prefers-reduced-motion: reduce){
@@ -317,6 +319,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   .nome.is-split .ch{opacity:1!important;transform:none!important}
 }
 </style>
+<noscript><style>@media (max-width:900px){.burger{display:none}.nav{display:flex;flex:1;margin-inline:0;overflow-x:auto}}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
@@ -345,7 +348,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     </div>
   </div>
   <div class="scrim" id="scrim"></div>
-  <div class="drawer" id="menu" data-tone="dark" aria-label="Menu">
+  <nav class="drawer" id="menu" data-tone="dark" aria-label="Menu">
     <a class="dl" href="#projetos">Projetos</a>
     <a class="dl" href="#nodify">Nodify</a>
     <a class="dl" href="#agentes">Agentes</a>
@@ -359,10 +362,10 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <li><button class="round" type="button" disabled aria-label="E-mail (indisponível)" title="[PENDENTE: e-mail]"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></button></li>
     </ul>
     <button class="btn btn--sm" type="button" data-theme-toggle style="align-self:flex-start">Tema escuro</button>
-  </div>
+  </nav>
 </header>
 
-<main id="conteudo">
+<main id="conteudo" tabindex="-1">
 
   <!-- 1. Início -->
   <section id="inicio" class="hero" data-tone="accent" aria-labelledby="nome">
@@ -663,7 +666,11 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
   }
   function themeLabel(){ $$("[data-theme-toggle]").forEach(function(b){ b.textContent = isDark() ? "Tema claro" : "Tema escuro"; }); }
   $$("[data-theme-toggle]").forEach(function(b){
-    b.addEventListener("click", function(){ root.setAttribute("data-theme", isDark() ? "light" : "dark"); themeLabel(); });
+    b.addEventListener("click", function(){
+      root.classList.add("theme-swap");
+      root.setAttribute("data-theme", isDark() ? "light" : "dark"); themeLabel();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ root.classList.remove("theme-swap"); }); });
+    });
   });
   themeLabel();
 
@@ -957,8 +964,8 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     });
 
     var refresh = function(){ ScrollTrigger.refresh(); update(); };
-    if(document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
-    window.addEventListener("load", refresh);
+    var loaded = document.readyState === "complete" ? Promise.resolve() : new Promise(function(res){ window.addEventListener("load", res); });
+    Promise.all([loaded, document.fonts && document.fonts.ready]).then(refresh);
   }
 })();
 </script>

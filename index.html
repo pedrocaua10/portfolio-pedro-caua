@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pedro Cauã · Desenvolvedor frontend</title>
-<meta name="description" content="Portfólio de Pedro Cauã, desenvolvedor frontend em Brasília: Angular no TSE, projetos com IA aplicada, agentes de código, Nodify e certificados.">
+<title>Pedro Cauã · Estagiário full stack</title>
+<meta name="description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.">
 <meta name="author" content="Pedro Cauã">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#1E3FE0" media="(prefers-color-scheme: light)">
@@ -15,16 +15,16 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Pedro Cauã">
-<meta property="og:title" content="Pedro Cauã · Desenvolvedor frontend">
-<meta property="og:description" content="Portfólio de Pedro Cauã, desenvolvedor frontend em Brasília: Angular no TSE, projetos com IA aplicada, agentes de código, Nodify e certificados.">
+<meta property="og:title" content="Pedro Cauã · Estagiário full stack">
+<meta property="og:description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.">
 <meta property="og:url" content="https://[PENDENTE: URL final]/">
 <meta property="og:image" content="https://[PENDENTE: URL final]/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Pedro Cauã, desenvolvedor frontend em Brasília, com os quadrados P e C sobre fundo azul">
+<meta property="og:image:alt" content="Pedro Cauã, estagiário full stack em Brasília, com os quadrados P e C sobre fundo azul">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Pedro Cauã · Desenvolvedor frontend">
-<meta name="twitter:description" content="Portfólio de Pedro Cauã, desenvolvedor frontend em Brasília: Angular no TSE, projetos com IA aplicada, agentes de código, Nodify e certificados.">
+<meta name="twitter:title" content="Pedro Cauã · Estagiário full stack">
+<meta name="twitter:description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.">
 <meta name="twitter:image" content="https://[PENDENTE: URL final]/og.png">
 <!-- [PENDENTE: URL do LinkedIn] acrescente em sameAs quando existir -->
 <script type="application/ld+json">
@@ -33,8 +33,8 @@
   "@type": "Person",
   "name": "Pedro Cauã Rodrigues Pereira",
   "alternateName": "Pedro Cauã",
-  "jobTitle": "Desenvolvedor frontend",
-  "description": "Portfólio de Pedro Cauã, desenvolvedor frontend em Brasília: Angular no TSE, projetos com IA aplicada, agentes de código, Nodify e certificados.",
+  "jobTitle": "Estagiário full stack",
+  "description": "Portfólio de Pedro Cauã, estagiário full stack em Brasília: Angular e testes unitários no TSE, QA, projetos com IA aplicada, Nodify (TCC) e certificados.",
   "url": "https://[PENDENTE: URL final]/",
   "image": "https://[PENDENTE: URL final]/og.png",
   "worksFor": {
@@ -351,8 +351,11 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .mono-tile{display:grid;place-items:center;flex:none;width:72px;height:72px;border-radius:14px;background:var(--accent);color:var(--on-accent);font:800 34px/1 var(--font-display);letter-spacing:.03em}
 .id-top h3{font:800 1.9rem/1 var(--font-display);text-transform:uppercase}
 .id-top p{font-size:.9rem;color:var(--t-mu)}
-.id-cv{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:18px;border-top:1px solid var(--t-ln);color:var(--t-mu);font-size:.9rem}
-.id-cv .btn{color:var(--t-fg)}
+.id-card .tags .chip{color:var(--t-fg)}
+.id-meta{color:var(--t-mu)}
+.id-cv{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-top:18px;border-top:1px solid var(--t-ln)}
+.link-quiet{display:inline-block;padding-block:6px;color:var(--t-mu);font-size:.9rem;text-decoration:underline;text-underline-offset:3px}
+.link-quiet:hover{color:var(--t-fg)}
 @media (max-width:1100px){.sobre-grid{grid-template-columns:minmax(0,1fr)}.id-card{margin-top:0}}
 
 /* ===== contato ===== */
@@ -430,7 +433,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <div class="hero-text">
         <p class="mono eyebrow">Brasília · Ciência da Computação, 7º semestre</p>
         <h1 id="nome" class="nome" aria-label="Pedro Cauã"><span class="line"><span class="word">Pedro</span></span><span class="line"><span class="word">Cauã</span></span></h1>
-        <p class="lede">Desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital.</p>
+        <p class="lede">Estagiário full stack no TSE, estudo Ciência da Computação na UCB e já atuei com marketing digital e infraestrutura de TI.</p>
         <a class="btn btn--solid" href="#projetos">Ver projetos</a>
       </div>
       <div class="hero-art" aria-hidden="true">
@@ -497,9 +500,9 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
           <div class="frame" data-tone="accent">
             <svg viewBox="0 0 400 200" aria-hidden="true" focusable="false"><g fill="currentColor"><rect x="90" y="84" width="14" height="32" rx="7"/><rect x="122" y="60" width="14" height="80" rx="7"/><rect x="154" y="36" width="14" height="128" rx="7"/><rect x="186" y="70" width="14" height="60" rx="7"/><rect x="218" y="48" width="14" height="104" rx="7"/><rect x="250" y="72" width="14" height="56" rx="7"/><rect x="282" y="90" width="14" height="20" rx="7"/></g></svg>
           </div>
-          <div class="tags"><span class="chip chip--signal">hobby</span><span class="chip">projeto pessoal</span></div>
+          <div class="tags"><span class="chip chip--signal">concluído</span><span class="chip">hobby</span></div>
           <h3>Jarvis</h3>
-          <p>Assistente pessoal controlado por voz. A ideia é um único comando cobrir o dia: programar como um desenvolvedor full stack, montar automações, criar agentes de IA, ler e-mails e mensagens do Discord, WhatsApp e Teams e resumir as notícias.</p>
+          <p>Assistente de IA por comandos de voz, criado como hobby para explorar automação, agentes e leitura de mensagens.</p>
           <div class="tags"><span class="chip">voz</span><span class="chip">agentes</span><span class="chip">automação</span></div>
         </li>
       </ul>
@@ -614,7 +617,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         </div>
         <div class="panel" data-tone="dark" role="tabpanel" id="p-neg" aria-labelledby="tab-neg" tabindex="0">
           <h3>Negócio</h3>
-          <p>Fundador da Muvve Tech, agência de marketing digital em Brasília: gestão de campanhas no Google Ads e no Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p>
+          <p>Passei pela Muvve Tech como gestor de tráfego e desenvolvedor (6 meses): campanhas de tráfego pago no Google Ads e no Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p>
           <div class="tags"><span class="chip">Google Ads</span><span class="chip">Meta Ads</span><span class="chip">Redes sociais</span><span class="chip">Propostas e contratos</span></div>
         </div>
       </div>
@@ -629,7 +632,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         <h2 id="t-traj" class="h-giant">Trajetória</h2>
       </div>
       <div class="traj-bar">
-        <p class="stat"><span id="cCount">15</span><small id="cLabel">itens</small><span id="cHours" hidden>0</span><small id="hLabel" hidden>horas</small></p>
+        <p class="stat"><span id="cCount">19</span><small id="cLabel">itens</small><span id="cHours" hidden>0</span><small id="hLabel" hidden>horas</small></p>
         <div class="filters" role="group" aria-label="Filtrar a trajetória">
           <button type="button" data-f="all" aria-pressed="true">Tudo</button>
           <button type="button" data-f="trabalho" aria-pressed="false">Trabalho</button>
@@ -638,9 +641,12 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       </div>
     </div>
     <ul class="car" id="car" tabindex="0" aria-label="Trajetória, role para o lado">
-      <li class="item" data-g="trabalho"><div><p class="mono k">Atual · Trabalho</p><h3>Desenvolvedor frontend</h3></div><p>Tribunal Superior Eleitoral · equipe SEUE. Funcionalidades, testes unitários e ajustes de interface em Angular 16. Levo agentes e skills de IA para o fluxo de trabalho, da leitura da tarefa até a branch pronta.</p></li>
-      <li class="item" data-g="trabalho"><div><p class="mono k">Atual · Trabalho</p><h3>Fundador e gestor de tráfego</h3></div><p>Muvve Tech · Brasília. Agência de marketing digital. Gestão de campanhas no Google Ads e Meta Ads, redes sociais, propostas comerciais e contratos em layout padronizado.</p></li>
-      <li class="item" data-g="formacao"><div><p class="mono k">Atual · Formação</p><h3>Ciência da Computação, 7º semestre</h3></div><p>Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">Ago 2025 – ago 2027 · Estágio</p><h3>Estagiário full stack</h3></div><p>Tribunal Superior Eleitoral · SEUE. Atuo em dois sistemas com Angular e JavaScript: funcionalidades, ajustes de interface e testes unitários. Em algumas demandas, atuo como QA. Desenvolvo agentes e skills de IA para o fluxo de trabalho.</p></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">6 meses · Trabalho</p><h3>Gestor de tráfego e desenvolvedor</h3></div><p>Muvve Tech. Campanhas de tráfego pago no Google Ads e no Meta Ads para clientes, redes sociais, propostas comerciais e contratos em layout padronizado.</p></li>
+      <li class="item" data-g="trabalho"><div><p class="mono k">4 meses · Estágio</p><h3>Estagiário de infraestrutura de TI</h3></div><p>Novacap. Atuação na área de infraestrutura de TI.</p></li>
+      <li class="item" data-g="formacao"><div><p class="mono k">Ago 2023 – ago 2027 · Formação</p><h3>Ciência da Computação, 7º semestre</h3></div><p>Universidade Católica de Brasília. Disciplinas como Cálculo I, Pesquisa Operacional e Análise e Projeto de Software. O TCC é o Nodify.</p></li>
+      <li class="item" data-g="cert" data-h="5.5"><div><p class="mono k">Udemy · <time datetime="2025-12-05">5 dez 2025</time></p><h3>Testes Unitários do Zero com Angular, Jasmine e Karma</h3></div><div class="foot mono"><span>5,5 h</span><span class="chip">Udemy</span></div></li>
+      <li class="item" data-g="cert" data-h="15.5"><div><p class="mono k">Udemy · <time datetime="2025-10-24">24 out 2025</time></p><h3>Figma Design de Interfaces, do zero ao profissional</h3></div><div class="foot mono"><span>15,5 h</span><span class="chip">Udemy</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Intermediate Data Visualization with Seaborn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-13">13 jun 2025</time></p><h3>Unsupervised Learning in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-06-09">9 jun 2025</time></p><h3>Supervised Learning with scikit-learn</h3></div><div class="foot mono"><span>4 h</span><span class="chip">IA e dados</span></div></li>
@@ -649,6 +655,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       <li class="item" data-g="cert" data-h="2"><div><p class="mono k">DataCamp · <time datetime="2025-05-10">10 mai 2025</time></p><h3>Intermediate Python for Developers</h3></div><div class="foot mono"><span>2 h</span><span class="chip">Python e APIs</span></div></li>
       <li class="item" data-g="cert" data-h="4"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Object-Oriented Programming in Python</h3></div><div class="foot mono"><span>4 h</span><span class="chip">Python e APIs</span></div></li>
       <li class="item" data-g="cert" data-h="3"><div><p class="mono k">DataCamp · <time datetime="2025-05-09">9 mai 2025</time></p><h3>Introduction to Python for Developers</h3></div><div class="foot mono"><span>3 h</span><span class="chip">Python e APIs</span></div></li>
+      <li class="item" data-g="cert" data-h="30.5"><div><p class="mono k">Udemy · <time datetime="2025-02-19">19 fev 2025</time></p><h3>Algoritmos e Lógica de Programação: o curso completo</h3></div><div class="foot mono"><span>30,5 h</span><span class="chip">Udemy</span></div></li>
       <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Fundamentos do SCRUM</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
       <li class="item" data-g="cert" data-h="30"><div><p class="mono k">TIC em Trilhas · UCB · <time datetime="2024-09-27">27 set 2024</time></p><h3>Desenvolvimento colaborativo em GitHub</h3></div><div class="foot mono"><span>30 h</span><span class="chip">Processos e equipe</span></div></li>
       <li class="item" data-g="cert" data-h="40"><div><p class="mono k">Católica EAD · UCB · <time datetime="2024-09-01">1 set 2024</time></p><h3>Nivelamento em Introdução às Finanças Corporativas</h3></div><div class="foot mono"><span>40 h</span><span class="chip">Base acadêmica</span></div></li>
@@ -668,19 +675,22 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     <div class="wrap sobre-grid">
       <div class="sobre-text">
         <p class="mono eyebrow">Sobre</p>
-        <h2 id="t-sobre" class="h-giant">Quem sou eu?</h2>
-        <p>Sou o Pedro Cauã. Trabalho como desenvolvedor frontend no TSE, estudo Ciência da Computação na UCB e toco a Muvve Tech, minha agência de marketing digital.</p>
-        <p>Meu foco é IA aplicada: agentes que escrevem e revisam código, assistentes de voz e produtos movidos por modelos de linguagem.</p>
+        <h2 id="t-sobre" class="h-giant" data-reveal>Quem sou eu?</h2>
+        <p data-reveal>Sou o Pedro Cauã, estudante do 7º semestre de Ciência da Computação na UCB e estagiário full stack no Tribunal Superior Eleitoral. Cuido de dois sistemas com Angular e JavaScript e, algumas vezes, atuo como QA.</p>
+        <p>Já passei por marketing digital na Muvve Tech, com tráfego pago e desenvolvimento, e por infraestrutura de TI na Novacap. Hoje também aplico IA no meu fluxo de trabalho, com agentes e skills que ajudam na análise de tarefas e na revisão de código.</p>
+        <p>Gosto de software que as pessoas conseguem usar. Meu TCC, o Nodify, é um aplicativo de acessibilidade que controla o Spotify com movimentos da cabeça.</p>
       </div>
       <div class="id-card" data-tone="dark">
         <div class="id-top">
           <!-- [PENDENTE: foto de perfil em WebP, tamanho real de uso] -->
           <div class="mono-tile" aria-hidden="true">PC</div>
-          <div><h3>Pedro Cauã</h3><p>Desenvolvedor frontend · TSE</p></div>
+          <div><h3>Pedro Cauã</h3><p>Estagiário full stack · TSE</p></div>
         </div>
+        <div class="tags"><span class="chip">Full stack</span><span class="chip">QA</span><span class="chip">IA aplicada</span><span class="chip">Marketing digital</span></div>
+        <p class="id-meta mono">Currículo · PDF · 2 páginas · atualizado em out/2026</p>
         <div class="id-cv">
-          <span>[PENDENTE: PDF do currículo]</span>
-          <button class="btn btn--sm" type="button" disabled>Baixar currículo</button>
+          <a class="btn btn--solid" href="assets/curriculo-pedro-caua.pdf" download="Curriculo-Pedro-Caua.pdf" aria-label="Baixar currículo de Pedro Cauã em PDF">Baixar currículo (PDF)</a>
+          <a class="link-quiet" href="assets/curriculo-pedro-caua.pdf" target="_blank" rel="noopener">Abrir no navegador</a>
         </div>
       </div>
     </div>
@@ -691,7 +701,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     <div class="wrap contato-in">
       <p class="mono eyebrow">Contato</p>
       <h2 id="t-contato">Vamos conversar?</h2>
-      <p class="lede">Converso sobre desenvolvimento frontend, IA aplicada, agentes de código, assistentes de voz e produtos com modelos de linguagem.</p>
+      <p class="lede">Converso sobre desenvolvimento full stack, QA e IA aplicada: agentes e skills, assistentes de voz e produtos com modelos de linguagem.</p>
       <ul class="contacts" id="contacts">
         <li><span class="mono lab">GitHub</span><a class="val" href="https://github.com/pedrocaua10" rel="noopener">github.com/pedrocaua10</a><button class="btn btn--sm" type="button" data-copy="https://github.com/pedrocaua10">Copiar</button></li>
         <li><span class="mono lab">LinkedIn</span><span class="pend">[PENDENTE: URL do LinkedIn]</span><button class="btn btn--sm" type="button" disabled>Copiar</button></li>
@@ -809,15 +819,17 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
     var items = $$(".item", car), prev = $("#carPrev"), next = $("#carNext"), count = $("#carCount");
     var cCount = $("#cCount"), cLabel = $("#cLabel"), cHours = $("#cHours"), hLabel = $("#hLabel");
     var current = "all", tickingC = false;
-    function tween(el, to){
-      var from = +el.textContent || 0;
-      if(reduceMQ.matches || from === to){ el.textContent = to; return; }
+    function show(el, v, dec){ el.textContent = dec ? v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) : Math.round(v); }
+    function tween(el, to, dec){
+      var from = el._v != null ? el._v : (parseFloat(String(el.textContent).replace(",", ".")) || 0);
+      el._v = to;
+      if(reduceMQ.matches || from === to){ show(el, to, dec); return; }
       var t0 = null;
       (function f(ts){
         if(t0 === null) t0 = ts;
         var k = Math.min(1, (ts - t0) / 500), e = 1 - Math.pow(1 - k, 3);
-        el.textContent = Math.round(from + (to - from) * e);
-        if(k < 1) requestAnimationFrame(f);
+        show(el, k < 1 ? from + (to - from) * e : to, dec);
+        if(k < 1 && el._v === to) requestAnimationFrame(f);
       })(performance.now());
     }
     function visible(){ return items.filter(function(el){ return !el.hidden; }); }
@@ -851,7 +863,7 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
       if(f === "cert"){
         cLabel.textContent = "cursos";
         var h = v.reduce(function(sum, el){ return sum + (+el.getAttribute("data-h") || 0); }, 0);
-        cHours.hidden = hLabel.hidden = false; tween(cHours, h);
+        cHours.hidden = hLabel.hidden = false; tween(cHours, h, true);
       } else {
         cLabel.textContent = v.length === 1 ? "item" : "itens";
         cHours.hidden = hLabel.hidden = true;
@@ -1018,6 +1030,28 @@ footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px da
         lines.forEach(function(li){ li.className = "ok"; $(".st", li).textContent = "✓"; });
         foot.classList.add("ok");
       };
+    });
+
+    /* Quem sou eu?: título e parágrafo 1 entram palavra por palavra (0,35 para 1, de top 90% a top 50%); sem JS ou com movimento reduzido tudo fica pleno */
+    mm.add("(prefers-reduced-motion: no-preference)", function(){
+      var originais = [];
+      $$("#sobre [data-reveal]").forEach(function(el){
+        var texto = el.textContent.trim(), palavras = texto.split(/\s+/);
+        originais.push([el, texto]);
+        el.textContent = "";
+        var spans = palavras.map(function(w, i){
+          var s = document.createElement("span");
+          s.textContent = w;
+          el.appendChild(s);
+          if(i < palavras.length - 1) el.appendChild(document.createTextNode(" "));
+          return s;
+        });
+        gsap.fromTo(spans, { opacity: 0.35 }, {
+          opacity: 1, ease: "power1.out", stagger: 0.1, duration: 0.5,
+          scrollTrigger: { trigger: el, start: "top 90%", end: "top 50%", scrub: true, refreshPriority: -1 }
+        });
+      });
+      return function(){ originais.forEach(function(o){ o[0].textContent = o[1]; }); };
     });
 
     var refresh = function(){ ScrollTrigger.refresh(); update(); };

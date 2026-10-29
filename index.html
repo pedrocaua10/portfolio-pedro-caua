@@ -7,7 +7,7 @@
 <meta name="description" content="Portfólio de Pedro Cauã, estagiário full stack em Brasília. Angular e testes unitários no TSE, QA, projetos com IA aplicada, o Nodify (meu TCC) e certificados.">
 <meta name="author" content="Pedro Cauã">
 <meta name="color-scheme" content="dark light">
-<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m);var tm=localStorage.getItem("theme");if(tm==="light"||tm==="dark")document.documentElement.setAttribute("data-theme",tm)}catch(e){}</script>
+<script>try{var m=localStorage.getItem("motion");if(m==="on"||m==="off")document.documentElement.classList.add("motion-"+m);var ic=localStorage.getItem("icone");if(ic)document.documentElement.setAttribute("data-icone",ic);var tm=localStorage.getItem("theme");if(tm==="light"||tm==="dark")document.documentElement.setAttribute("data-theme",tm)}catch(e){}</script>
 <meta name="theme-color" content="#1A1613">
 <!-- [PENDENTE: URL final] troque em canonical, og:url, og:image, twitter:image e no JSON-LD pela URL publicada (ex.: https://pedrocaua10.github.io/) -->
 <link rel="canonical" href="https://[PENDENTE: URL final]/">
@@ -182,10 +182,10 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 /* ===== início ===== */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(var(--hdr) + 24px) 0 84px}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:40px}
-.hero-text{display:grid;gap:20px;justify-items:start}
-.nome{font:800 clamp(72px,14vw,200px)/.95 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
+.hero-text{display:grid;gap:14px;justify-items:start}
+.nome{font:800 clamp(72px,min(14vw,22svh),200px)/.95 var(--font-display);text-transform:uppercase;letter-spacing:.005em}
 .nome .line{display:block;overflow:hidden;padding-top:.24em;margin-top:-.2em;white-space:nowrap}
-.hero .lede{max-width:30rem;color:var(--t-fg)}
+.hero .lede{max-width:36rem;color:var(--t-fg)}
 .hero-art{width:100%;max-width:460px;justify-self:center;aspect-ratio:1}
 .hero-art svg{width:100%;height:100%;overflow:visible}
 .sq{stroke:var(--t-fg);stroke-width:3}
@@ -193,11 +193,20 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 .sq-letter{font:800 130px var(--font-display)}
 .sq-letter--p{fill:#F2F5FA}.sq-letter--c{fill:var(--hero-c)}
 .sig{fill:var(--signal);stroke:var(--t-fg);stroke-width:3}
+.ic{display:none;fill:none;stroke:var(--on-signal);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ic[data-ic="chip"]{display:inline}
+html[data-icone="no"] .ic[data-ic="chip"],html[data-icone="codigo"] .ic[data-ic="chip"]{display:none}
+html[data-icone="no"] .ic[data-ic="no"],html[data-icone="codigo"] .ic[data-ic="codigo"]{display:inline}
+.hero-status{display:flex;align-items:flex-start;gap:10px;max-width:36rem;font:500 var(--fs-sm)/1.45 var(--font-body);color:var(--t-fg)}
+.hero-status .dot{flex:none;width:10px;height:10px;margin-top:.42em;border-radius:50%;background:var(--signal);box-shadow:0 0 0 3px var(--t-ln);animation:pulso 2.4s ease-in-out infinite}
+@keyframes pulso{50%{box-shadow:0 0 0 7px transparent}}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:900px){
   .hero{align-items:flex-start;padding-top:calc(var(--hdr) + 28px)}
   .nome{font-size:clamp(88px,30vw,180px)}
   .hero-grid{grid-template-columns:minmax(0,1fr);gap:24px}
-  .hero-art{order:-1;max-width:240px;justify-self:start}
+  .hero-art{order:0;max-width:200px;justify-self:start}
+  .hero-cta .btn{padding:.65em 1.1em;font-size:.95rem}
 }
 
 /* ===== faixa de tecnologias ===== */
@@ -213,6 +222,7 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 @keyframes slam{to{opacity:1;transform:none}}
 .float{animation:flutuar 5s ease-in-out infinite}
 .float2{animation:flutuar 6.5s ease-in-out infinite reverse}
+.float3{animation:flutuar 4.2s ease-in-out infinite}
 @keyframes flutuar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .strip-track{animation:rolar 26s linear infinite}
 @keyframes rolar{to{transform:translateX(-50%)}}
@@ -417,6 +427,8 @@ a.round:hover,button.round:not(:disabled):hover{background:var(--t-fg);color:var
 @media (max-width:560px){.contacts{flex-direction:column;align-items:stretch;width:100%}.contacts li{flex-wrap:wrap;justify-content:space-between;border-radius:22px;padding:12px 12px 12px 18px}.contacts .lab{flex:0 0 100%;text-align:left}.contacts a.val{flex:1;min-width:0;text-align:left;font-size:.85rem}}
 footer.rodape{margin-top:clamp(40px,6vw,72px);padding-top:20px;border-top:1px dashed var(--t-ln);color:var(--t-mu);font-size:.85rem}
 
+.pal-btn{position:fixed;left:16px;bottom:16px;z-index:95;padding:10px 16px;border:1.5px solid #fff;border-radius:999px;background:#111;color:#fff;font:600 .9rem/1.2 var(--font-body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.pal-btn[hidden]{display:none}
 .theme-swap *,.theme-swap *::before,.theme-swap *::after{transition:none!important}
 
 /* ===== tipografia: texto de explicação maior, rótulos sem cara de painel técnico ===== */
@@ -506,7 +518,11 @@ p{text-wrap:pretty}
         <p class="mono eyebrow">Brasília · Ciência da Computação, 7º semestre</p>
         <h1 id="nome" class="nome" aria-label="Pedro Cauã"><span class="line"><span class="word">Pedro</span></span><span class="line"><span class="word">Cauã</span></span></h1>
         <p class="lede">Faço estágio full stack no TSE e curso Ciência da Computação na UCB. Antes, passei por marketing digital e por infraestrutura de TI.</p>
-        <a class="btn btn--solid" href="#projetos">Ver projetos</a>
+        <p class="hero-status"><span class="dot" aria-hidden="true"></span>Busco oportunidades em desenvolvimento de software, qualidade e IA aplicada.</p>
+        <div class="hero-cta">
+          <a class="btn btn--solid" href="#projetos">Ver projetos</a>
+          <a class="btn" href="assets/curriculo-pedro-caua.pdf" download="Curriculo-Pedro-Caua.pdf" aria-label="Baixar currículo de Pedro Cauã em PDF">Baixar currículo (PDF)</a>
+        </div>
       </div>
       <div class="hero-art" aria-hidden="true">
         <svg viewBox="0 0 400 400" focusable="false">
@@ -518,7 +534,14 @@ p{text-wrap:pretty}
             <rect class="sq sq-light" x="180" y="180" width="160" height="160" rx="18"/>
             <text class="sq-letter sq-letter--c" x="260" y="300" text-anchor="middle">C</text>
           </g>
-          <circle class="sig" cx="330" cy="80" r="26"/>
+          <g class="float3">
+            <circle class="sig" cx="334" cy="76" r="38"/>
+            <g transform="translate(334 76) scale(1.12)">
+              <g class="ic" data-ic="chip"><rect x="-11" y="-11" width="22" height="22" rx="4"/><rect x="-4.5" y="-4.5" width="9" height="9" rx="1.5"/><path d="M-6 -11V-19M6 -11V-19M-6 11V19M6 11V19M-11 -6H-19M-11 6H-19M11 -6H19M11 6H19"/></g>
+              <g class="ic" data-ic="no"><path d="M-2 2-16-6M-2 2 12-14M-2 2 8 15M12-14 8 15"/><circle cx="-16" cy="-6" r="4.2" style="fill:var(--signal)"/><circle cx="12" cy="-14" r="4.2" style="fill:var(--signal)"/><circle cx="8" cy="15" r="4.2" style="fill:var(--signal)"/><circle cx="-2" cy="2" r="6.5" style="fill:var(--on-signal)"/></g>
+              <g class="ic" data-ic="codigo" style="stroke-width:3.4"><path d="M-9-10-19 0-9 10M9-10 19 0 9 10M4-14-4 14"/></g>
+            </g>
+          </g>
         </svg>
       </div>
     </div>
@@ -792,6 +815,7 @@ p{text-wrap:pretty}
 
 </main>
 
+<button class="pal-btn" id="icBtn" type="button" hidden>Ícone</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
@@ -834,6 +858,22 @@ p{text-wrap:pretty}
     });
   });
   themeLabel();
+
+  /* ----- pré-visualização dos ícones do início (só com ?icones na URL) ----- */
+  (function(){
+    var btn = $("#icBtn");
+    if(!btn || location.search.indexOf("icones") < 0) return;
+    var IC = [["chip", "Chip de processador"], ["no", "Nó de agente"], ["codigo", "Código </>"]];
+    function atual(){ var p = root.getAttribute("data-icone") || "chip"; for(var i = 0; i < IC.length; i++) if(IC[i][0] === p) return i; return 0; }
+    function pinta(){ btn.textContent = "Ícone: " + IC[atual()][1] + " (clique para trocar)"; }
+    btn.hidden = false; pinta();
+    btn.addEventListener("click", function(){
+      var n = IC[(atual() + 1) % IC.length][0];
+      root.setAttribute("data-icone", n);
+      try{ localStorage.setItem("icone", n); }catch(e){}
+      pinta();
+    });
+  })();
 
   /* ----- menu móvel: fecha por link, clique fora e Esc, e devolve o foco ----- */
   var burger = $("#burger"), drawer = $("#menu"), scrim = $("#scrim");

@@ -53,7 +53,7 @@ O círculo âmbar ao lado dos quadrados P e C é um selo com o ícone de código
 
 ## Números
 
-Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas de curso e 4 projetos. Contam de 0 ao valor ao entrar na tela (sem animação, mostram o valor final).
+Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas de curso e 5 projetos. Contam de 0 ao valor ao entrar na tela (sem animação, mostram o valor final).
 
 ## Foto
 
@@ -75,7 +75,7 @@ Até 900px o Nodify não prende a tela: título, celular de até 340px e a lista
 
 ## Projetos
 
-Quatro cartões no trilho: Nodify (TCC), Vivendo com Parkinson (portal da UnB com a Associação Parkinson Brasília, feito por inteiro por Pedro em Astro, com link para o site), agentes de IA no TSE e Jarvis.
+Cinco cartões no trilho. Vivendo com Parkinson abre o trilho como cartão de destaque (largo, com borda): portal de educação em saúde da UnB com a Associação Parkinson Brasília, nascido de uma iniciação científica do PROIC (editais 2025 e 2026), feito por inteiro por Pedro em Astro, com links para o site e o repositório. Depois vêm o Nodify (TCC), o leitor de boletim de urna (uso interno no TSE; o link público é a versão de treinamento), os agentes de IA (sem "no TSE" no título) e o Jarvis.
 
 ## Voz
 

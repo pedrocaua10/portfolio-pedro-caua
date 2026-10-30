@@ -8,7 +8,7 @@ Desenvolvedor que constrói software que as pessoas conseguem usar, e usa IA par
 
 ## Tese visual
 
-Abre no escuro, com blocos de barro (terracota) sobre marrom quente, um título gigante condensado e texto de leitura em uma sans humanista. Cada seção é um bloco de cor com corte seco, e o movimento aparece onde ajuda a contar a história: o trilho de projetos, o Nodify e o fluxo de agentes.
+Abre no escuro, com blocos de barro (terracota) sobre marrom quente, um título gigante condensado e texto de leitura em uma sans humanista. Cada seção é um bloco de cor com corte seco, e o movimento aparece onde ajuda a contar a história: o trilho de projetos, e o Nodify.
 
 ## Temas
 
@@ -23,7 +23,7 @@ Pesquisa que guiou o escuro: sem preto puro, texto levemente suavizado (~14:1, n
 |---|---|---|---|---|---|
 | dark (faixa, projetos, contato) | `#1A1613` | `#EDE6DF` | `#B3A89D` | `#241E19` | `#E8B58A` |
 | paper (trajetória, Nodify, habilidades) | `#221C17` | `#EDE6DF` | `#B3A89D` | `#2D2620` | `#E8B58A` |
-| accent (início, agentes, sobre) | `#7E4228` | `#FBF4EE` | `#F0DCCB` | `#1A1210` | `#FBF4EE` |
+| accent (início, stack, sobre) | `#7E4228` | `#FBF4EE` | `#F0DCCB` | `#1A1210` | `#FBF4EE` |
 
 Âmbar de sinalização `#E6B659` (círculo do início, selos). Todas as combinações passam AA (texto principal ≥ 14:1, blocos de cor ≥ 7:1).
 
@@ -35,7 +35,7 @@ Pesquisa que guiou o escuro: sem preto puro, texto levemente suavizado (~14:1, n
 | paper | `#F2F5FA` | `#0E1A2E` | `#4A5A74` | `#FFFFFF` |
 | accent | `#1E3FE0` | `#FFFFFF` | `#D9E1FF` | `#0E1A2E` |
 
-Nunca dois blocos do mesmo tom lado a lado. Ordem atual: início (accent), faixa (dark), trajetória (paper), projetos (dark), Nodify (paper), agentes (accent), habilidades (paper), sobre (accent), contato (dark).
+Nunca dois blocos do mesmo tom lado a lado. Ordem atual: início (accent), faixa (dark), trajetória (paper), projetos (dark), Nodify (paper), stack (accent), habilidades (paper), sobre (accent), contato (dark).
 
 ## Tipografia
 
@@ -43,7 +43,7 @@ Nunca dois blocos do mesmo tom lado a lado. Ordem atual: início (accent), faixa
 |---|---|---|
 | Títulos | Big Shoulders Display 800, caixa alta | nome do início, títulos de seção, números |
 | Texto | Schibsted Grotesk 400, 500 e 600 | leitura, botões, rótulos, chips, datas |
-| Código | JetBrains Mono 400 e 500 | só nomes de agentes e o painel de execução |
+| Código | JetBrains Mono 400 e 500 | reserva, hoje sem uso na página |
 
 Tamanhos (tokens `--fs-*`): corpo 19px com entrelinha 1,65; lede 21px; parágrafos de cartões, trajetória e habilidades 17px; passos e gestos 16px; rótulos de 14 a 16px (mínimo 14). Título de seção `clamp(44px, 6.2vw, 88px)`; nome `clamp(72px, min(14vw, 22svh), 200px)` (celular `clamp(88px, 30vw, 180px)`). Rótulos (eyebrow, chips, datas) em minúsculas, sem espaçamento largo. `text-wrap: pretty` nos parágrafos.
 
@@ -53,7 +53,7 @@ O círculo âmbar ao lado dos quadrados P e C é um selo com o ícone de código
 
 ## Números
 
-Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas de curso e 3 projetos. Contam de 0 ao valor ao entrar na tela (sem animação, mostram o valor final).
+Quatro números reais na Trajetória: 2 sistemas no TSE, 15 cursos, 220,5 horas de curso e 4 projetos. Contam de 0 ao valor ao entrar na tela (sem animação, mostram o valor final).
 
 ## Foto
 
@@ -67,15 +67,19 @@ O nome "Pedro Cauã" leva `translate="no"` (título, marca, cartão, rodapé, li
 
 ## Movimento
 
-Durações 200, 350, 600 e 1000 ms; curvas `power3.out` e `power1.out`. Pins com GSAP + ScrollTrigger 3.12.2, no desktop e no celular (até 900px, com layout próprio que cabe na altura; no celular só Projetos e Agentes prendem a tela). Faixa de tecnologias e rolagem automática da trajetória em loop, com pausa. O botão de animações no cabeçalho guarda a escolha; sem escolha vale a preferência do sistema.
+Durações 200, 350, 600 e 1000 ms; curvas `power3.out` e `power1.out`. Pins com GSAP + ScrollTrigger 3.12.2, no desktop e no celular (até 900px, com layout próprio que cabe na altura; no celular só Projetos prende a tela; no computador, Projetos e Nodify). Faixa de tecnologias e rolagem automática da trajetória em loop, com pausa. O botão de animações no cabeçalho guarda a escolha; sem escolha vale a preferência do sistema.
 
 ## Nodify no celular
 
 Até 900px o Nodify não prende a tela: título, celular de até 340px e a lista dos 4 gestos com explicação, tudo em rolagem normal. O celular anima em ciclo (cerca de 11 s) só enquanto está visível. Com movimento reduzido fica parado.
 
+## Projetos
+
+Quatro cartões no trilho: Nodify (TCC), Vivendo com Parkinson (portal da UnB com a Associação Parkinson Brasília, feito por inteiro por Pedro em Astro, com link para o site), agentes de IA no TSE e Jarvis.
+
 ## Voz
 
-Primeira pessoa, frases de tamanhos diferentes, só fatos que a pessoa deu (cargo, período, projeto, curso). Posicionamento: engenheiro de inteligência artificial (AI Engineer), que desenvolve, treina e coloca em prática modelos de IA. Cargo no Tribunal Superior Eleitoral, Angular e a palavra "estagiário" aparecem só na Trajetória; início, Sobre, prévia de compartilhamento e título da aba falam de IA.
+Primeira pessoa, frases de tamanhos diferentes, só fatos que a pessoa deu (cargo, período, projeto, curso). Posicionamento: engenheiro de inteligência artificial (AI Engineer) e desenvolvedor full stack. O início fala só disso (rótulo, texto e botões), sem TSE, estágio, marketing ou infraestrutura. Cargo no Tribunal Superior Eleitoral, Angular, Novacap, Muvve e a palavra "estagiário" aparecem na Trajetória e nos cartões de apoio. A seção "Como uso agentes no trabalho" saiu; no lugar entrou "Stack e ferramentas" (IA, Full stack, Qualidade e processo), e o cartão dos agentes continua em Projetos.
 
 ## Evitar
 

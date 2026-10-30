@@ -75,7 +75,7 @@ Até 900px o Nodify não prende a tela: título, celular de até 340px e a lista
 
 ## Voz
 
-Primeira pessoa, frases de tamanhos diferentes, só fatos que a pessoa deu (cargo, período, projeto, curso). Posicionamento: desenvolvedor front-end que atua com IA. A palavra "estagiário" aparece só na Trajetória (os dois estágios); no resto do site, na prévia de compartilhamento e nos dados estruturados o texto é "desenvolvedor front-end". Segue a skill `web-escrita-humana`: sem travessão, sem trio por reflexo, sem tom de vendedor, sem adjetivo sobre si mesmo, sem conclusão genérica.
+Primeira pessoa, frases de tamanhos diferentes, só fatos que a pessoa deu (cargo, período, projeto, curso). Posicionamento: engenheiro de inteligência artificial (AI Engineer), que desenvolve, treina e coloca em prática modelos de IA. Cargo no Tribunal Superior Eleitoral, Angular e a palavra "estagiário" aparecem só na Trajetória; início, Sobre, prévia de compartilhamento e título da aba falam de IA.
 
 ## Evitar
 
